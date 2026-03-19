@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0B1C2E;
+  --color-navy-light: #122640;
+  --color-slate: #1E2A38;
+  --color-steel: #5C6B7A;
+  --color-cloud: #F4F7FA;
+  --color-cloud-dark: #E8EDF3;
+  --color-accent-cyan: #13C0F5;
+  --color-accent-cyan-dark: #0EA8D8;
+  --color-accent-amber: #FFC766;
+  --color-accent-amber-dark: #F0B44E;
+  --color-white: #FFFFFF;
+  --color-border: #D1D9E0;
+
+  --font-heading: "Inter", system-ui, sans-serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-slate);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-navy);
+}
+
+/* Skip to content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  padding: 0.5rem 1rem;
+  background: var(--color-accent-cyan);
+  color: var(--color-navy);
+  z-index: 100;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus states for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 2px;
+}
+
+/* Mega menu animation */
+.mega-menu-enter {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.mega-menu-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+/* Stat counter animation */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count-up {
+  animation: count-up 0.6s ease-out forwards;
+}
+
+/* Hero gradient overlay */
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(11, 28, 46, 0.92) 0%, rgba(30, 42, 56, 0.85) 50%, rgba(19, 192, 245, 0.15) 100%);
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(11, 28, 46, 0.12);
+}
