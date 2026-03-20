@@ -110,10 +110,10 @@ export default function PrivacyPolicyPage() {
             If you have any questions or concerns about this Privacy Policy or our data
             practices, please contact us at{" "}
             <a
-              href="mailto:privacy@cybitsolutions.net"
+              href="mailto:info@cybitsolutions.net"
               className="text-blue-600 hover:text-blue-700 underline"
             >
-              privacy@cybitsolutions.net
+              info@cybitsolutions.net
             </a>.
           </p>
 

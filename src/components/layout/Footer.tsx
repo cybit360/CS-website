@@ -53,9 +53,9 @@ export function Footer() {
               <Image
                 src="/images/logo.png"
                 alt="CybitSolutions"
-                width={180}
-                height={48}
-                className="h-12 w-auto brightness-0 invert"
+                width={240}
+                height={60}
+                className="h-14 w-auto brightness-0 invert"
               />
             </Link>
             <p className="mb-6 text-sm leading-relaxed text-steel">
@@ -170,7 +170,7 @@ export function Footer() {
                   className="inline-flex items-center gap-1.5 text-sm text-steel hover:text-white transition-colors"
                 >
                   <Phone className="size-3.5" />
-                  (771) 233-1379
+                  + (771) 233-1379
                 </a>
               </li>
             </ul>

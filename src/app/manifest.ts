@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "CybitSolutions",
-    short_name: "CybitSolutions",
+    short_name: "Cybit",
     description:
       "Mission-Grade IT for Government & Enterprise. Secure, scalable solutions for federal agencies and enterprise organizations.",
     start_url: "/",

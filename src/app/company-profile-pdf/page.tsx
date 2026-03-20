@@ -54,6 +54,15 @@ const serviceDomains = [
 
 const pastPerformance = [
   {
+    client: "Multiple Federal Agencies",
+    program: "Microsoft Ecosystem — Enterprise Platform Modernization",
+    results: [
+      "50K+ users to M365 GCC High, 99.99% uptime",
+      "500+ Power Apps, 200K+ hrs automated annually",
+      "70% faster incident response via Sentinel",
+    ],
+  },
+  {
     client: "U.S. Air Force & Space Force",
     program: "C3BM / ABMS — Joint All-Domain Command & Control",
     results: [
@@ -145,6 +154,7 @@ const certifications = [
 const partners = [
   "AWS", "Microsoft Azure", "Google Cloud", "ServiceNow", "Splunk",
   "Cisco", "CrowdStrike", "HashiCorp", "Databricks", "IBM",
+  "Palo Alto Networks", "Dell Technologies", "VMware", "Fortinet", "Red Hat",
 ];
 
 export default function CompanyProfilePDFPage() {
@@ -179,9 +189,9 @@ export default function CompanyProfilePDFPage() {
               <Image
                 src="/images/logo.png"
                 alt="CybitSolutions Logo"
-                width={280}
-                height={70}
-                className="mx-auto h-20 w-auto"
+                width={350}
+                height={88}
+                className="mx-auto h-24 w-auto"
               />
             </div>
             <div className="w-24 h-0.5 bg-[#13C0F5] mx-auto mb-8" />
@@ -409,7 +419,7 @@ export default function CompanyProfilePDFPage() {
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
                 <p className="text-[#13C0F5] text-xs font-semibold uppercase tracking-wide mb-1">Phone</p>
-                <p className="text-sm text-white/80">(771) 233-1379</p>
+                <p className="text-sm text-white/80">+ (771) 233-1379</p>
               </div>
               <div>
                 <p className="text-[#13C0F5] text-xs font-semibold uppercase tracking-wide mb-1">Email</p>

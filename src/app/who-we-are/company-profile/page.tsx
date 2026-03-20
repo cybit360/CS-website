@@ -106,6 +106,15 @@ const serviceDomains = [
 
 const pastPerformance = [
   {
+    client: "Multiple Federal Agencies",
+    program: "Microsoft Ecosystem — Enterprise Platform Modernization",
+    highlights: [
+      "50,000+ users migrated to M365 GCC High with 99.99% uptime",
+      "500+ citizen-developed Power Apps automating 200K+ hours annually",
+      "Security incident response time reduced by 70% via Sentinel",
+    ],
+  },
+  {
     client: "U.S. Air Force & U.S. Space Force",
     program: "DoD C3BM / ABMS — Joint All-Domain Command & Control",
     highlights: [
@@ -196,6 +205,11 @@ const technologyPartners = [
   "HashiCorp",
   "Databricks",
   "IBM",
+  "Palo Alto Networks",
+  "Dell Technologies",
+  "VMware (Broadcom)",
+  "Fortinet",
+  "Red Hat",
 ];
 
 const leadershipTeam = [
@@ -624,7 +638,7 @@ export default function CompanyProfilePage() {
               <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-accent-cyan/10 text-accent-cyan mb-3">
                 <Phone className="w-6 h-6" />
               </div>
-              <p className="text-white/80 text-sm">(771) 233-1379</p>
+              <p className="text-white/80 text-sm">+ (771) 233-1379</p>
             </div>
             <div className="flex flex-col items-center text-center">
               <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-accent-cyan/10 text-accent-cyan mb-3">

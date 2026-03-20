@@ -95,6 +95,41 @@ export const technologyPartners: Partner[] = [
       "IBM partner for hybrid cloud, enterprise AI, mainframe modernization, and quantum-safe security solutions for government and commercial clients.",
     url: "https://www.ibm.com",
   },
+  {
+    name: "Palo Alto Networks",
+    logo: "/images/partners/paloalto.svg",
+    tier: "Platinum Partner",
+    description: "Palo Alto Networks partner for next-generation firewalls, cloud security (Prisma), and AI-driven threat prevention across government environments.",
+    url: "https://www.paloaltonetworks.com",
+  },
+  {
+    name: "Dell Technologies",
+    logo: "/images/partners/dell.svg",
+    tier: "Titanium Partner",
+    description: "Dell Technologies partner for enterprise servers, storage, hyperconverged infrastructure, and end-user computing solutions for government and commercial clients.",
+    url: "https://www.dell.com",
+  },
+  {
+    name: "VMware (Broadcom)",
+    logo: "/images/partners/vmware.svg",
+    tier: "Premier Partner",
+    description: "VMware partner for virtualization, software-defined networking, multi-cloud management, and workspace ONE unified endpoint management.",
+    url: "https://www.vmware.com",
+  },
+  {
+    name: "Fortinet",
+    logo: "/images/partners/fortinet.svg",
+    tier: "Expert Partner",
+    description: "Fortinet partner for next-generation firewalls, SD-WAN, SASE, and integrated security fabric solutions across government networks.",
+    url: "https://www.fortinet.com",
+  },
+  {
+    name: "Red Hat",
+    logo: "/images/partners/redhat.svg",
+    tier: "Premier Partner",
+    description: "Red Hat partner for enterprise Linux, OpenShift container platform, Ansible automation, and open-source cloud infrastructure solutions for government.",
+    url: "https://www.redhat.com",
+  },
 ];
 
 export const certificationBadges: CertificationBadge[] = [

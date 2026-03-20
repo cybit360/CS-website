@@ -105,10 +105,10 @@ export default function AccessibilityStatementPage() {
             encounter any accessibility barriers or have suggestions for improvement,
             please let us know by contacting us at{" "}
             <a
-              href="mailto:accessibility@cybitsolutions.net"
+              href="mailto:info@cybitsolutions.net"
               className="text-blue-600 hover:text-blue-700 underline"
             >
-              accessibility@cybitsolutions.net
+              info@cybitsolutions.net
             </a>.
             We aim to respond to accessibility feedback within two business days and to
             propose a solution within ten business days.

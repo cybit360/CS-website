@@ -79,7 +79,7 @@ export function Header() {
               className="inline-flex items-center gap-1.5 hover:text-navy transition-colors"
             >
               <Phone className="size-3" />
-              (771) 233-1379
+              + (771) 233-1379
             </a>
             <a
               href="mailto:info@cybitsolutions.net"
@@ -99,9 +99,9 @@ export function Header() {
           <Image
             src="/images/logo.png"
             alt="CybitSolutions - Home"
-            width={200}
-            height={50}
-            className="h-12 w-auto"
+            width={280}
+            height={70}
+            className="h-16 w-auto"
             priority
           />
         </Link>

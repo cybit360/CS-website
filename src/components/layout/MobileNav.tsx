@@ -184,7 +184,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
               className="inline-flex items-center gap-2 hover:text-navy transition-colors"
             >
               <Phone className="size-4" />
-              (771) 233-1379
+              + (771) 233-1379
             </a>
             <a
               href="mailto:info@cybitsolutions.net"

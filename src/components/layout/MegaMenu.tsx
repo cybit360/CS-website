@@ -83,7 +83,7 @@ export function MegaMenu({ item, isOpen, onClose }: MegaMenuProps) {
       role="menu"
       aria-label={`${item.label} submenu`}
       className={cn(
-        "absolute left-0 top-full w-full bg-white shadow-xl border-t-2 border-accent-cyan z-50",
+        "absolute left-0 top-full w-full bg-white shadow-xl border-t-2 border-accent-cyan z-[9999]",
         "animate-[fadeSlideIn_200ms_ease-out_forwards]"
       )}
       style={{

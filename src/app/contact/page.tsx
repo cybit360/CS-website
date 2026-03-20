@@ -79,10 +79,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-navy mb-1">Phone</h3>
-                    <p className="text-steel text-sm">(703) 555-0100</p>
-                    <p className="text-steel text-xs mt-1">
-                      Toll-free: (800) 555-0100
-                    </p>
+                    <p className="text-steel text-sm">+ (771) 233-1379</p>
                   </div>
                 </div>
               </div>

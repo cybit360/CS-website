@@ -133,7 +133,7 @@ export default function CapabilityPDFPage() {
           <div className="text-right text-sm text-[#5C6B7A] leading-relaxed">
             <p className="font-semibold text-[#0B1C2E]">CybitSolutions LLC</p>
             <p>info@cybitsolutions.net</p>
-            <p>+(771) 233-1379</p>
+            <p>+ (771) 233-1379</p>
             <p>www.cybitsolutions.com</p>
           </div>
         </header>
@@ -334,7 +334,7 @@ export default function CapabilityPDFPage() {
               </p>
             </div>
             <div className="text-right text-xs text-[#5C6B7A]">
-              <p>info@cybitsolutions.net | +(771) 233-1379</p>
+              <p>info@cybitsolutions.net | + (771) 233-1379</p>
               <p>www.cybitsolutions.com</p>
             </div>
           </div>

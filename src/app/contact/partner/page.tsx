@@ -192,7 +192,7 @@ export default function PartnerPage() {
             </p>
             <div className="flex items-center justify-center gap-2 text-accent-cyan font-semibold mb-8">
               <Mail className="w-5 h-5" />
-              partners@cybitsolutions.net
+              info@cybitsolutions.net
             </div>
             <Link
               href="/contact"

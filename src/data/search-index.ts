@@ -277,12 +277,12 @@ export const searchIndex: SearchItem[] = [
     keywords: ["culture", "benefits", "perks", "professional development", "workplace"],
   },
   {
-    title: "Employee Testimonials",
+    title: "Employee & Client Testimonials",
     description:
-      "Hear from our team about life at CybitSolutions",
+      "Hear from our team and clients about working with CybitSolutions",
     href: "/careers/testimonials",
     category: "Careers",
-    keywords: ["testimonials", "reviews", "employees", "team", "stories"],
+    keywords: ["testimonials", "reviews", "employees", "team", "stories", "clients", "feedback", "ratings"],
   },
 
   // ── Contact ───────────────────────────────────────────────────────────

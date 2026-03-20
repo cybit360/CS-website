@@ -108,10 +108,10 @@ export default function CookiePolicyPage() {
           <p className="text-gray-600 mb-4 leading-relaxed">
             If you have any questions about our use of cookies, please contact us at{" "}
             <a
-              href="mailto:privacy@cybitsolutions.net"
+              href="mailto:info@cybitsolutions.net"
               className="text-blue-600 hover:text-blue-700 underline"
             >
-              privacy@cybitsolutions.net
+              info@cybitsolutions.net
             </a>.
           </p>
 

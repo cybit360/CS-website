@@ -143,10 +143,10 @@ export const mainNavItems: NavItem[] = [
           "Our culture, benefits, professional development, and what makes CybitSolutions a great place to work.",
       },
       {
-        label: "Employee Testimonials",
+        label: "Employee & Client Testimonials",
         href: "/careers/testimonials",
         description:
-          "Hear from our team about life at CybitSolutions.",
+          "Hear from our team and clients about working with CybitSolutions.",
       },
     ],
   },

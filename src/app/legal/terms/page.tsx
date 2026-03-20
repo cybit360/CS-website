@@ -120,10 +120,10 @@ export default function TermsOfUsePage() {
           <p className="text-gray-600 mb-4 leading-relaxed">
             If you have any questions about these Terms of Use, please contact us at{" "}
             <a
-              href="mailto:legal@cybitsolutions.net"
+              href="mailto:info@cybitsolutions.net"
               className="text-blue-600 hover:text-blue-700 underline"
             >
-              legal@cybitsolutions.net
+              info@cybitsolutions.net
             </a>.
           </p>
 

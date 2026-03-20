@@ -190,18 +190,6 @@ const downloadCards = [
       "Full overview of CybitSolutions capabilities, past performance, and contract vehicles for federal procurement.",
     filename: "CybitSolutions-Capability-Statement.pdf",
   },
-  {
-    title: "Cybersecurity Services",
-    description:
-      "Focused capability statement covering zero-trust architecture, SIEM/SOAR, RMF compliance, and security operations.",
-    filename: "CybitSolutions-Cybersecurity-Capabilities.pdf",
-  },
-  {
-    title: "Cloud & Infrastructure",
-    description:
-      "Multi-cloud capabilities for AWS GovCloud, Azure Government, and hybrid environments at all classification levels.",
-    filename: "CybitSolutions-Cloud-Capabilities.pdf",
-  },
 ];
 
 const contractVehicles = [
@@ -256,7 +244,7 @@ export default function CapabilityStatementsPage() {
           </h1>
           <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Everything contracting officers and partners need to evaluate
-            CybitSolutions for your next federal IT program.
+            CybitSolutions for your next IT program.
           </p>
         </div>
       </section>
@@ -278,7 +266,7 @@ export default function CapabilityStatementsPage() {
                 <Shield className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-bold text-navy">
-                CybitSolutions, LLC
+                CybitSolutions
               </h3>
             </div>
             <ul className="space-y-4">

@@ -23,6 +23,25 @@ export const metadata: Metadata = {
 
 const majorCaseStudies = [
   {
+    id: "microsoft-ecosystem",
+    icon: Monitor,
+    client: "Multiple Federal Agencies (DoD, Civilian, IC)",
+    title: "Microsoft Ecosystem: Enterprise Platform Modernization",
+    period: "Multi-Year Program",
+    value: "Enterprise-Wide Platform",
+    summary:
+      "Designed, deployed, and managed comprehensive Microsoft ecosystem solutions including M365 GCC/GCC High, Azure Government, Dynamics 365, Power Platform, and Teams across multiple federal agencies, enabling secure collaboration, modern workplace transformation, and enterprise-grade productivity at scale.",
+    highlights: [
+      "50,000+ users migrated to M365 GCC High with 99.99% uptime",
+      "Azure Government IL5 authorization achieved in 60 days",
+      "500+ citizen-developed Power Apps automating 200K+ hours annually",
+      "70% faster security incident response via Microsoft Sentinel",
+      "75,000+ devices managed through Microsoft Intune",
+    ],
+    technologies: ["M365 GCC High", "Azure Government", "Sentinel", "Intune", "Power Platform"],
+    outcome: "Unified Microsoft platform modernization across DoD and civilian agencies with measurable security, productivity, and cost improvements.",
+  },
+  {
     id: "dod-c3bm-abms",
     icon: Shield,
     client: "DoD Air Force & Space Force",

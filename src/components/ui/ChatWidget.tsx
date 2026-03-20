@@ -38,7 +38,7 @@ const FAQ_RESPONSES: {
   {
     keywords: ["contact", "reach", "phone", "email", "get in touch", "rfp", "proposal"],
     response:
-      "You can reach CybitSolutions at info@cybitsolutions.net or call +(771) 233-1379. You can also submit an RFP or general inquiry through our contact form.",
+      "You can reach CybitSolutions at info@cybitsolutions.net or call + (771) 233-1379. You can also submit an RFP or general inquiry through our contact form.",
     links: [
       { label: "Contact Us", href: "/contact" },
       { label: "Submit an RFP", href: "/contact" },
@@ -140,6 +140,12 @@ const WELCOME_MESSAGE: Message = {
     "Hi! I'm the CybitSolutions assistant. How can I help you today? You can ask about our services, certifications, contract vehicles, careers, or anything else.",
 };
 
+const GREETING_MESSAGE: Message = {
+  role: "assistant",
+  content:
+    "\u{1F44B} Hi there! Welcome to CybitSolutions. How can I help you today?",
+};
+
 function getResponse(input: string): Message {
   const lower = input.toLowerCase().trim();
 
@@ -158,7 +164,7 @@ function getResponse(input: string): Message {
   return {
     role: "assistant",
     content:
-      "Thank you for your question. For detailed assistance, I'd recommend reaching out to our team directly. You can contact us at info@cybitsolutions.net or call +(771) 233-1379.",
+      "Thank you for your question. For detailed assistance, I'd recommend reaching out to our team directly. You can contact us at info@cybitsolutions.net or call + (771) 233-1379.",
     links: [
       { label: "Contact Us", href: "/contact" },
       { label: "View Our Services", href: "/what-we-do/services" },
@@ -172,6 +178,19 @@ export function ChatWidget() {
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Auto-open chat with greeting on first visit per browser session
+  useEffect(() => {
+    const hasBeenGreeted = sessionStorage.getItem("cybit-chat-greeted");
+    if (!hasBeenGreeted) {
+      const timer = setTimeout(() => {
+        setMessages((prev) => [GREETING_MESSAGE, ...prev]);
+        setIsOpen(true);
+        sessionStorage.setItem("cybit-chat-greeted", "true");
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });

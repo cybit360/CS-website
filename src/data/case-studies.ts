@@ -22,6 +22,40 @@ export interface SummaryCaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "microsoft-ecosystem",
+    title: "Microsoft Ecosystem: Enterprise Platform Modernization",
+    client: "Multiple Federal Agencies (DoD, Civilian, Intelligence Community)",
+    mission:
+      "Design, deploy, and manage comprehensive Microsoft ecosystem solutions including Microsoft 365 GCC/GCC High, Azure Government, Dynamics 365, Power Platform, and Teams across multiple federal agencies, enabling secure collaboration, modern workplace transformation, and enterprise-grade productivity at scale.",
+    challenge: [
+      "Agencies operated on fragmented legacy productivity suites with inconsistent security controls and no unified collaboration platform.",
+      "Migration to Microsoft 365 GCC High required meeting stringent DoD IL5 security requirements while maintaining zero downtime for 50,000+ users.",
+      "Integration of Azure Government services with existing on-premises Active Directory infrastructure across 200+ locations demanded careful hybrid identity architecture.",
+      "Power Platform adoption required governance frameworks to prevent shadow IT while enabling citizen-developer innovation across business units.",
+      "Teams telephony migration from legacy PBX systems required seamless interoperability with existing PSTN infrastructure and compliance recording.",
+    ],
+    solution: [
+      "Architected and executed phased migration to Microsoft 365 GCC High for 50,000+ users across DoD and civilian agencies with zero-downtime cutover strategy.",
+      "Deployed Azure Government cloud infrastructure with hybrid identity using Azure AD Connect, conditional access policies, and FIDO2 passwordless authentication.",
+      "Implemented Microsoft Sentinel SIEM with custom analytics rules, automated playbooks, and integration with existing SOC workflows for unified security monitoring.",
+      "Built Power Platform Center of Excellence with governance policies, DLP controls, and environment management enabling 500+ citizen-developed applications.",
+      "Migrated enterprise telephony to Microsoft Teams with Direct Routing, compliance recording, and E911 services across all agency locations.",
+      "Deployed Microsoft Intune for unified endpoint management covering 75,000+ devices across Windows, iOS, and Android platforms.",
+    ],
+    results: [
+      "Successfully migrated 50,000+ users to M365 GCC High with 99.99% uptime during transition.",
+      "Reduced collaboration tool licensing costs by 35% through consolidation onto unified Microsoft platform.",
+      "Achieved IL5 authorization for Azure Government environment in 60 days through automated compliance tooling.",
+      "Enabled 500+ citizen-developed Power Apps automating 200,000+ hours of manual processes annually.",
+      "Decreased security incident response time by 70% through Microsoft Sentinel integration with automated SOAR playbooks.",
+      "Improved endpoint compliance rate from 72% to 99.2% through Intune policy enforcement and automated remediation.",
+    ],
+    compliance:
+      "DoD IL5, FedRAMP High, NIST SP 800-53, CMMC 2.0, CISA Zero Trust Maturity Model, HSPD-12, FIPS 140-2, Section 508",
+    technologies:
+      "Microsoft 365 GCC High, Azure Government, Microsoft Sentinel, Microsoft Intune, Power Platform, Teams, SharePoint Online, Dynamics 365, Azure AD, Defender for Endpoint, Purview, Power Automate",
+  },
+  {
     slug: "dod-c3bm-abms",
     title: "DoD C3BM / ABMS: Joint All-Domain Command & Control",
     client: "U.S. Air Force & U.S. Space Force",
