@@ -150,4 +150,15 @@ h1, h2, h3, h4, h5, h6 {
   [aria-label="Close chat assistant"] {
     display: none !important;
   }
+
+  /* Company profile PDF pages */
+  .profile-page {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .profile-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
 }

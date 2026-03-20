@@ -167,6 +167,14 @@ export const searchIndex: SearchItem[] = [
     keywords: ["leadership", "team", "executives", "management", "leaders"],
   },
   {
+    title: "Company Profile",
+    description:
+      "Full company profile with capabilities, past performance, certifications, and leadership",
+    href: "/who-we-are/company-profile",
+    category: "Who We Are",
+    keywords: ["company profile", "profile", "capabilities", "bid", "proposal", "overview", "NAICS", "certifications"],
+  },
+  {
     title: "Social Impact",
     description:
       "Our commitment to diversity, sustainability, veterans, and community engagement",

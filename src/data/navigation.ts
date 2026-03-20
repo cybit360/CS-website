@@ -65,6 +65,12 @@ export const mainNavItems: NavItem[] = [
           "Meet the experienced leaders driving innovation and mission success.",
       },
       {
+        label: "Company Profile",
+        href: "/who-we-are/company-profile",
+        description:
+          "Full company profile with capabilities, past performance, certifications, and leadership.",
+      },
+      {
         label: "Social Impact",
         href: "/who-we-are/social-impact",
         description:
