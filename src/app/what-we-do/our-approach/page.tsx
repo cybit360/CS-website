@@ -18,7 +18,7 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Approach | CybitSolutions",
+  title: "Our Approach",
   description:
     "Discover CybitSolutions' proven four-phase delivery methodology, commitment to innovation, and quality-first approach to federal IT solutions.",
 };

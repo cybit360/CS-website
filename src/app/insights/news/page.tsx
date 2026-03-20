@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Newspaper,
@@ -7,6 +8,13 @@ import {
   Mail,
   Search,
 } from "lucide-react";
+import { NewsletterForm } from "@/components/ui/NewsletterForm";
+
+export const metadata: Metadata = {
+  title: "News & Insights",
+  description:
+    "Latest news and thought leadership from CybitSolutions on zero trust, cloud modernization, AI in government, and federal IT trends.",
+};
 
 const articles = [
   {
@@ -71,11 +79,16 @@ export default function NewsPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient text-white py-24">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <Newspaper className="w-14 h-14 text-accent-cyan mx-auto mb-6" />
-          <h1 className="text-5xl font-bold mb-6">News &amp; Insights</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
+            Insights
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            News &amp; Insights
+          </h1>
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Expert analysis and commentary on the topics shaping federal
             technology and cybersecurity.
           </p>
@@ -156,14 +169,7 @@ export default function NewsPage() {
             Get the latest insights, analysis, and industry news delivered to
             your inbox every week. No spam, just valuable content.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto">
-            <div className="flex-1 bg-cloud rounded-lg px-4 py-3 text-steel text-sm">
-              Enter your email address
-            </div>
-            <button className="bg-accent-cyan text-navy font-semibold px-8 py-3 rounded-lg hover:brightness-110 transition">
-              Subscribe
-            </button>
-          </div>
+          <NewsletterForm className="max-w-lg mx-auto" />
         </div>
       </section>
 

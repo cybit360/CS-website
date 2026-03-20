@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   MessageSquare,
   ArrowRight,
   Quote,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Employee Testimonials",
+  description:
+    "Hear from CybitSolutions team members about their experiences working on mission-critical government IT projects and career growth.",
+};
 
 const testimonials = [
   {
@@ -54,13 +61,16 @@ export default function TestimonialsPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient text-white py-24">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="flex justify-center mb-6">
-            <MessageSquare className="w-14 h-14 text-accent-cyan" />
-          </div>
-          <h1 className="text-5xl font-bold mb-6">Employee Testimonials</h1>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
+            Careers
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            Employee Testimonials
+          </h1>
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Hear from the people who make CybitSolutions great. Our team members
             share their experiences, growth, and why they choose to build their
             careers here.

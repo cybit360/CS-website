@@ -199,7 +199,7 @@ export const summaryCaseStudies: SummaryCaseStudy[] = [
     category: "Cybersecurity & Risk Management",
     description:
       "Implemented a comprehensive zero-trust architecture for a major intelligence community agency, replacing legacy perimeter-based security with identity-centric micro-segmentation across 50,000+ endpoints.",
-    quote: "Cybit's zero-trust implementation fundamentally transformed our security posture while improving user experience.",
+    quote: "CybitSolutions' zero-trust implementation fundamentally transformed our security posture while improving user experience.",
     result: "78% reduction in lateral movement risk; achieved full CISA ZTA maturity Level 3.",
   },
   {
@@ -215,7 +215,7 @@ export const summaryCaseStudies: SummaryCaseStudy[] = [
     category: "Cybersecurity & Risk Management",
     description:
       "Guided a mid-size defense contractor through CMMC Level 2 assessment preparation, implementing 110 NIST SP 800-171 controls and establishing a continuous monitoring program.",
-    quote: "Cybit made CMMC compliance achievable and sustainable for our organization.",
+    quote: "CybitSolutions made CMMC compliance achievable and sustainable for our organization.",
     result: "Achieved CMMC Level 2 certification on first assessment attempt with zero findings.",
   },
   {
@@ -231,7 +231,7 @@ export const summaryCaseStudies: SummaryCaseStudy[] = [
     category: "Cloud Computing & Virtualization",
     description:
       "Built a DoD IL5 cloud environment on AWS GovCloud for a major weapons system program office, enabling secure collaboration and data analytics across multiple classification levels.",
-    quote: "Cybit delivered our IL5 environment in half the time we expected.",
+    quote: "CybitSolutions delivered our IL5 environment in half the time we expected.",
     result: "Deployed in 90 days versus 180-day estimate; supports 5,000+ daily users.",
   },
   {
@@ -271,7 +271,7 @@ export const summaryCaseStudies: SummaryCaseStudy[] = [
     category: "Software Development & DevOps",
     description:
       "Migrated a 2-million-line COBOL application to cloud-native microservices on Kubernetes, preserving business logic while enabling modern development practices and scalability.",
-    quote: "Cybit proved that even our most complex legacy systems can be modernized.",
+    quote: "CybitSolutions proved that even our most complex legacy systems can be modernized.",
     result: "70% reduction in maintenance costs; new feature delivery time reduced from months to days.",
   },
   {
@@ -367,7 +367,7 @@ export const summaryCaseStudies: SummaryCaseStudy[] = [
     category: "Digital Transformation & Government IT",
     description:
       "Developed a comprehensive 5-year IT modernization roadmap for a cabinet-level agency, including application rationalization, cloud strategy, and workforce transformation planning.",
-    quote: "Cybit's roadmap gave us a clear, actionable path from legacy to modern.",
+    quote: "CybitSolutions' roadmap gave us a clear, actionable path from legacy to modern.",
     result: "Identified $200M in modernization savings; rationalized portfolio from 400 to 180 applications.",
   },
   {
@@ -391,7 +391,7 @@ export const summaryCaseStudies: SummaryCaseStudy[] = [
     category: "Emerging & Next-Gen Technologies",
     description:
       "Conducted a comprehensive post-quantum cryptography readiness assessment for a defense agency, inventorying all cryptographic assets and developing a prioritized migration roadmap.",
-    quote: "Cybit helped us understand our quantum risk before it became a crisis.",
+    quote: "CybitSolutions helped us understand our quantum risk before it became a crisis.",
     result: "Cataloged 100,000+ cryptographic instances; migration roadmap completed 18 months ahead of mandate.",
   },
   {

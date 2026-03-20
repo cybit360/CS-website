@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -11,6 +12,13 @@ import {
   Cloud,
   Lock,
 } from "lucide-react";
+import { PageImage } from "@/components/ui/PageImage";
+
+export const metadata: Metadata = {
+  title: "Commercial",
+  description:
+    "CybitSolutions delivers enterprise IT solutions for commercial clients across finance, healthcare, energy, and technology sectors with government-grade security.",
+};
 
 const industries = [
   {
@@ -98,19 +106,27 @@ export default function CommercialPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient bg-navy py-24 text-center">
-        <div className="container mx-auto max-w-4xl px-6">
-          <p className="text-sm font-semibold uppercase tracking-widest text-accent-cyan">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
             Who We Serve
           </p>
-          <h1 className="mt-3 text-4xl font-bold text-white md:text-5xl">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Commercial &amp; Enterprise
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             We help enterprises accelerate digital transformation, strengthen
             security posture, and unlock the full potential of modern technology
             platforms.
           </p>
+        </div>
+      </section>
+
+      {/* Commercial Visual */}
+      <section className="bg-white py-12">
+        <div className="container mx-auto max-w-6xl px-6">
+          <PageImage variant="tech" aspectRatio="wide" />
         </div>
       </section>
 
@@ -188,7 +204,7 @@ export default function CommercialPage() {
       <section className="bg-cloud py-20">
         <div className="container mx-auto max-w-5xl px-6">
           <h2 className="text-center text-3xl font-bold text-navy">
-            Why Enterprises Trust Cybit
+            Why Enterprises Trust CybitSolutions
           </h2>
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             {[

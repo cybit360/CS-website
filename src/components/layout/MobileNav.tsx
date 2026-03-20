@@ -180,18 +180,18 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
         <div className="border-t border-border px-5 py-4">
           <div className="flex flex-col gap-2 text-sm text-steel">
             <a
-              href="tel:+12025551234"
+              href="tel:+17712331379"
               className="inline-flex items-center gap-2 hover:text-navy transition-colors"
             >
               <Phone className="size-4" />
-              (202) 555-1234
+              (771) 233-1379
             </a>
             <a
-              href="mailto:info@cybitsolutions.com"
+              href="mailto:info@cybitsolutions.net"
               className="inline-flex items-center gap-2 hover:text-navy transition-colors"
             >
               <Mail className="size-4" />
-              info@cybitsolutions.com
+              info@cybitsolutions.net
             </a>
           </div>
           <Link

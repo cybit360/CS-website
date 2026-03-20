@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   BookOpen,
@@ -9,6 +10,12 @@ import {
   ArrowRight,
   Filter,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Resource Library",
+  description:
+    "Access CybitSolutions whitepapers, case studies, infographics, and webinar recordings on cybersecurity, cloud, AI, and federal IT modernization.",
+};
 
 const resourceTypes = [
   { label: "All", icon: BookOpen },
@@ -80,11 +87,16 @@ export default function ResourcesPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient text-white py-24">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <BookOpen className="w-14 h-14 text-accent-cyan mx-auto mb-6" />
-          <h1 className="text-5xl font-bold mb-6">Resource Library</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
+            Resources
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            Resource Library
+          </h1>
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Access whitepapers, case studies, infographics, and videos from our
             team of federal technology experts.
           </p>

@@ -1,8 +1,9 @@
 import { cn } from "@/lib/utils";
+import { PartnerLogo } from "@/components/ui/PartnerLogos";
 
 const partners = [
   "AWS", "Microsoft", "Google Cloud", "ServiceNow", "Splunk",
-  "Cisco", "HashiCorp", "CrowdStrike", "Databricks",
+  "Cisco", "IBM", "HashiCorp", "CrowdStrike", "Databricks",
 ];
 
 const certifications = ["FedRAMP", "ISO 27001", "SOC 2", "CMMC"];
@@ -18,10 +19,10 @@ export function TrustStrip({ className }: { className?: string }) {
           {partners.map((name) => (
             <div
               key={name}
-              className="flex items-center justify-center h-10 px-4 text-steel/60 font-semibold text-sm tracking-wide hover:text-navy transition-colors"
+              className="flex items-center justify-center h-10 hover:opacity-80 transition-opacity"
               title={name}
             >
-              {name}
+              <PartnerLogo name={name} size="sm" />
             </div>
           ))}
         </div>

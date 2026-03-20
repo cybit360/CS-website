@@ -87,6 +87,14 @@ export const technologyPartners: Partner[] = [
       "Databricks partner for unified data analytics, lakehouse architecture, and AI/ML workloads in government cloud environments.",
     url: "https://www.databricks.com",
   },
+  {
+    name: "IBM",
+    logo: "/images/partners/ibm.svg",
+    tier: "Gold Partner",
+    description:
+      "IBM partner for hybrid cloud, enterprise AI, mainframe modernization, and quantum-safe security solutions for government and commercial clients.",
+    url: "https://www.ibm.com",
+  },
 ];
 
 export const certificationBadges: CertificationBadge[] = [

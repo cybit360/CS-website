@@ -1,15 +1,26 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "CybitSolutions privacy policy detailing how we collect, use, and protect your personal information on our website and services.",
+};
 
 export default function PrivacyPolicyPage() {
   return (
     <>
       {/* Hero */}
-      <section className="hero-gradient py-16 lg:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
+            Legal
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Privacy Policy
           </h1>
-          <p className="text-lg text-blue-100">
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Effective Date: January 1, 2024
           </p>
         </div>
@@ -19,7 +30,7 @@ export default function PrivacyPolicyPage() {
       <section className="bg-white py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-gray-600 mb-10 leading-relaxed">
-            Cybit Solutions (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your
+            CybitSolutions (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your
             privacy. This Privacy Policy explains how we collect, use, disclose, and
             safeguard your information when you visit our website or use our services.
           </p>
@@ -99,10 +110,10 @@ export default function PrivacyPolicyPage() {
             If you have any questions or concerns about this Privacy Policy or our data
             practices, please contact us at{" "}
             <a
-              href="mailto:privacy@cybitsolutions.com"
+              href="mailto:privacy@cybitsolutions.net"
               className="text-blue-600 hover:text-blue-700 underline"
             >
-              privacy@cybitsolutions.com
+              privacy@cybitsolutions.net
             </a>.
           </p>
 

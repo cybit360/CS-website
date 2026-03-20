@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Shield,
@@ -12,6 +13,13 @@ import {
   FileText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PageImage } from "@/components/ui/PageImage";
+
+export const metadata: Metadata = {
+  title: "Past Performance",
+  description:
+    "Review CybitSolutions' proven track record delivering mission-critical IT solutions for DoD, federal civilian agencies, and enterprise clients.",
+};
 
 const majorCaseStudies = [
   {
@@ -55,21 +63,21 @@ const majorCaseStudies = [
   {
     id: "dos-ngem",
     icon: Globe,
-    title: "Next Generation Enterprise Messaging (NGEM)",
+    title: "Next Generation Enterprise Monitoring (NGEM)",
     client: "Department of State",
     period: "Multi-Year Contract",
     value: "Global Enterprise Platform",
     summary:
-      "Modernized enterprise messaging and collaboration platform serving diplomatic missions worldwide. Migrated legacy messaging systems to modern, secure, cloud-enabled platforms supporting classified and unclassified communications.",
+      "Modernized enterprise monitoring and observability platform serving diplomatic missions worldwide. Migrated legacy monitoring systems to modern, secure, cloud-enabled platforms providing comprehensive visibility across global IT infrastructure.",
     highlights: [
-      "Enterprise Messaging Modernization",
-      "Exchange/O365 Migration & Management",
+      "Enterprise Monitoring Modernization",
+      "Observability Platform Deployment & Management",
       "Directory Services & Identity Federation",
       "Global Infrastructure Support",
-      "Secure Collaboration Platform Deployment",
+      "Comprehensive Infrastructure Observability",
     ],
     technologies: ["Microsoft 365", "Exchange", "Active Directory", "Azure AD", "SCCM"],
-    outcome: "Successful global messaging platform modernization supporting diplomatic missions worldwide.",
+    outcome: "Successful global monitoring platform modernization providing comprehensive observability across diplomatic infrastructure worldwide.",
   },
   {
     id: "dos-sparta-psim",
@@ -108,6 +116,100 @@ const majorCaseStudies = [
     ],
     technologies: ["Oracle", "Java", "LDAP", "PKI/CAC", "ServiceNow"],
     outcome: "Reliable identity credential services supporting millions of DoD personnel globally.",
+  },
+];
+
+const microsoftCaseStudies = [
+  {
+    id: "ms-document-inventory",
+    title: "Enterprise Document & Inventory Management Ecosystem",
+    summary:
+      "Comprehensive suite of Microsoft-powered applications transforming document management, inventory tracking, and policy distribution across the enterprise.",
+    highlights: [
+      "Architected end-to-end Inventory Management System using Power Apps and Dataverse with QR/Barcode scanning (90% data accuracy improvement)",
+      "Centralized SharePoint-based DMS with automated version control and metadata tagging (60% reduction in file retrieval time)",
+      "Circular & Policy Distribution App with digital acknowledgment tracking (100% compliance across 100,000+ employees)",
+    ],
+    technologies: ["Power Apps", "Dataverse", "SharePoint Online", "Power Automate"],
+    outcome:
+      "Unified document and inventory ecosystem delivering 90% data accuracy improvement and 100% policy compliance.",
+  },
+  {
+    id: "ms-hr-operations",
+    title: "Automated Human Resources & Operations Solutions",
+    summary:
+      "End-to-end HR and operations automation replacing manual, paper-based processes with intelligent Microsoft Power Platform workflows.",
+    highlights: [
+      "e-Leave Management System and Performance Appraisal App replacing manual processes with Power Automate approval workflows",
+      "Employee Tracking & Registration System with Azure AD for secure authentication and real-time monitoring",
+      "Unified Task & Schedule Management Application integrated with Microsoft Teams",
+    ],
+    technologies: ["Power Apps", "Power Automate", "Azure AD", "Microsoft Teams"],
+    outcome:
+      "Eliminated manual HR processes with automated workflows, secure authentication, and real-time team collaboration.",
+  },
+  {
+    id: "ms-bi-analytics",
+    title: "Business Intelligence & Data Analysis",
+    summary:
+      "Data-driven decision-making through interactive dashboards and centralized communication tools built on the Microsoft ecosystem.",
+    highlights: [
+      "Interactive Power BI dashboards tracking KPIs, inventory levels, and employee performance",
+      "Custom Memo Application reducing email clutter with centralized audit trail",
+    ],
+    technologies: ["Power BI", "Power Apps", "Dataverse", "Microsoft 365"],
+    outcome:
+      "Real-time visibility into organizational KPIs with streamlined internal communications.",
+  },
+  {
+    id: "ms-featured-inventory",
+    title: "Featured Project: Automated Inventory & Asset Management System",
+    summary:
+      "End-to-end inventory solution using Power Apps (Canvas) and Dataverse replacing a legacy spreadsheet-based system with modern automation and analytics.",
+    highlights: [
+      "End-to-end inventory solution using Power Apps (Canvas) and Dataverse replacing legacy spreadsheet system",
+      "Custom Power Automate workflows for low-stock alerts and automated purchase requisitions (50% reduction in stockouts)",
+      "Power BI executive dashboard for real-time asset turnover and procurement trends",
+      "QR/Barcode scanning improving data accuracy by 90% and cutting check-in time by half",
+    ],
+    technologies: ["Power Apps", "Dataverse", "Power Automate", "Power BI"],
+    outcome:
+      "50% reduction in stockouts, 90% data accuracy improvement, and real-time executive visibility into asset management.",
+  },
+  {
+    id: "ms-featured-dms",
+    title: "Featured Project: Enterprise Document Management System (DMS)",
+    summary:
+      "Centralized SharePoint Online repository replacing fragmented folder structures across 30+ departments with enterprise-grade security and collaboration.",
+    highlights: [
+      "Centralized SharePoint Online repository for 30+ departments replacing fragmented folder structures",
+      "Granular access controls and Azure Information Protection (AIP) labels",
+      "Automated document lifecycle management reducing manual filing time by 100+ hours per week",
+      "Microsoft Teams integration for seamless real-time co-authoring for 10,000+ concurrent users",
+    ],
+    technologies: [
+      "SharePoint Online",
+      "Azure Information Protection",
+      "Microsoft Teams",
+      "Power Automate",
+    ],
+    outcome:
+      "100+ hours per week saved in manual filing with secure, real-time collaboration for 10,000+ concurrent users.",
+  },
+  {
+    id: "ms-featured-eleave",
+    title: "Featured Project: Automated e-Leave & Appraisal Ecosystem",
+    summary:
+      "Custom Power Apps solution unifying leave management and performance tracking with multi-level approvals and comprehensive HR analytics.",
+    highlights: [
+      "Custom Power Apps solution for leave management and performance tracking",
+      "Multi-level management approvals with automated email notifications and calendar sync",
+      "Power BI dashboard for HR leadership (90% improvement in administrative oversight)",
+      "Dataverse historical performance data providing 360-degree employee growth view",
+    ],
+    technologies: ["Power Apps", "Power Automate", "Power BI", "Dataverse", "Microsoft 365"],
+    outcome:
+      "90% improvement in administrative oversight with 360-degree employee performance visibility.",
   },
 ];
 
@@ -160,8 +262,97 @@ export default function PastPerformancePage() {
         </div>
       </section>
 
-      {/* Major Case Studies */}
+      {/* Performance Visual */}
+      <section className="py-12 bg-cloud">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <PageImage variant="cybersecurity" aspectRatio="video" />
+            <PageImage variant="cloud" aspectRatio="video" />
+            <PageImage variant="government" aspectRatio="video" />
+          </div>
+        </div>
+      </section>
+
+      {/* Microsoft Ecosystem Past Performance */}
       <section className="py-20 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-2">
+              Featured Microsoft Solutions
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              Microsoft Ecosystem Past Performance
+            </h2>
+            <p className="text-steel max-w-2xl mx-auto">
+              Enterprise solutions built on the Microsoft Power Platform,
+              SharePoint, Azure, and Microsoft 365 ecosystem.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {microsoftCaseStudies.map((study) => (
+              <div
+                key={study.id}
+                id={study.id}
+                className="bg-cloud rounded-xl p-8 border border-border"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <div className="lg:col-span-2">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#0078D4] text-white">
+                        <Monitor className="w-6 h-6" strokeWidth={1.5} />
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold text-[#0078D4] uppercase tracking-wide">
+                          Microsoft Ecosystem
+                        </p>
+                        <h3 className="text-xl font-bold text-navy">
+                          {study.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="text-steel leading-relaxed mb-6">
+                      {study.summary}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {study.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs bg-[#0078D4]/10 text-[#0078D4] px-3 py-1 rounded-full font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-start gap-2 bg-white rounded-lg p-4">
+                      <Award className="w-5 h-5 text-[#0078D4] shrink-0 mt-0.5" />
+                      <p className="text-navy font-medium text-sm">
+                        {study.outcome}
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-navy uppercase tracking-wider mb-4">
+                      Key Highlights
+                    </h4>
+                    <ul className="space-y-3">
+                      {study.highlights.map((h) => (
+                        <li key={h} className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-[#0078D4] mt-0.5 shrink-0" />
+                          <span className="text-sm text-steel">{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Major Case Studies */}
+      <section className="py-20 bg-cloud">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-2">

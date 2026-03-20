@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Atom,
@@ -11,6 +12,13 @@ import {
   Building2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PageImage } from "@/components/ui/PageImage";
+
+export const metadata: Metadata = {
+  title: "Emerging & Next-Gen Technologies",
+  description:
+    "CybitSolutions emerging technology services including quantum computing, blockchain, edge computing, and green IT for forward-looking government programs.",
+};
 
 const functionalAreas = [
   {

@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { domains } from "@/components/sections/FeaturedDomains";
+
+export const metadata: Metadata = {
+  title: "Services & Solutions",
+  description:
+    "Explore CybitSolutions' 10 mission-critical IT service domains including cybersecurity, cloud, AI, data analytics, and digital transformation for government and enterprise.",
+};
 
 export default function ServicesPage() {
   return (

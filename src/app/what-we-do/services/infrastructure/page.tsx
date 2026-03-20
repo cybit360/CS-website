@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Server,
@@ -12,6 +13,13 @@ import {
   Building2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PageImage } from "@/components/ui/PageImage";
+
+export const metadata: Metadata = {
+  title: "Core IT Infrastructure, Networking & Operations",
+  description:
+    "CybitSolutions IT infrastructure services including network engineering, data center operations, and enterprise networking for government and commercial clients.",
+};
 
 const functionalAreas = [
   {
@@ -140,8 +148,15 @@ export default function InfrastructurePage() {
         </div>
       </section>
 
+      {/* Visual Accent */}
+      <section className="py-10 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <PageImage variant="tech" aspectRatio="wide" className="shadow-lg" />
+        </div>
+      </section>
+
       {/* Intro */}
-      <section className="py-16 bg-white">
+      <section className="pt-6 pb-16 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-steel leading-relaxed">

@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Users, BookOpen, Heart } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Who We Are",
+  description:
+    "Learn about CybitSolutions, a Veteran-Owned, Minority-Owned IT firm with 20+ years delivering mission-critical technology solutions for government and enterprise.",
+};
 
 const sections = [
   {

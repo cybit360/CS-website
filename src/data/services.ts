@@ -18,7 +18,7 @@ export const serviceDomains: ServiceDomain[] = [
     slug: "cybersecurity",
     title: "Cybersecurity & Risk Management",
     intro:
-      "Cybit Solutions delivers end-to-end cybersecurity services that protect federal systems, data, and missions against evolving threats. From zero-trust architecture design to continuous monitoring and incident response, we help agencies achieve and maintain compliance while building resilient security postures.",
+      "CybitSolutions delivers end-to-end cybersecurity services that protect government and commercial systems, data, and missions against evolving threats. From zero-trust architecture design to continuous monitoring and incident response, we help agencies achieve and maintain compliance while building resilient security postures.",
     functionalAreas: [
       "Security Operations Center (SOC) / Managed Detection & Response (MDR)",
       "Governance, Risk & Compliance (GRC)",
@@ -63,7 +63,7 @@ export const serviceDomains: ServiceDomain[] = [
       "Enhanced visibility into security posture with real-time dashboards and reporting",
     ],
     targetCustomers:
-      "Department of Defense, Department of State, Intelligence Community, civilian federal agencies, and any organization requiring NIST/FISMA/CMMC compliance.",
+      "Department of Defense, Department of State, Intelligence Community, civilian agencies, and any organization requiring NIST/FISMA/CMMC compliance.",
     ctas: [
       { label: "Schedule a Security Assessment", href: "/contact/consultation" },
       { label: "View Cybersecurity Case Studies", href: "/insights/case-studies?domain=cybersecurity" },
@@ -74,7 +74,7 @@ export const serviceDomains: ServiceDomain[] = [
     slug: "cloud",
     title: "Cloud Computing & Virtualization",
     intro:
-      "Cybit Solutions accelerates federal cloud adoption with secure, FedRAMP-authorized cloud solutions across AWS GovCloud, Microsoft Azure Government, and Google Cloud. We design, migrate, and manage hybrid and multi-cloud environments that deliver scalability, resilience, and cost optimization while meeting the most stringent security requirements.",
+      "CybitSolutions accelerates government and commercial cloud adoption with secure, FedRAMP-authorized cloud solutions across AWS GovCloud, Microsoft Azure Government, and Google Cloud. We design, migrate, and manage hybrid and multi-cloud environments that deliver scalability, resilience, and cost optimization while meeting the most stringent security requirements.",
     functionalAreas: [
       "Cloud Strategy & Readiness Assessment",
       "Cloud Migration & Modernization",
@@ -119,7 +119,7 @@ export const serviceDomains: ServiceDomain[] = [
       "Faster time-to-value with cloud-native development and automation",
     ],
     targetCustomers:
-      "Federal agencies pursuing Cloud Smart strategies, DoD organizations requiring IL4/IL5 environments, and agencies modernizing legacy on-premises infrastructure.",
+      "Government and commercial organizations pursuing Cloud Smart strategies, DoD organizations requiring IL4/IL5 environments, and agencies modernizing legacy on-premises infrastructure.",
     ctas: [
       { label: "Start Your Cloud Assessment", href: "/contact/consultation" },
       { label: "Explore Cloud Solutions", href: "/insights/case-studies?domain=cloud" },
@@ -130,7 +130,7 @@ export const serviceDomains: ServiceDomain[] = [
     slug: "infrastructure",
     title: "Core IT Infrastructure, Networking & Operations",
     intro:
-      "Cybit Solutions designs, deploys, and manages the foundational IT infrastructure that federal missions depend on. From enterprise networking and data center modernization to unified communications and managed operations, we ensure reliable, high-performance environments that meet the demands of today's connected government.",
+      "CybitSolutions designs, deploys, and manages the foundational IT infrastructure that government and commercial missions depend on. From enterprise networking and data center modernization to unified communications and managed operations, we ensure reliable, high-performance environments that meet the demands of today's connected government.",
     functionalAreas: [
       "Enterprise Networking (LAN/WAN/SD-WAN)",
       "Data Center Design & Modernization",
@@ -175,7 +175,7 @@ export const serviceDomains: ServiceDomain[] = [
       "Simplified management through integrated operations and single-pane-of-glass visibility",
     ],
     targetCustomers:
-      "Federal agencies with distributed workforces, DoD installations requiring secure networking, and organizations modernizing aging data centers and communications systems.",
+      "Government and commercial organizations with distributed workforces, DoD installations requiring secure networking, and organizations modernizing aging data centers and communications systems.",
     ctas: [
       { label: "Assess Your Infrastructure", href: "/contact/consultation" },
       { label: "View Infrastructure Solutions", href: "/insights/case-studies?domain=infrastructure" },
@@ -186,7 +186,7 @@ export const serviceDomains: ServiceDomain[] = [
     slug: "software-devops",
     title: "Software Development & DevOps",
     intro:
-      "Cybit Solutions builds mission-critical software using agile methodologies and DevSecOps best practices. Our engineering teams deliver secure, scalable applications through continuous integration, automated testing, and infrastructure as code, enabling rapid iteration while maintaining the highest standards of quality and compliance.",
+      "CybitSolutions builds mission-critical software using agile methodologies and DevSecOps best practices. Our engineering teams deliver secure, scalable applications through continuous integration, automated testing, and infrastructure as code, enabling rapid iteration while maintaining the highest standards of quality and compliance.",
     functionalAreas: [
       "Custom Software Development",
       "DevSecOps & CI/CD Pipeline Engineering",
@@ -231,7 +231,7 @@ export const serviceDomains: ServiceDomain[] = [
       "Greater agility to adapt to changing mission requirements",
     ],
     targetCustomers:
-      "Federal agencies requiring custom mission applications, DoD programs following DevSecOps mandates, and organizations modernizing legacy software portfolios.",
+      "Government and commercial organizations requiring custom mission applications, DoD programs following DevSecOps mandates, and organizations modernizing legacy software portfolios.",
     ctas: [
       { label: "Discuss Your Software Needs", href: "/contact/consultation" },
       { label: "See Our DevOps Approach", href: "/insights/case-studies?domain=software-devops" },
@@ -242,7 +242,7 @@ export const serviceDomains: ServiceDomain[] = [
     slug: "data-analytics",
     title: "Data & Analytics",
     intro:
-      "Cybit Solutions unlocks the power of federal data through engineering, integration, and advanced analytics. We build enterprise data platforms, implement governance frameworks, and deliver actionable insights through visualization and business intelligence, empowering agencies to make data-driven decisions that improve mission outcomes.",
+      "CybitSolutions unlocks the power of government and commercial data through engineering, integration, and advanced analytics. We build enterprise data platforms, implement governance frameworks, and deliver actionable insights through visualization and business intelligence, empowering agencies to make data-driven decisions that improve mission outcomes.",
     functionalAreas: [
       "Data Engineering & ETL/ELT Pipelines",
       "Data Warehousing & Data Lakes",
@@ -264,7 +264,7 @@ export const serviceDomains: ServiceDomain[] = [
       "Data quality assessment and remediation programs",
       "Real-time analytics with Apache Kafka and streaming platforms",
       "Geospatial analysis and mapping with ArcGIS and open-source tools",
-      "Federal data strategy alignment and CDO support",
+      "Government data strategy alignment and CDO support",
       "Data catalog and metadata management deployment",
     ],
     standards: [
@@ -283,11 +283,11 @@ export const serviceDomains: ServiceDomain[] = [
       "Transformed raw data into actionable intelligence for better decision-making",
       "Improved data quality and consistency across the enterprise",
       "Reduced reporting timelines from weeks to near-real-time",
-      "Enhanced compliance with federal data mandates and privacy requirements",
+      "Enhanced compliance with government data mandates and privacy requirements",
       "Democratized data access while maintaining governance and security controls",
     ],
     targetCustomers:
-      "Federal agencies implementing the Federal Data Strategy, organizations with Chief Data Officers driving data maturity, and programs requiring advanced analytics for mission decision support.",
+      "Government and commercial organizations implementing the Federal Data Strategy, organizations with Chief Data Officers driving data maturity, and programs requiring advanced analytics for mission decision support.",
     ctas: [
       { label: "Unlock Your Data Potential", href: "/contact/consultation" },
       { label: "Explore Analytics Solutions", href: "/insights/case-studies?domain=data-analytics" },
@@ -298,7 +298,7 @@ export const serviceDomains: ServiceDomain[] = [
     slug: "ai-automation",
     title: "Artificial Intelligence & Automation",
     intro:
-      "Cybit Solutions brings responsible AI and intelligent automation to federal missions. From machine learning models and natural language processing to robotic process automation and computer vision, we help agencies automate repetitive tasks, extract insights from unstructured data, and augment human decision-making with ethical, explainable AI.",
+      "CybitSolutions brings responsible AI and intelligent automation to government and commercial missions. From machine learning models and natural language processing to robotic process automation and computer vision, we help agencies automate repetitive tasks, extract insights from unstructured data, and augment human decision-making with ethical, explainable AI.",
     functionalAreas: [
       "Machine Learning & Deep Learning",
       "Natural Language Processing (NLP)",
@@ -343,7 +343,7 @@ export const serviceDomains: ServiceDomain[] = [
       "Scalable AI solutions that grow from pilot to enterprise deployment",
     ],
     targetCustomers:
-      "Federal agencies exploring AI adoption, DoD programs implementing the AI Strategy, and organizations seeking to automate high-volume manual processes with intelligent automation.",
+      "Government and commercial organizations exploring AI adoption, DoD programs implementing the AI Strategy, and organizations seeking to automate high-volume manual processes with intelligent automation.",
     ctas: [
       { label: "Explore AI Solutions", href: "/contact/consultation" },
       { label: "Read Our AI Insights", href: "/insights/case-studies?domain=ai-automation" },
@@ -354,7 +354,7 @@ export const serviceDomains: ServiceDomain[] = [
     slug: "enterprise-it",
     title: "Enterprise IT Services & Platforms",
     intro:
-      "Cybit Solutions implements and manages the enterprise platforms that power federal operations at scale. From ServiceNow and Salesforce to ERP systems and collaboration suites, we integrate, customize, and optimize the platforms agencies rely on to manage workflows, deliver services, and drive organizational efficiency.",
+      "CybitSolutions implements and manages the enterprise platforms that power government and commercial operations at scale. From ServiceNow and Salesforce to ERP systems and collaboration suites, we integrate, customize, and optimize the platforms agencies rely on to manage workflows, deliver services, and drive organizational efficiency.",
     functionalAreas: [
       "IT Service Management (ITSM) Platforms",
       "Enterprise Resource Planning (ERP)",
@@ -399,7 +399,7 @@ export const serviceDomains: ServiceDomain[] = [
       "Better visibility and governance through enterprise architecture alignment",
     ],
     targetCustomers:
-      "Federal agencies modernizing enterprise platforms, organizations implementing ServiceNow or Salesforce, and agencies seeking to consolidate and optimize their IT service delivery.",
+      "Government and commercial organizations modernizing enterprise platforms, organizations implementing ServiceNow or Salesforce, and agencies seeking to consolidate and optimize their IT service delivery.",
     ctas: [
       { label: "Optimize Your Enterprise Platforms", href: "/contact/consultation" },
       { label: "View Platform Solutions", href: "/insights/case-studies?domain=enterprise-it" },
@@ -410,7 +410,7 @@ export const serviceDomains: ServiceDomain[] = [
     slug: "digital-transformation",
     title: "Digital Transformation & Government IT",
     intro:
-      "Cybit Solutions partners with federal agencies to plan and execute comprehensive digital transformation initiatives. We modernize legacy systems, implement cloud-first strategies, redesign citizen-facing services, and build the digital foundations that enable agencies to fulfill their missions more effectively in the modern era.",
+      "CybitSolutions partners with government and commercial organizations to plan and execute comprehensive digital transformation initiatives. We modernize legacy systems, implement cloud-first strategies, redesign citizen-facing services, and build the digital foundations that enable agencies to fulfill their missions more effectively in the modern era.",
     functionalAreas: [
       "IT Modernization Strategy & Roadmapping",
       "Legacy System Migration & Decommissioning",
@@ -455,7 +455,7 @@ export const serviceDomains: ServiceDomain[] = [
       "Organizational readiness for continuous technology evolution",
     ],
     targetCustomers:
-      "Federal CIOs and CTOs driving modernization agendas, agencies with aging legacy systems, and organizations seeking to improve digital service delivery to citizens and employees.",
+      "Government and commercial CIOs and CTOs driving modernization agendas, agencies with aging legacy systems, and organizations seeking to improve digital service delivery to citizens and employees.",
     ctas: [
       { label: "Plan Your Transformation", href: "/contact/consultation" },
       { label: "See Transformation Stories", href: "/insights/case-studies?domain=digital-transformation" },
@@ -466,7 +466,7 @@ export const serviceDomains: ServiceDomain[] = [
     slug: "emerging-tech",
     title: "Emerging & Next-Gen Technologies",
     intro:
-      "Cybit Solutions helps federal agencies evaluate, pilot, and adopt emerging technologies that will shape the future of government operations. From blockchain and quantum computing readiness to edge computing and digital twins, we provide the expertise to navigate the rapidly evolving technology landscape while managing risk and ensuring mission alignment.",
+      "CybitSolutions helps government and commercial organizations evaluate, pilot, and adopt emerging technologies that will shape the future of government operations. From blockchain and quantum computing readiness to edge computing and digital twins, we provide the expertise to navigate the rapidly evolving technology landscape while managing risk and ensuring mission alignment.",
     functionalAreas: [
       "Blockchain & Distributed Ledger Technology",
       "Quantum Computing Readiness",
@@ -511,7 +511,7 @@ export const serviceDomains: ServiceDomain[] = [
       "Innovation culture development with lab environments and rapid prototyping",
     ],
     targetCustomers:
-      "Forward-looking federal agencies, DoD research and development organizations, agencies preparing for post-quantum cryptography transition, and programs requiring edge computing in disconnected environments.",
+      "Forward-looking government and commercial organizations, DoD research and development organizations, agencies preparing for post-quantum cryptography transition, and programs requiring edge computing in disconnected environments.",
     ctas: [
       { label: "Explore Emerging Technologies", href: "/contact/consultation" },
       { label: "Read Innovation Insights", href: "/insights/case-studies?domain=emerging-tech" },
@@ -522,7 +522,7 @@ export const serviceDomains: ServiceDomain[] = [
     slug: "industry-specific",
     title: "Industry-Specific IT",
     intro:
-      "Cybit Solutions delivers specialized IT solutions tailored to the unique requirements of specific federal sectors. Whether supporting military health systems, financial management, law enforcement technology, or scientific research computing, our domain expertise ensures technology solutions that address mission-specific challenges and regulatory requirements.",
+      "CybitSolutions delivers specialized IT solutions tailored to the unique requirements of specific government and commercial sectors. Whether supporting military health systems, financial management, law enforcement technology, or scientific research computing, our domain expertise ensures technology solutions that address mission-specific challenges and regulatory requirements.",
     functionalAreas: [
       "Healthcare IT (MHS / VA Health)",
       "Financial Management & Audit Readiness",
@@ -561,13 +561,13 @@ export const serviceDomains: ServiceDomain[] = [
     ],
     keyBenefits: [
       "Deep domain expertise that accelerates solution delivery and reduces risk",
-      "Pre-built accelerators and frameworks tailored to specific federal sectors",
+      "Pre-built accelerators and frameworks tailored to specific government and commercial sectors",
       "Compliance with sector-specific regulations and mandates from day one",
       "Proven past performance in relevant agency and mission environments",
       "Integrated solutions that connect sector-specific systems with enterprise IT",
     ],
     targetCustomers:
-      "Military Health System (MHS), Veterans Affairs, DoD financial management, federal law enforcement agencies, scientific research organizations, and agencies with specialized regulatory and mission requirements.",
+      "Military Health System (MHS), Veterans Affairs, DoD financial management, law enforcement agencies, scientific research organizations, and agencies with specialized regulatory and mission requirements.",
     ctas: [
       { label: "Discuss Your Mission Needs", href: "/contact/consultation" },
       { label: "View Industry Solutions", href: "/insights/case-studies?domain=industry-specific" },

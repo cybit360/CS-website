@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { mainNavItems, utilityLinks } from "@/data/navigation";
 import { MegaMenu } from "./MegaMenu";
 import { MobileNav } from "./MobileNav";
+import { GlobalSearch } from "@/components/ui/GlobalSearch";
 
 export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -74,18 +75,18 @@ export function Header() {
           </nav>
           <div className="flex items-center gap-5 text-xs text-steel">
             <a
-              href="tel:+12025551234"
+              href="tel:+17712331379"
               className="inline-flex items-center gap-1.5 hover:text-navy transition-colors"
             >
               <Phone className="size-3" />
-              (202) 555-1234
+              (771) 233-1379
             </a>
             <a
-              href="mailto:info@cybitsolutions.com"
+              href="mailto:info@cybitsolutions.net"
               className="inline-flex items-center gap-1.5 hover:text-navy transition-colors"
             >
               <Mail className="size-3" />
-              info@cybitsolutions.com
+              info@cybitsolutions.net
             </a>
           </div>
         </div>
@@ -98,9 +99,9 @@ export function Header() {
           <Image
             src="/images/logo.png"
             alt="CybitSolutions - Home"
-            width={160}
-            height={40}
-            className="h-9 w-auto"
+            width={200}
+            height={50}
+            className="h-12 w-auto"
             priority
           />
         </Link>
@@ -144,8 +145,10 @@ export function Header() {
           ))}
         </nav>
 
-        {/* CTA + Mobile toggle */}
+        {/* Search + CTA + Mobile toggle */}
         <div className="flex items-center gap-3">
+          <GlobalSearch />
+
           <Link
             href="/contact"
             className="hidden rounded-lg bg-accent-cyan px-5 py-2.5 text-sm font-semibold text-navy hover:bg-accent-cyan-dark transition-colors lg:inline-flex"

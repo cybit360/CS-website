@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -12,6 +13,13 @@ import {
   Rocket,
   Flag,
 } from "lucide-react";
+import { PageImage } from "@/components/ui/PageImage";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "CybitSolutions is a Veteran-Owned, Minority-Owned IT firm delivering secure, scalable technology solutions. Learn about our mission, values, and 20+ year history.",
+};
 
 const timeline = [
   {
@@ -115,6 +123,10 @@ export default function AboutPage() {
       {/* Our Story */}
       <section className="py-20 bg-cloud">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Company Overview Visual */}
+          <div className="mb-16">
+            <PageImage variant="office" aspectRatio="wide" className="max-w-4xl mx-auto" />
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-navy mb-6">Our Story</h2>

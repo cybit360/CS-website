@@ -1,5 +1,29 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Linkedin, Users, Award } from "lucide-react";
+
+const avatarGradients = [
+  "from-accent-cyan to-blue-600",
+  "from-indigo-500 to-purple-600",
+  "from-emerald-500 to-teal-600",
+  "from-amber-500 to-orange-600",
+  "from-rose-500 to-pink-600",
+  "from-sky-500 to-cyan-600",
+];
+
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .slice(0, 2);
+}
+
+export const metadata: Metadata = {
+  title: "Leadership Team",
+  description:
+    "Meet the CybitSolutions leadership team. Experienced executives in federal IT, cybersecurity, cloud, and defense technology.",
+};
 
 const leaders = [
   {
@@ -88,17 +112,24 @@ export default function LeadershipPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {leaders.map((leader) => (
+            {leaders.map((leader, index) => (
               <div
                 key={leader.name}
                 className="bg-white rounded-xl border border-border overflow-hidden card-hover"
               >
-                <div className="h-48 bg-navy/5 flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-navy/10 flex items-center justify-center">
-                    <Users
-                      className="w-10 h-10 text-accent-cyan"
-                      strokeWidth={1.5}
-                    />
+                <div className="h-48 bg-gradient-to-br from-navy via-slate to-navy/80 flex items-center justify-center relative overflow-hidden">
+                  {/* Decorative background pattern */}
+                  <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-10" />
+                  <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-accent-cyan/10 rounded-tl-full" />
+                  {/* Avatar with initials */}
+                  <div
+                    className={`w-24 h-24 rounded-full bg-gradient-to-br ${avatarGradients[index % avatarGradients.length]} flex items-center justify-center shadow-lg ring-4 ring-white/20`}
+                    role="img"
+                    aria-label={`Portrait placeholder for ${leader.name}`}
+                  >
+                    <span className="text-2xl font-bold text-white select-none">
+                      {getInitials(leader.name)}
+                    </span>
                   </div>
                 </div>
                 <div className="p-6">
@@ -140,16 +171,19 @@ export default function LeadershipPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {advisors.map((advisor) => (
+            {advisors.map((advisor, index) => (
               <div
                 key={advisor.name}
                 className="bg-cloud rounded-xl p-8 border border-border"
               >
-                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-navy/10 mb-6 mx-auto">
-                  <Award
-                    className="w-7 h-7 text-accent-cyan"
-                    strokeWidth={1.5}
-                  />
+                <div
+                  className={`flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br ${avatarGradients[(index + 3) % avatarGradients.length]} mb-6 mx-auto shadow-md`}
+                  role="img"
+                  aria-label={`Portrait placeholder for ${advisor.name}`}
+                >
+                  <span className="text-lg font-bold text-white select-none">
+                    {getInitials(advisor.name)}
+                  </span>
                 </div>
                 <div className="text-center">
                   <h3 className="text-lg font-bold text-navy mb-1">

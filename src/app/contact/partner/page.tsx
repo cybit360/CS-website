@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Handshake,
@@ -13,6 +14,12 @@ import {
   TrendingUp,
   Award,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Partner With Us",
+  description:
+    "Explore partnership opportunities with CybitSolutions. Joint ventures, teaming agreements, and technology partnerships for government contracting.",
+};
 
 const partnershipTypes = [
   {
@@ -76,12 +83,16 @@ export default function PartnerPage() {
   return (
     <main className="flex flex-col">
       {/* Hero */}
-      <section className="hero-gradient py-20 md:py-28">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
+            Contact
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Partner With Us
           </h1>
-          <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Join forces with CybitSolutions to deliver transformative technology
             solutions for federal agencies. Together, we can achieve more.
           </p>
@@ -181,7 +192,7 @@ export default function PartnerPage() {
             </p>
             <div className="flex items-center justify-center gap-2 text-accent-cyan font-semibold mb-8">
               <Mail className="w-5 h-5" />
-              partners@cybitsolutions.com
+              partners@cybitsolutions.net
             </div>
             <Link
               href="/contact"

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Calendar,
@@ -8,6 +9,12 @@ import {
   Video,
   CheckCircle,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Events & Webinars",
+  description:
+    "Join CybitSolutions at upcoming industry conferences, webinars, and events focused on cybersecurity, cloud, and federal IT modernization.",
+};
 
 const upcomingEvents = [
   {
@@ -73,11 +80,16 @@ export default function EventsPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient text-white py-24">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <Calendar className="w-14 h-14 text-accent-cyan mx-auto mb-6" />
-          <h1 className="text-5xl font-bold mb-6">Events &amp; Webinars</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
+            Events
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            Events &amp; Webinars
+          </h1>
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Connect with our experts at industry conferences, webinars, and
             workshops focused on federal technology and security.
           </p>

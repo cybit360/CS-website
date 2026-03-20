@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Shield, Building2, Handshake, ChevronRight } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Who We Serve",
+  description:
+    "CybitSolutions serves government agencies, commercial enterprises, and partners with mission-critical IT solutions across defense, civilian, and private sectors.",
+};
 
 const sectors = [
   {
@@ -47,14 +54,18 @@ export default function WhoWeServePage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient bg-navy py-24 text-center">
-        <div className="container mx-auto max-w-4xl px-6">
-          <h1 className="text-4xl font-bold text-white md:text-5xl">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
+            Our Clients
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Who We Serve
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             From federal agencies safeguarding national security to enterprises
-            driving digital transformation, Cybit Solutions delivers tailored
+            driving digital transformation, CybitSolutions delivers tailored
             technology services that meet the highest standards of performance
             and compliance.
           </p>
@@ -116,7 +127,7 @@ export default function WhoWeServePage() {
       <section className="bg-white py-20">
         <div className="container mx-auto max-w-5xl px-6 text-center">
           <h2 className="text-3xl font-bold text-navy">
-            Why Organizations Choose Cybit
+            Why Organizations Choose CybitSolutions
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-steel">
             Our clients trust us because we combine technical depth with

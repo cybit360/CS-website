@@ -1,15 +1,26 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Terms of Use",
+  description:
+    "CybitSolutions terms of use governing access to and use of our website, services, and digital properties.",
+};
 
 export default function TermsOfUsePage() {
   return (
     <>
       {/* Hero */}
-      <section className="hero-gradient py-16 lg:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
+            Legal
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Terms of Use
           </h1>
-          <p className="text-lg text-blue-100">
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Last Updated: January 1, 2024
           </p>
         </div>
@@ -19,7 +30,7 @@ export default function TermsOfUsePage() {
       <section className="bg-white py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-gray-600 mb-10 leading-relaxed">
-            Welcome to Cybit Solutions. By accessing or using our website and services,
+            Welcome to CybitSolutions. By accessing or using our website and services,
             you agree to be bound by these Terms of Use. Please read them carefully
             before using our platform.
           </p>
@@ -57,15 +68,14 @@ export default function TermsOfUsePage() {
           <p className="text-gray-600 mb-4 leading-relaxed">
             All content, features, and functionality on this website, including but not
             limited to text, graphics, logos, icons, images, audio clips, and software,
-            are the exclusive property of Cybit Solutions or its licensors and are
+            are the exclusive property of CybitSolutions or its licensors and are
             protected by international copyright, trademark, patent, trade secret, and
             other intellectual property laws.
           </p>
 
           <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-4">Disclaimers</h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            The materials on our website are provided on an &quot;as is&quot; basis. Cybit
-            Solutions makes no warranties, expressed or implied, and hereby disclaims
+            The materials on our website are provided on an &quot;as is&quot; basis. CybitSolutions makes no warranties, expressed or implied, and hereby disclaims
             all other warranties including, without limitation, implied warranties or
             conditions of merchantability, fitness for a particular purpose, or
             non-infringement of intellectual property or other violation of rights.
@@ -73,17 +83,16 @@ export default function TermsOfUsePage() {
 
           <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-4">Limitation of Liability</h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            In no event shall Cybit Solutions or its suppliers be liable for any damages,
+            In no event shall CybitSolutions or its suppliers be liable for any damages,
             including without limitation damages for loss of data or profit, arising out
-            of the use or inability to use the materials on our website, even if Cybit
-            Solutions has been notified of the possibility of such damage. Some
+            of the use or inability to use the materials on our website, even if CybitSolutions has been notified of the possibility of such damage. Some
             jurisdictions do not allow limitations on implied warranties or liability
             for incidental damages, so these limitations may not apply to you.
           </p>
 
           <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-4">Indemnification</h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            You agree to indemnify, defend, and hold harmless Cybit Solutions, its
+            You agree to indemnify, defend, and hold harmless CybitSolutions, its
             officers, directors, employees, agents, and affiliates from and against any
             claims, liabilities, damages, losses, and expenses arising out of or in any
             way connected with your access to or use of our website and services or your
@@ -101,7 +110,7 @@ export default function TermsOfUsePage() {
 
           <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-4">Changes to Terms</h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Cybit Solutions may revise these Terms of Use at any time without notice. By
+            CybitSolutions may revise these Terms of Use at any time without notice. By
             continuing to use this website after changes are posted, you agree to be
             bound by the revised terms. We encourage you to review this page periodically
             for any updates.
@@ -111,10 +120,10 @@ export default function TermsOfUsePage() {
           <p className="text-gray-600 mb-4 leading-relaxed">
             If you have any questions about these Terms of Use, please contact us at{" "}
             <a
-              href="mailto:legal@cybitsolutions.com"
+              href="mailto:legal@cybitsolutions.net"
               className="text-blue-600 hover:text-blue-700 underline"
             >
-              legal@cybitsolutions.com
+              legal@cybitsolutions.net
             </a>.
           </p>
 

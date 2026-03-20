@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./Button";
 
@@ -71,7 +71,12 @@ export function ContactForm({ className, onSubmit }: ContactFormProps) {
 
     setLoading(true);
     try {
-      await onSubmit?.(data);
+      if (onSubmit) {
+        await onSubmit(data);
+      } else {
+        // Simulate API call — in production, connect to backend/email service
+        await new Promise((r) => setTimeout(r, 1500));
+      }
       setSubmitted(true);
       setData(initialData);
     } catch {
@@ -225,7 +230,14 @@ export function ContactForm({ className, onSubmit }: ContactFormProps) {
         className="w-full sm:w-auto"
         disabled={loading}
       >
-        {loading ? "Sending..." : "Send Message"}
+        {loading ? (
+          <>
+            <Loader2 className="size-5 animate-spin" aria-hidden="true" />
+            Sending...
+          </>
+        ) : (
+          "Send Message"
+        )}
       </Button>
     </form>
   );

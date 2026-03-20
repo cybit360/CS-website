@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -10,6 +11,12 @@ import {
   Target,
   Award,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Social Impact",
+  description:
+    "CybitSolutions' commitment to social impact including veteran hiring, STEM education, community service, and sustainable business practices.",
+};
 
 const initiatives = [
   {

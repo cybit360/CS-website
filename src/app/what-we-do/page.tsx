@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Briefcase, Award, FileText, Lightbulb } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "What We Do",
+  description:
+    "Explore CybitSolutions' mission-critical IT services, past performance, and proven approach to federal and enterprise technology delivery.",
+};
 
 const sections = [
   {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Building2,
@@ -10,6 +11,13 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PageImage } from "@/components/ui/PageImage";
+
+export const metadata: Metadata = {
+  title: "Industry-Specific IT",
+  description:
+    "CybitSolutions industry-specific IT solutions for healthcare, finance, education, and defense sectors with tailored compliance and domain expertise.",
+};
 
 const functionalAreas = [
   {

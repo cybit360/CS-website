@@ -32,7 +32,7 @@ export const mainNavItems: NavItem[] = [
         label: "Past Performance",
         href: "/what-we-do/past-performance",
         description:
-          "Proven results across DoD, DoS, and federal programs with measurable mission impact.",
+          "Proven results across DoD, DoS, and government programs with measurable mission impact.",
       },
       {
         label: "Capability Statements",
@@ -56,7 +56,7 @@ export const mainNavItems: NavItem[] = [
         label: "About CybitSolutions",
         href: "/who-we-are/about",
         description:
-          "Our mission, vision, values, and commitment to delivering excellence in federal IT.",
+          "Our mission, vision, values, and commitment to delivering excellence in government and commercial IT.",
       },
       {
         label: "Leadership",

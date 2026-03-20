@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Briefcase,
@@ -8,6 +9,12 @@ import {
   Clock,
   CheckCircle,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Open Roles",
+  description:
+    "Browse current job openings at CybitSolutions. Positions in cybersecurity, cloud engineering, software development, and federal IT programs.",
+};
 
 const jobs = [
   {
@@ -72,13 +79,16 @@ export default function OpenRolesPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient text-white py-24">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="flex justify-center mb-6">
-            <Briefcase className="w-14 h-14 text-accent-cyan" />
-          </div>
-          <h1 className="text-5xl font-bold mb-6">Open Positions</h1>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
+            Careers
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            Open Positions
+          </h1>
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Explore current opportunities across cybersecurity, cloud,
             engineering, and management. Find the role where your skills make a
             mission-critical difference.
@@ -126,7 +136,7 @@ export default function OpenRolesPage() {
                   </div>
                 </div>
                 <Link
-                  href="/careers/open-roles"
+                  href="/contact"
                   className="inline-flex items-center gap-2 bg-accent-cyan text-navy font-semibold px-5 py-2 rounded-lg hover:brightness-110 transition text-sm"
                 >
                   Apply Now <ArrowRight className="w-4 h-4" />
@@ -164,7 +174,7 @@ export default function OpenRolesPage() {
           </ul>
           <div>
             <Link
-              href="/careers/open-roles"
+              href="/contact"
               className="inline-flex items-center gap-2 bg-accent-cyan text-navy font-semibold px-8 py-3 rounded-lg hover:brightness-110 transition"
             >
               Submit General Application <ArrowRight className="w-4 h-4" />

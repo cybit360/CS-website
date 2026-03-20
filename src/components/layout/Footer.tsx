@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Linkedin, Twitter, Youtube, Mail, Phone } from "lucide-react";
+import { NewsletterForm } from "@/components/ui/NewsletterForm";
 
 const aboutLinks = [
   { label: "About Us", href: "/who-we-are/about" },
@@ -52,9 +53,9 @@ export function Footer() {
               <Image
                 src="/images/logo.png"
                 alt="CybitSolutions"
-                width={140}
-                height={36}
-                className="h-9 w-auto brightness-0 invert"
+                width={180}
+                height={48}
+                className="h-12 w-auto brightness-0 invert"
               />
             </Link>
             <p className="mb-6 text-sm leading-relaxed text-steel">
@@ -156,31 +157,49 @@ export function Footer() {
               ))}
               <li>
                 <a
-                  href="mailto:info@cybitsolutions.com"
+                  href="mailto:info@cybitsolutions.net"
                   className="inline-flex items-center gap-1.5 text-sm text-steel hover:text-white transition-colors"
                 >
                   <Mail className="size-3.5" />
-                  info@cybitsolutions.com
+                  info@cybitsolutions.net
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+12025551234"
+                  href="tel:+17712331379"
                   className="inline-flex items-center gap-1.5 text-sm text-steel hover:text-white transition-colors"
                 >
                   <Phone className="size-3.5" />
-                  (202) 555-1234
+                  (771) 233-1379
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
+        {/* Newsletter */}
+        <div className="mt-12 border-t border-slate pt-8 pb-2">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="max-w-md">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-accent-amber mb-2">
+                Newsletter
+              </h3>
+              <p className="text-sm text-steel">
+                Get the latest insights, news, and resources delivered to your
+                inbox.
+              </p>
+            </div>
+            <div className="flex-1 max-w-lg">
+              <NewsletterForm variant="dark" />
+            </div>
+          </div>
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-12 border-t border-slate pt-6">
+        <div className="mt-8 border-t border-slate pt-6">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
             <p className="text-xs text-steel">
-              &copy; 2024 CybitSolutions. All rights reserved.
+              &copy; 2025 CybitSolutions. All rights reserved.
             </p>
             <nav aria-label="Legal" className="flex flex-wrap items-center gap-4">
               {bottomLinks.map((link) => (

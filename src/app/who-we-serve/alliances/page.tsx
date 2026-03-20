@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle,
-  Cloud,
   ShieldCheck,
   Server,
   Network,
@@ -11,6 +11,13 @@ import {
   BadgeCheck,
   ScrollText,
 } from "lucide-react";
+import { PartnerLogo } from "@/components/ui/PartnerLogos";
+
+export const metadata: Metadata = {
+  title: "Alliances & Certifications",
+  description:
+    "CybitSolutions technology partnerships, contract vehicles, and certifications including AWS, Azure, CMMC, and FedRAMP authorizations.",
+};
 
 const technologyPartners = [
   {
@@ -94,6 +101,15 @@ const technologyPartners = [
       "Data Engineering",
     ],
   },
+  {
+    name: "IBM",
+    tier: "Gold Partner",
+    specializations: [
+      "Hybrid Cloud & Red Hat OpenShift",
+      "Enterprise AI (watsonx)",
+      "Mainframe Modernization",
+    ],
+  },
 ];
 
 const certifications = [
@@ -155,15 +171,16 @@ export default function AlliancesPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient bg-navy py-24 text-center">
-        <div className="container mx-auto max-w-4xl px-6">
-          <p className="text-sm font-semibold uppercase tracking-widest text-accent-cyan">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
             Who We Serve
           </p>
-          <h1 className="mt-3 text-4xl font-bold text-white md:text-5xl">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Strategic Alliances &amp; Certifications
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Our partnerships with industry-leading technology providers and
             commitment to the highest certifications ensure we deliver
             best-in-class solutions for every engagement.
@@ -189,7 +206,7 @@ export default function AlliancesPage() {
                 className="rounded-2xl border border-border bg-white p-6 shadow-sm"
               >
                 <div className="flex items-center gap-3">
-                  <Cloud className="h-6 w-6 text-accent-cyan" />
+                  <PartnerLogo name={partner.name} showName={false} size="md" />
                   <div>
                     <h3 className="text-lg font-semibold text-navy">
                       {partner.name}

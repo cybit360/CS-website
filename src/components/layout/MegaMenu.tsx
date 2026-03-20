@@ -83,7 +83,7 @@ export function MegaMenu({ item, isOpen, onClose }: MegaMenuProps) {
       role="menu"
       aria-label={`${item.label} submenu`}
       className={cn(
-        "absolute left-0 top-full w-full bg-white shadow-xl border-t border-border z-50",
+        "absolute left-0 top-full w-full bg-white shadow-xl border-t-2 border-accent-cyan z-50",
         "animate-[fadeSlideIn_200ms_ease-out_forwards]"
       )}
       style={{
@@ -104,7 +104,7 @@ export function MegaMenu({ item, isOpen, onClose }: MegaMenuProps) {
         }
       `}</style>
 
-      <div className="mx-auto max-w-7xl px-6 py-8">
+      <div className="mx-auto max-w-7xl px-6 py-8 min-h-[280px]">
         <div className="grid grid-cols-12 gap-8">
           {/* Subpage links */}
           <div className="col-span-8">
@@ -132,11 +132,11 @@ export function MegaMenu({ item, isOpen, onClose }: MegaMenuProps) {
                   className="group flex flex-col gap-1 rounded-lg p-3 transition-colors hover:bg-cloud"
                   onClick={onClose}
                 >
-                  <span className="text-sm font-semibold text-navy group-hover:text-accent-cyan transition-colors">
+                  <span className="text-base font-semibold text-navy group-hover:text-accent-cyan transition-colors">
                     {child.label}
                   </span>
                   {child.description && (
-                    <span className="text-xs leading-relaxed text-steel">
+                    <span className="text-sm leading-relaxed text-steel">
                       {child.description}
                     </span>
                   )}

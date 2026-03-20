@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ShieldCheck,
@@ -15,6 +16,13 @@ import {
   Building2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PageImage } from "@/components/ui/PageImage";
+
+export const metadata: Metadata = {
+  title: "Cybersecurity & Risk Management",
+  description:
+    "CybitSolutions cybersecurity services including zero trust architecture, security operations, vulnerability management, and compliance for federal and enterprise clients.",
+};
 
 const functionalAreas = [
   {
@@ -145,8 +153,15 @@ export default function CybersecurityPage() {
         </div>
       </section>
 
+      {/* Visual Accent */}
+      <section className="py-10 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <PageImage variant="cybersecurity" aspectRatio="wide" className="shadow-lg" />
+        </div>
+      </section>
+
       {/* Intro */}
-      <section className="py-16 bg-white">
+      <section className="pt-6 pb-16 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-steel leading-relaxed mb-6">

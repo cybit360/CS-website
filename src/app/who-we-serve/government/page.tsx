@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -9,6 +10,13 @@ import {
   FileCheck,
   Lock,
 } from "lucide-react";
+import { PageImage } from "@/components/ui/PageImage";
+
+export const metadata: Metadata = {
+  title: "Government",
+  description:
+    "CybitSolutions delivers mission-critical IT solutions for the Department of Defense, federal civilian agencies, intelligence community, and state and local government.",
+};
 
 const agencies = [
   {
@@ -85,19 +93,26 @@ export default function GovernmentPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient bg-navy py-24 text-center">
-        <div className="container mx-auto max-w-4xl px-6">
-          <p className="text-sm font-semibold uppercase tracking-widest text-accent-cyan">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
             Who We Serve
           </p>
-          <h1 className="mt-3 text-4xl font-bold text-white md:text-5xl">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Government Solutions
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
-            Trusted by federal agencies and the defense community, Cybit
-            Solutions delivers secure, compliant, and mission-ready technology
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+            Trusted by federal agencies and the defense community, CybitSolutions delivers secure, compliant, and mission-ready technology
             services that protect national interests.
           </p>
+        </div>
+      </section>
+
+      {/* Government Visual */}
+      <section className="bg-white py-12">
+        <div className="container mx-auto max-w-6xl px-6">
+          <PageImage variant="government" aspectRatio="wide" />
         </div>
       </section>
 

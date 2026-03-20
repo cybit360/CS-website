@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Heart,
@@ -13,6 +14,13 @@ import {
   Target,
   Lightbulb,
 } from "lucide-react";
+import { PageImage } from "@/components/ui/PageImage";
+
+export const metadata: Metadata = {
+  title: "Culture & Benefits",
+  description:
+    "Discover CybitSolutions' workplace culture, comprehensive benefits, professional development opportunities, and commitment to employee well-being.",
+};
 
 const values = [
   {
@@ -78,17 +86,27 @@ export default function CulturePage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient text-white py-24">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="flex justify-center mb-6">
-            <Heart className="w-14 h-14 text-accent-cyan" />
-          </div>
-          <h1 className="text-5xl font-bold mb-6">Culture &amp; Benefits</h1>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
+            Careers
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            Culture &amp; Benefits
+          </h1>
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             At CybitSolutions, we invest in our people. Discover the culture,
             benefits, and opportunities that make us a top employer in federal
             technology.
           </p>
+        </div>
+      </section>
+
+      {/* Culture Visual */}
+      <section className="bg-white py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <PageImage variant="office" aspectRatio="wide" />
         </div>
       </section>
 
@@ -161,6 +179,10 @@ export default function CulturePage() {
       {/* Work-Life Balance */}
       <section className="bg-cloud py-20">
         <div className="max-w-7xl mx-auto px-6">
+          {/* Workplace Visual */}
+          <div className="mb-12 max-w-2xl mx-auto">
+            <PageImage variant="team" aspectRatio="video" />
+          </div>
           <div className="max-w-3xl mx-auto text-center mb-10">
             <h2 className="text-3xl font-bold text-navy mb-4">
               Work-Life Balance

@@ -1,11 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Download, MessageSquare, Shield, Zap, Target } from "lucide-react";
+import { ArrowRight, Download, MessageSquare, Zap, Target } from "lucide-react";
 import { TrustStrip } from "@/components/sections/TrustStrip";
 import { ProofPoints } from "@/components/sections/ProofPoints";
 import { FeaturedDomains } from "@/components/sections/FeaturedDomains";
 import { CaseStudyGrid } from "@/components/sections/CaseStudyGrid";
 import { InsightsTiles } from "@/components/sections/InsightsTiles";
 import { CareersStrip } from "@/components/sections/CareersStrip";
+import { PageImage } from "@/components/ui/PageImage";
+
+export const metadata: Metadata = {
+  title: "CybitSolutions | Mission-Grade IT for Government & Enterprise",
+  description:
+    "CybitSolutions delivers secure, scalable IT solutions for federal agencies and enterprise organizations. Cybersecurity, cloud, AI, and digital transformation.",
+};
 
 const stats = [
   { value: "20+", label: "Years of Experience" },
@@ -21,6 +29,7 @@ export default function HomePage() {
       <section className="relative min-h-[85vh] flex items-center bg-navy overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 hero-gradient" />
+        <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-[0.04]" />
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 right-20 w-[600px] h-[600px] bg-accent-cyan rounded-full blur-[120px]" />
           <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-accent-amber rounded-full blur-[100px]" />
@@ -28,11 +37,6 @@ export default function HomePage() {
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-accent-cyan text-sm font-medium mb-8 backdrop-blur-sm border border-white/10">
-              <Shield className="w-4 h-4" />
-              Veteran-Owned &bull; Cleared Professionals &bull; 20+ Years
-            </div>
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               Mission-grade innovation for{" "}
               <span className="text-accent-cyan">cyber, cloud, and AI.</span>
@@ -91,11 +95,29 @@ export default function HomePage() {
       {/* Proof Points */}
       <ProofPoints />
 
+      {/* Visual Accent */}
+      <section className="py-8 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <PageImage variant="cybersecurity" aspectRatio="wide" className="shadow-lg" />
+        </div>
+      </section>
+
       {/* Featured Domains */}
       <FeaturedDomains limit={3} />
 
       {/* Case Studies */}
       <CaseStudyGrid />
+
+      {/* Visual Accent */}
+      <section className="py-8 bg-cloud">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <PageImage variant="cloud" aspectRatio="square" />
+            <PageImage variant="ai" aspectRatio="square" />
+            <PageImage variant="government" aspectRatio="square" />
+          </div>
+        </div>
+      </section>
 
       {/* CTA Banner */}
       <section className="py-16 bg-accent-cyan">

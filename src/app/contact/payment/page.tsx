@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   CreditCard,
@@ -12,6 +13,12 @@ import {
   CheckCircle,
   ChevronDown,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Payment",
+  description:
+    "CybitSolutions payment information, invoicing details, and accounts payable contact for government and commercial clients.",
+};
 
 const paymentMethods = [
   {
@@ -43,7 +50,7 @@ const faqs = [
   {
     question: "How do I request a copy of my invoice?",
     answer:
-      "You can request a copy of any invoice by emailing accounting@cybitsolutions.com with your contract number, invoice number, or purchase order reference. We typically respond within one business day.",
+      "You can request a copy of any invoice by emailing accounting@cybitsolutions.net with your contract number, invoice number, or purchase order reference. We typically respond within one business day.",
   },
   {
     question: "Can I set up recurring payments?",
@@ -58,7 +65,7 @@ const faqs = [
   {
     question: "Who do I contact about billing discrepancies?",
     answer:
-      "For any billing questions or discrepancies, please contact our accounting team at accounting@cybitsolutions.com or call (703) 555-0105. We aim to resolve all billing inquiries within 48 hours.",
+      "For any billing questions or discrepancies, please contact our accounting team at accounting@cybitsolutions.net or call (703) 555-0105. We aim to resolve all billing inquiries within 48 hours.",
   },
 ];
 
@@ -66,12 +73,16 @@ export default function PaymentPage() {
   return (
     <main className="flex flex-col">
       {/* Hero */}
-      <section className="hero-gradient py-20 md:py-28">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
+            Contact
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Payment Portal
           </h1>
-          <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Manage your payments, view invoice information, and connect with our
             accounting team for billing support.
           </p>
@@ -196,7 +207,7 @@ export default function PaymentPage() {
                   <Mail className="w-6 h-6 text-accent-cyan" />
                 </div>
                 <p className="text-sm font-semibold text-navy mb-1">Email</p>
-                <p className="text-sm text-steel">accounting@cybitsolutions.com</p>
+                <p className="text-sm text-steel">accounting@cybitsolutions.net</p>
               </div>
               <div className="flex flex-col items-center text-center p-4">
                 <div className="p-3 rounded-full bg-accent-cyan/10 mb-3">

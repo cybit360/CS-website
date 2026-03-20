@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Briefcase,
@@ -9,6 +10,13 @@ import {
   Shield,
   GraduationCap,
 } from "lucide-react";
+import { PageImage } from "@/components/ui/PageImage";
+
+export const metadata: Metadata = {
+  title: "Careers",
+  description:
+    "Join CybitSolutions and build your career in mission-critical IT. Explore open roles in cybersecurity, cloud, AI, and federal technology programs.",
+};
 
 const reasons = [
   {
@@ -59,15 +67,16 @@ export default function CareersPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient text-white py-24">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="flex justify-center mb-6">
-            <Briefcase className="w-14 h-14 text-accent-cyan" />
-          </div>
-          <h1 className="text-5xl font-bold mb-6">
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
+            Join Our Team
+          </p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Careers at CybitSolutions
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Join a team of innovators and problem-solvers dedicated to
             delivering secure, mission-critical technology solutions for the
             federal government.
@@ -80,6 +89,13 @@ export default function CareersPage() {
               View Open Roles <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Team Visual Banner */}
+      <section className="bg-white py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <PageImage variant="team" aspectRatio="wide" />
         </div>
       </section>
 

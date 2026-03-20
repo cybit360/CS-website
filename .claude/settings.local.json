@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Bash(npx create-next-app@latest cybit-temp --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(npx next:*)",
+      "Bash(ls -d C:/Users/adupe/Desktop/CybitSolutions/src/app/what-we-do/services/*/page.tsx C:/Users/adupe/Desktop/CybitSolutions/src/app/what-we-do/*/page.tsx C:/Users/adupe/Desktop/CybitSolutions/src/app/who-we-are/*/page.tsx C:/Users/adupe/Desktop/CybitSolutions/src/app/who-we-serve/*/page.tsx C:/Users/adupe/Desktop/CybitSolutions/src/app/insights/*/page.tsx C:/Users/adupe/Desktop/CybitSolutions/src/app/careers/*/page.tsx C:/Users/adupe/Desktop/CybitSolutions/src/app/contact/*/page.tsx C:/Users/adupe/Desktop/CybitSolutions/src/app/legal/*/page.tsx)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //PID 7964 //F)",
+      "Bash(node -e \"console.log\\(process.execPath\\)\")",
+      "Bash(ls C:/Users/adupe/Desktop/CybitSolutions/node_modules/.bin/next*)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(git rev-list:*)",
+      "Bash(git cat-file:*)",
+      "Bash(sort -rnk2)"
+    ]
+  }
+}
