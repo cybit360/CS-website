@@ -17,7 +17,10 @@
       "Bash(echo \"EXIT:$?\")",
       "Bash(git rev-list:*)",
       "Bash(git cat-file:*)",
-      "Bash(sort -rnk2)"
+      "Bash(sort -rnk2)",
+      "Bash(npm run:*)",
+      "Bash(powershell -Command \"Get-Content ''C:\\\\Users\\\\adupe\\\\.claude\\\\projects\\\\C--Users-adupe-Desktop-CybitSolutions\\\\5412fd4d-0546-4467-af57-644fad754335.jsonl'' | Select-Object -Last 30\")",
+      "Bash(dir \"C:\\\\Users\\\\adupe\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-adupe-Desktop-CybitSolutions\\\\tasks\"\")"
     ]
   }
 }
