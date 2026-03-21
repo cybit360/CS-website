@@ -583,3 +583,514 @@ Modify the site navigation structure:
 3. Update Footer.tsx if adding new footer links
 4. Create any new page directories and page.tsx files
 ```
+
+---
+
+## 17. Applied Enhancements (March 2026)
+
+### Backend API Layer
+```
+STATUS: APPLIED
+Added backend API routes with full server-side processing:
+- POST /api/contact — Contact form with Zod validation, rate limiting (5/15min), honeypot spam protection, Resend email notifications
+- POST /api/newsletter — Newsletter signup with dedup, rate limiting (3/hr), welcome email
+- POST /api/career-apply — Job applications with validation, admin notification
+- POST /api/partner — Partner inquiry with validation, admin + user confirmation emails
+All routes follow: IP extraction → rate limit → honeypot check → Zod validation → email send → JSON response
+```
+
+### Form Validation (Zod + React Hook Form)
+```
+STATUS: APPLIED
+Added server-side and client-side form validation:
+- src/lib/validations.ts — Zod schemas for: contact, newsletter, career application, partner inquiry, testimonial
+- @hookform/resolvers for client-side form binding
+- All forms validate on both client and server
+```
+
+### Email Service (Resend)
+```
+STATUS: APPLIED
+Added transactional email service using Resend:
+- src/lib/email.ts — Email templates for all form types
+- Admin notifications for every submission
+- Auto-reply confirmations to users
+- Newsletter welcome emails
+- Requires RESEND_API_KEY env var and domain verification
+```
+
+### Rate Limiting & Spam Protection
+```
+STATUS: APPLIED
+Added API security:
+- src/lib/rate-limit.ts — In-memory rate limiting per IP with auto-cleanup
+- Honeypot fields on all forms (website, honeypot, url)
+- Contact/Career/Partner: 5 requests per IP per 15 minutes
+- Newsletter: 3 requests per IP per hour
+- NOTE: In-memory only — needs Redis for multi-instance deployments
+```
+
+### Security Headers
+```
+STATUS: APPLIED
+Added HTTP security headers in next.config.ts:
+- X-Content-Type-Options: nosniff (MIME type sniffing prevention)
+- X-Frame-Options: DENY (clickjacking protection)
+- X-XSS-Protection: 1; mode=block
+- Referrer-Policy: strict-origin-when-cross-origin
+- Permissions-Policy: camera=(), microphone=(), geolocation=()
+```
+
+### Error Handling Pages
+```
+STATUS: APPLIED
+Added Next.js error boundary pages:
+- src/app/error.tsx — Global error boundary with reset button, dev-mode error details
+- src/app/not-found.tsx — Custom 404 page with cybersecurity-themed SVG, navigation suggestions
+- src/app/loading.tsx — Global loading skeleton with hero + card grid placeholders
+```
+
+### Analytics & Performance Monitoring
+```
+STATUS: APPLIED
+Added Vercel Analytics and Speed Insights:
+- @vercel/analytics for real user monitoring and page views
+- @vercel/speed-insights for Core Web Vitals tracking (LCP, FID, CLS)
+- Components added to root layout.tsx
+```
+
+### Environment Variables
+```
+STATUS: APPLIED
+Created .env.example documenting all required environment variables:
+- RESEND_API_KEY — Email service API key
+- NEXT_PUBLIC_SITE_URL — Canonical site URL
+- ADMIN_EMAIL — Admin notification recipient
+```
+
+### Interactive Features (Previously Applied)
+```
+STATUS: APPLIED (Earlier session)
+- AI Chat Widget auto-opens with greeting on first visit (sessionStorage)
+- News articles expand/collapse with full content
+- Resource Library with download/preview and category filters
+- Events with registration modal and form
+- Career open roles with job descriptions, salary, apply modal
+- Employee & Client Testimonials with submission form
+- Payment portal UI with 5 payment methods (Stripe, PayPal, Square, Amazon Pay, Apple Pay)
+- Global search (Cmd+K) across all content
+- Mega menu z-index fix (z-[9999])
+```
+
+### SEO/Schema Enhancements (Previously Applied)
+```
+STATUS: APPLIED (Earlier session)
+- Organization JSON-LD with NAICS codes, contacts, address, knowsAbout
+- BreadcrumbList JSON-LD schema
+- WebSite JSON-LD schema
+- OpenGraph + Twitter Card meta tags
+- Dynamic sitemap.xml (41 URLs)
+- robots.ts with proper directives
+- PWA manifest.webmanifest
+```
+
+---
+
+## 18. Comprehensive Gap Analysis — CybitSolutions vs Kaporta
+
+### Side-by-Side Comparison
+
+| Feature | CybitSolutions | Kaporta | Action Needed |
+|---------|---------------|---------|---------------|
+| Security Headers | ✅ Applied | ✅ Has | Done |
+| API Routes | ✅ Applied (4 routes) | ✅ Has (4 routes) | Done |
+| Form Validation (Zod) | ✅ Applied | ✅ Has | Done |
+| Email Service (Resend) | ✅ Applied | ✅ Has | Done |
+| Rate Limiting | ✅ Applied | ✅ Has | Done |
+| Error Pages (error/404/loading) | ✅ Applied | ✅ Has | Done |
+| Vercel Analytics | ✅ Applied | ✅ Has | Done |
+| Speed Insights | ✅ Applied | ✅ Has | Done |
+| JSON-LD Structured Data | ✅ 3 schemas | ❌ Missing | CS ahead |
+| OG Image | ✅ Has | ❌ Missing | CS ahead |
+| Canonical URL | ✅ Has | ❌ Missing | Kaporta needs |
+| Theme-color meta | ✅ Has | ❌ Missing | Kaporta needs |
+| Chat Widget | ✅ Has (auto-open) | ✅ Has (manual) | CS ahead |
+| Search | ✅ Has (Cmd+K) | ✅ Has (Cmd+K) | Both have |
+| Testing | ❌ Missing | ❌ Missing | Both need |
+| CI/CD | ❌ Missing | ❌ Missing | Both need |
+| Database | ❌ Missing | ❌ Missing | Both need |
+| Authentication | ❌ Missing | ❌ Missing | Both need (admin) |
+| CMS | ❌ Missing | ❌ Missing | Both need |
+| File Storage | ❌ Missing | ❌ Missing | Both need |
+
+---
+
+## 19. Future Enhancements & Improvements Roadmap
+
+### Priority 1 — Production Readiness
+
+#### Testing Framework
+```
+Set up comprehensive testing for CybitSolutions:
+- Install: vitest, @testing-library/react, @testing-library/jest-dom, @playwright/test
+- Unit tests for: validation schemas, rate limiter, email service, utility functions
+- Component tests for: ContactForm, ChatWidget, GlobalSearch, NewsletterForm
+- E2E tests with Playwright for: homepage load, form submission flow, navigation, search
+- API route tests for all 4 endpoints
+- Add test scripts to package.json: "test", "test:e2e", "test:coverage"
+- Minimum 80% code coverage target
+```
+
+#### CI/CD Pipeline
+```
+Set up GitHub Actions CI/CD for CybitSolutions:
+- .github/workflows/ci.yml:
+  - Trigger on push to main and pull requests
+  - Steps: checkout, setup Node 20, install deps, lint, type-check, run tests, build
+  - Cache node_modules for faster builds
+- .github/workflows/deploy.yml:
+  - Auto-deploy to Vercel on main branch push
+  - Preview deployments for PRs
+  - Environment variable management
+- Add status badges to README
+```
+
+#### Database Integration
+```
+Add persistent data storage for CybitSolutions:
+- Options: Vercel Postgres, PlanetScale, Supabase, or Neon
+- Schema for: contact_submissions, newsletter_subscribers, job_applications, partner_inquiries, testimonials
+- Replace in-memory newsletter Set with database
+- Prisma ORM for type-safe database access
+- Migration scripts and seed data
+- Connection pooling for serverless
+```
+
+#### File Storage
+```
+Add cloud file storage for uploads:
+- Vercel Blob or AWS S3 for: resumes, RFP documents, quote attachments
+- File type validation (PDF, DOC, DOCX only, max 10MB)
+- Secure signed URLs for access
+- Auto-cleanup for old uploads
+- Virus scanning integration (ClamAV or cloud service)
+```
+
+### Priority 2 — Enhanced Functionality
+
+#### Admin Dashboard
+```
+Build a protected admin dashboard for CybitSolutions:
+- /admin route with authentication (NextAuth.js + credentials provider)
+- Dashboard views: Contact submissions, Job applications, Newsletter subscribers, Partner inquiries, Testimonials
+- Sortable/filterable tables with pagination
+- Export to CSV functionality
+- Email response directly from dashboard
+- Submission status tracking (New, In Progress, Responded, Closed)
+- Basic analytics: submissions per day/week/month, popular services
+```
+
+#### Content Management System
+```
+Integrate Sanity CMS for dynamic content:
+- Content models: Blog posts, Case studies, Events, Job listings, Team members, Resources
+- Rich text editor with code blocks, images, tables
+- Preview mode for draft content
+- Incremental Static Regeneration (ISR) for auto-updates
+- Image CDN via Sanity's image pipeline
+- Scheduled publishing for blog posts
+- Role-based access (Editor, Admin, Viewer)
+```
+
+#### Real-Time Chat / AI Assistant
+```
+Upgrade the chat widget to a real AI assistant:
+- Options: OpenAI API, Claude API, or Dialogflow
+- Context-aware responses about CybitSolutions services
+- Lead qualification questions (budget, timeline, service needs)
+- Handoff to human agent via email notification
+- Chat history persistence (database)
+- Typing indicators and read receipts
+- After-hours auto-response with business hours info
+- Integration with contact form for lead capture
+```
+
+#### Payment Processing Integration
+```
+Implement real payment processing for CybitSolutions:
+- Stripe integration for invoice payments:
+  - Stripe Checkout for one-time payments
+  - Stripe Elements for embedded payment form
+  - Invoice lookup by number
+  - Payment receipt emails
+  - Webhook handler for payment confirmations
+- PayPal integration as secondary option
+- PCI DSS compliance considerations
+- Payment history for clients
+- Recurring payment support for retainer contracts
+```
+
+#### Email Marketing Platform
+```
+Set up automated email marketing:
+- Mailchimp or ConvertKit integration
+- Newsletter subscriber management with tags
+- Double opt-in confirmation flow
+- Automated welcome email sequence (5-part drip)
+- Monthly newsletter template
+- Unsubscribe management (CAN-SPAM compliance)
+- A/B testing for subject lines
+- Analytics: open rates, click rates, unsubscribes
+```
+
+### Priority 3 — Advanced Features
+
+#### Animations & Micro-interactions
+```
+Add Framer Motion animations to CybitSolutions:
+- Fade-in on scroll for section headings and cards (IntersectionObserver)
+- Stagger animation for grid items (0.1s delay between each)
+- Counter animation for stat numbers (count from 0 to target)
+- Smooth page transitions (AnimatePresence)
+- Mega-menu slide-down with opacity transition
+- Mobile nav slide-in from right
+- Button hover micro-interactions (scale 1.02, shadow increase)
+- Loading skeleton shimmer effects
+- Keep all animations under 300ms, subtle and professional
+```
+
+#### Dark Mode
+```
+Add dark mode toggle to CybitSolutions:
+- System preference detection via prefers-color-scheme
+- Toggle button in header utility bar (Sun/Moon icon)
+- Theme persistence in localStorage
+- Dark color palette: bg-gray-950, text-gray-100, cards bg-gray-900, borders gray-800
+- Accent colors remain: cyan #13C0F5, amber #FFC766
+- Smooth 200ms transition between modes
+- Respect OS-level preference on first visit
+```
+
+#### Multi-language Support (i18n)
+```
+Add internationalization for CybitSolutions:
+- Languages: English (default), Spanish, French, Arabic
+- next-intl setup with App Router
+- Language switcher dropdown in header
+- RTL layout support for Arabic
+- Translated: navigation, hero sections, CTAs, form labels, error messages
+- Language detection from browser Accept-Language header
+- URL prefix pattern: /en/..., /es/..., /fr/..., /ar/...
+- SEO: hreflang tags for each language variant
+```
+
+#### Progressive Web App (PWA)
+```
+Enhance CybitSolutions as a full PWA:
+- Service worker with Workbox for caching strategies
+- Offline fallback page
+- App install prompt banner
+- Push notification support for: new blog posts, event reminders
+- Background sync for form submissions when offline
+- Cache-first for static assets, network-first for API calls
+- Update notification when new version deployed
+```
+
+#### Accessibility Audit & Enhancement
+```
+Comprehensive accessibility audit for CybitSolutions:
+- Automated testing: axe-core, Lighthouse accessibility audit
+- Manual testing: screen reader (NVDA/VoiceOver), keyboard-only navigation
+- Fix any WCAG 2.2 AA violations
+- Add ARIA live regions for dynamic content (chat, search, forms)
+- Ensure all modals trap focus properly
+- Add visible focus indicators on all interactive elements
+- Color contrast verification for all text/background combinations
+- Reduced motion support (@media prefers-reduced-motion)
+- Create accessibility statement page with contact for accommodations
+```
+
+#### Performance Optimization
+```
+Optimize CybitSolutions for perfect Lighthouse scores:
+- Replace Google Fonts CSS link with next/font for zero-layout-shift fonts
+- Implement next/image for all images with blur placeholders
+- Dynamic imports for heavy components (ChatWidget, GlobalSearch)
+- Route-based code splitting (already handled by Next.js App Router)
+- Preconnect/DNS-prefetch for external domains
+- Compress images to WebP/AVIF with srcset for responsive sizes
+- HTTP/2 server push for critical resources
+- Target: Lighthouse 95+ on Performance, 100 on Accessibility, 100 on SEO
+```
+
+#### Social Media Integration
+```
+Add social media features to CybitSolutions:
+- Social share buttons on blog posts and case studies (LinkedIn, Twitter/X, Facebook)
+- LinkedIn company page feed integration
+- Twitter/X timeline widget on Insights page
+- Social proof counters (followers, connections)
+- Auto-post new blog articles to social accounts (via Zapier/n8n)
+- Social login for gated content (LinkedIn OAuth)
+```
+
+#### AI-Powered Features
+```
+Add AI capabilities to CybitSolutions (requires API keys):
+
+1. AI Email & Calendar Assistant:
+   - AI-generated email responses for contact form submissions
+   - Smart scheduling for consultation calls (Calendly/Cal.com integration)
+   - Auto-categorization of inquiries (Sales, Support, Partnership, Media)
+
+2. AI CRM Integration:
+   - Lead scoring based on form submissions and page visits
+   - Automated follow-up sequences based on interest signals
+   - Pipeline visualization (Lead → Qualified → Proposal → Won/Lost)
+   - Integration with HubSpot, Salesforce, or Pipedrive
+
+3. AI Social Media Management:
+   - Content calendar generation from blog posts
+   - AI-generated social captions and hashtags
+   - Best-time-to-post recommendations
+   - Engagement analytics dashboard
+
+4. AI Recruitment Assistant:
+   - Resume parsing and skills extraction
+   - Candidate scoring against job requirements
+   - Automated screening questions
+   - Interview scheduling with calendar integration
+```
+
+#### Search Engine Optimization (Advanced)
+```
+Advanced SEO/SMO/AEO/AIO strategy for CybitSolutions:
+
+1. Structured Data Expansion:
+   - Service schema for each of 10 service domains
+   - FAQ schema on service pages (from chat widget FAQs)
+   - HowTo schema on Our Approach page
+   - Review/Rating schema from testimonials
+   - Event schema for events page
+   - JobPosting schema for career openings
+   - LocalBusiness schema for contact page
+   - Article schema for blog/news posts
+
+2. AI Engine Optimization (AEO/AIO):
+   - llms.txt file at /llms.txt describing site for AI crawlers
+   - Structured FAQ content optimized for AI answer engines
+   - Clear entity definitions for knowledge graph inclusion
+   - Conversational long-tail keyword targeting
+   - Schema.org speakable property for voice search
+
+3. Social Media Optimization (SMO):
+   - OpenGraph image generation per page (next/og)
+   - Twitter Card optimization with large images
+   - LinkedIn article publishing integration
+   - Pinterest rich pins for infographics
+
+4. E-E-A-T Signals:
+   - Author bios on all blog/insight content
+   - Citation links to authoritative sources
+   - Last-updated dates on all content
+   - Security trust badges (FedRAMP, CMMC, ISO)
+   - Client logos and testimonials prominently displayed
+```
+
+#### Monitoring & Observability
+```
+Add production monitoring to CybitSolutions:
+- Sentry for error tracking and performance monitoring
+- Vercel Analytics for page views and user flows
+- Uptime monitoring (Better Uptime, Pingdom, or UptimeRobot)
+- Log aggregation for API routes (Vercel logs or Axiom)
+- Custom dashboard for: form submissions/day, error rates, response times
+- Alerting: email/Slack notifications for errors, downtime, anomalies
+- Synthetic monitoring for critical user flows
+```
+
+#### Security Hardening
+```
+Harden CybitSolutions security posture:
+- Content Security Policy (CSP) with nonces for inline scripts
+- Subresource Integrity (SRI) for external scripts
+- HSTS (Strict-Transport-Security) with preload
+- CORS configuration for API routes
+- Input sanitization with DOMPurify for any user-generated content
+- SQL injection prevention (parameterized queries when DB added)
+- Regular dependency auditing (npm audit, Snyk)
+- Security.txt at /.well-known/security.txt
+- Penetration testing checklist
+```
+
+---
+
+## 20. Kaporta-Specific Missing Gaps
+
+### Gaps Kaporta Needs (that CybitSolutions already has)
+```
+Apply these to the Kaporta website:
+
+1. Canonical URL: Add <link rel="canonical"> to layout.tsx metadata
+2. JSON-LD Structured Data: Add Organization, LocalBusiness, Service schemas to layout.tsx
+3. OpenGraph Image: Add og:image to metadata with company branding
+4. Twitter Card Upgrade: Change from "summary" to "summary_large_image" with image
+5. Theme-color Meta Tag: Add <meta name="theme-color" content="#002F5D"> to metadata
+6. Robots Meta Tag: Add robots and googlebot directives to metadata
+7. Apple Touch Icon: Add apple-touch-icon to layout.tsx metadata
+8. NAICS Codes: Add relevant NAICS codes to Organization schema
+9. BreadcrumbList Schema: Add breadcrumb structured data
+10. WebSite Schema: Add WebSite JSON-LD for search features
+```
+
+### Gaps Both Sites Need
+```
+Apply to BOTH CybitSolutions and Kaporta:
+
+1. Testing framework (Vitest + Playwright)
+2. CI/CD pipeline (GitHub Actions)
+3. Database integration (Vercel Postgres or Supabase)
+4. File storage for uploads (Vercel Blob or S3)
+5. Admin dashboard with authentication
+6. Service worker for PWA offline support
+7. Cookie consent banner
+8. Content Management System
+9. Real-time chat with AI backend
+10. Performance optimization (next/font, next/image)
+```
+
+---
+
+## 21. Email Setup Guide
+
+### Setting Up info@cybitsolutions.net on Hostinger
+```
+To set up the business email on Hostinger:
+
+1. Log into Hostinger control panel
+2. Go to Emails → Email Accounts
+3. Create email account: info@cybitsolutions.net
+4. Set up MX records for your domain:
+   - MX Record: mail.cybitsolutions.net (Priority 10)
+5. Set up SPF record: v=spf1 include:_spf.hostinger.com ~all
+6. Set up DKIM record (provided by Hostinger)
+7. Set up DMARC record: v=DMARC1; p=quarantine; rua=mailto:info@cybitsolutions.net
+8. Configure email clients:
+   - IMAP: imap.hostinger.com:993 (SSL)
+   - SMTP: smtp.hostinger.com:465 (SSL)
+9. For Resend integration:
+   - Verify domain at resend.com/domains
+   - Add Resend DNS records (DKIM, Return-Path)
+   - Set RESEND_API_KEY in Vercel environment variables
+```
+
+---
+
+## Changelog
+
+| Date | Change | Details |
+|------|--------|---------|
+| 2026-03-20 | Initial build | All 19 subpages, 10 service domains, legal pages, SEO |
+| 2026-03-20 | Company Profile | Web + PDF versions under Who We Are |
+| 2026-03-21 | Phase 3 Enhancements | Microsoft Ecosystem, payment portal, chat auto-open, testimonials rename, events registration, career job descriptions, resource library, news expand/collapse, mega menu z-index, logo sizes, phone/email fixes, ", LLC" removal, 5 new partners, SEO schemas |
+| 2026-03-21 | Backend Infrastructure | API routes, Zod validation, rate limiting, honeypot protection, Resend email, security headers, error pages, Vercel Analytics, Speed Insights |
