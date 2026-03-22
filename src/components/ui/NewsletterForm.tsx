@@ -1,8 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { Mail, CheckCircle, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+const newsletterFormSchema = z.object({
+  email: z.string().email("Please enter a valid email address"),
+});
+
+type NewsletterFormValues = z.infer<typeof newsletterFormSchema>;
 
 export interface NewsletterFormProps {
   className?: string;
@@ -14,36 +23,41 @@ export function NewsletterForm({
   className,
   variant = "light",
 }: NewsletterFormProps) {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<
-    "idle" | "loading" | "success" | "error"
-  >("idle");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [status, setStatus] = useState<"idle" | "success">("idle");
+  const [apiError, setApiError] = useState("");
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email.trim()) return;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<NewsletterFormValues>({
+    resolver: zodResolver(newsletterFormSchema),
+    defaultValues: { email: "" },
+  });
 
-    // Basic email validation
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setStatus("error");
-      setErrorMsg("Please enter a valid email address.");
-      return;
-    }
-
-    setStatus("loading");
-    setErrorMsg("");
+  async function onSubmit(data: NewsletterFormValues) {
+    setApiError("");
 
     try {
-      // Simulate API call — in production, connect to Mailchimp/SendGrid/etc.
-      await new Promise((r) => setTimeout(r, 1000));
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: data.email }),
+      });
+
+      const json = await res.json();
+
+      if (!res.ok) {
+        setApiError(json.error || "Something went wrong. Please try again.");
+        return;
+      }
+
       setStatus("success");
-      setEmail("");
+      reset();
       setTimeout(() => setStatus("idle"), 4000);
     } catch {
-      setStatus("error");
-      setErrorMsg("Something went wrong. Please try again.");
-      setTimeout(() => setStatus("idle"), 3000);
+      setApiError("Unable to subscribe. Please try again later.");
     }
   }
 
@@ -59,10 +73,7 @@ export function NewsletterForm({
         )}
       >
         <CheckCircle
-          className={cn(
-            "size-5 flex-shrink-0",
-            isDark ? "text-accent-cyan" : "text-accent-cyan"
-          )}
+          className="size-5 flex-shrink-0 text-accent-cyan"
           aria-hidden="true"
         />
         <span className="text-sm font-medium">
@@ -74,53 +85,46 @@ export function NewsletterForm({
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       className={cn("flex flex-col gap-2", className)}
       noValidate
     >
-      <div className="flex flex-col sm:flex-row gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
           <Mail
             className={cn(
-              "absolute left-3 top-1/2 -translate-y-1/2 size-4",
+              "absolute left-3 top-1/2 size-4 -translate-y-1/2",
               isDark ? "text-steel" : "text-steel/60"
             )}
             aria-hidden="true"
           />
           <input
             type="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              if (status === "error") {
-                setStatus("idle");
-                setErrorMsg("");
-              }
-            }}
             placeholder="Enter your email address"
             aria-label="Email address for newsletter"
-            disabled={status === "loading"}
+            disabled={isSubmitting}
             className={cn(
               "w-full rounded-lg border py-2.5 pl-10 pr-4 text-sm transition-colors",
-              "focus:outline-none focus:ring-2 focus:ring-accent-cyan/40 focus:border-accent-cyan",
+              "focus:border-accent-cyan focus:outline-none focus:ring-2 focus:ring-accent-cyan/40",
               "disabled:opacity-60",
               isDark
                 ? "border-slate bg-slate text-white placeholder:text-steel"
                 : "border-border bg-white text-navy placeholder:text-steel/60",
-              status === "error" && "border-red-500 focus:ring-red-500/30"
+              errors.email && "border-red-500 focus:ring-red-500/30"
             )}
+            {...register("email")}
           />
         </div>
         <button
           type="submit"
-          disabled={status === "loading" || !email.trim()}
+          disabled={isSubmitting}
           className={cn(
             "inline-flex items-center justify-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold transition-colors",
-            "disabled:opacity-50 disabled:cursor-not-allowed",
+            "disabled:cursor-not-allowed disabled:opacity-50",
             "bg-accent-cyan text-navy hover:brightness-110"
           )}
         >
-          {status === "loading" ? (
+          {isSubmitting ? (
             <>
               <Loader2 className="size-4 animate-spin" aria-hidden="true" />
               Subscribing...
@@ -130,9 +134,14 @@ export function NewsletterForm({
           )}
         </button>
       </div>
-      {status === "error" && errorMsg && (
+      {errors.email && (
         <p className="text-sm text-red-500" role="alert">
-          {errorMsg}
+          {errors.email.message}
+        </p>
+      )}
+      {apiError && (
+        <p className="text-sm text-red-500" role="alert">
+          {apiError}
         </p>
       )}
     </form>

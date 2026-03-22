@@ -1,95 +1,97 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./Button";
 
 const SUBJECT_OPTIONS = [
-  "General Inquiry",
-  "Request Consultation",
-  "Submit RFP",
+  "General",
+  "Demo",
+  "Consultation",
+  "RFP",
   "Partnership",
-  "Careers",
+  "Media",
 ] as const;
 
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  company: string;
-  subject: string;
-  message: string;
-}
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters").max(200),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().max(30),
+  company: z.string().max(200),
+  subject: z.string().min(1, "Please select a subject"),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(5000, "Message must be under 5,000 characters"),
+  website: z.string(),
+});
 
-interface FormErrors {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-}
-
-const initialData: FormData = {
-  name: "",
-  email: "",
-  phone: "",
-  company: "",
-  subject: "",
-  message: "",
-};
+type ContactFormValues = z.infer<typeof contactSchema>;
 
 export interface ContactFormProps {
   className?: string;
-  /** Called with form data on valid submission. Return a promise to show loading state. */
-  onSubmit?: (data: FormData) => Promise<void> | void;
 }
 
-export function ContactForm({ className, onSubmit }: ContactFormProps) {
-  const [data, setData] = useState<FormData>(initialData);
-  const [errors, setErrors] = useState<FormErrors>({});
+export function ContactForm({ className }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState("");
 
-  function validate(): FormErrors {
-    const errs: FormErrors = {};
-    if (!data.name.trim()) errs.name = "Name is required";
-    if (!data.email.trim()) {
-      errs.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      errs.email = "Enter a valid email address";
-    }
-    if (!data.subject) errs.subject = "Please select a subject";
-    if (!data.message.trim()) errs.message = "Message is required";
-    return errs;
-  }
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      company: "",
+      subject: "",
+      message: "",
+      website: "",
+    },
+  });
 
-  async function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    const errs = validate();
-    setErrors(errs);
-    if (Object.keys(errs).length > 0) return;
+  async function onSubmit(data: ContactFormValues) {
+    setApiError("");
 
-    setLoading(true);
-    try {
-      if (onSubmit) {
-        await onSubmit(data);
-      } else {
-        // Simulate API call — in production, connect to backend/email service
-        await new Promise((r) => setTimeout(r, 1500));
-      }
+    // Honeypot: if a bot filled in the hidden "website" field, silently succeed
+    if (data.website) {
       setSubmitted(true);
-      setData(initialData);
-    } catch {
-      // Submission error handling can be extended here
-    } finally {
-      setLoading(false);
+      return;
     }
-  }
 
-  function update(field: keyof FormData, value: string) {
-    setData((prev) => ({ ...prev, [field]: value }));
-    if (errors[field as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          company: data.company,
+          subject: data.subject,
+          message: data.message,
+        }),
+      });
+
+      const json = await res.json();
+
+      if (!res.ok) {
+        setApiError(json.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      setSubmitted(true);
+      reset();
+    } catch {
+      setApiError("Unable to send your message. Please try again later.");
     }
   }
 
@@ -124,40 +126,52 @@ export function ContactForm({ className, onSubmit }: ContactFormProps) {
   /* ---- Form ---- */
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       noValidate
       className={cn(
         "space-y-6 rounded-xl border border-border bg-white p-6 shadow-sm sm:p-8",
         className
       )}
     >
+      {/* General API error */}
+      {apiError && (
+        <div
+          role="alert"
+          className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+        >
+          {apiError}
+        </div>
+      )}
+
+      {/* Honeypot — hidden from humans, visible to bots */}
+      <div className="absolute -left-[9999px] opacity-0" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register("website")}
+        />
+      </div>
+
       {/* Name & Email row */}
       <div className="grid gap-6 sm:grid-cols-2">
-        <Field
-          label="Full Name"
-          error={errors.name}
-          required
-        >
+        <Field label="Full Name" error={errors.name?.message} required>
           <input
             type="text"
-            value={data.name}
-            onChange={(e) => update("name", e.target.value)}
             placeholder="Jane Smith"
-            className={inputClasses(errors.name)}
+            className={inputClasses(errors.name?.message)}
+            {...register("name")}
           />
         </Field>
 
-        <Field
-          label="Email"
-          error={errors.email}
-          required
-        >
+        <Field label="Email" error={errors.email?.message} required>
           <input
             type="email"
-            value={data.email}
-            onChange={(e) => update("email", e.target.value)}
             placeholder="jane@company.com"
-            className={inputClasses(errors.email)}
+            className={inputClasses(errors.email?.message)}
+            {...register("email")}
           />
         </Field>
       </div>
@@ -167,34 +181,28 @@ export function ContactForm({ className, onSubmit }: ContactFormProps) {
         <Field label="Phone">
           <input
             type="tel"
-            value={data.phone}
-            onChange={(e) => update("phone", e.target.value)}
             placeholder="(555) 123-4567"
             className={inputClasses()}
+            {...register("phone")}
           />
         </Field>
 
         <Field label="Company">
           <input
             type="text"
-            value={data.company}
-            onChange={(e) => update("company", e.target.value)}
             placeholder="Company name"
             className={inputClasses()}
+            {...register("company")}
           />
         </Field>
       </div>
 
       {/* Subject */}
-      <Field
-        label="Subject"
-        error={errors.subject}
-        required
-      >
+      <Field label="Subject" error={errors.subject?.message} required>
         <select
-          value={data.subject}
-          onChange={(e) => update("subject", e.target.value)}
-          className={cn(inputClasses(errors.subject), !data.subject && "text-steel")}
+          className={cn(inputClasses(errors.subject?.message))}
+          defaultValue=""
+          {...register("subject")}
         >
           <option value="" disabled>
             Select a subject
@@ -208,17 +216,12 @@ export function ContactForm({ className, onSubmit }: ContactFormProps) {
       </Field>
 
       {/* Message */}
-      <Field
-        label="Message"
-        error={errors.message}
-        required
-      >
+      <Field label="Message" error={errors.message?.message} required>
         <textarea
-          value={data.message}
-          onChange={(e) => update("message", e.target.value)}
           placeholder="Tell us about your project or question..."
           rows={5}
-          className={cn(inputClasses(errors.message), "resize-y")}
+          className={cn(inputClasses(errors.message?.message), "resize-y")}
+          {...register("message")}
         />
       </Field>
 
@@ -228,9 +231,9 @@ export function ContactForm({ className, onSubmit }: ContactFormProps) {
         variant="primary"
         size="lg"
         className="w-full sm:w-auto"
-        disabled={loading}
+        disabled={isSubmitting}
       >
-        {loading ? (
+        {isSubmitting ? (
           <>
             <Loader2 className="size-5 animate-spin" aria-hidden="true" />
             Sending...
@@ -251,7 +254,7 @@ function inputClasses(error?: string) {
   return cn(
     "w-full rounded-lg border bg-white px-4 py-2.5 text-slate font-body text-base transition-colors",
     "placeholder:text-steel/60",
-    "focus:border-accent-cyan focus:outline-none focus:ring-2 focus:ring-accent-cyan/30",
+    "focus:border-accent-blue focus:outline-none focus:ring-2 focus:ring-accent-blue/30",
     error ? "border-red-500" : "border-border"
   );
 }

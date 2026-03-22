@@ -5,6 +5,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ChatWidget } from "@/components/ui/ChatWidget";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import { ToastProvider } from "@/components/ui/Toast";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -212,13 +214,16 @@ export default function RootLayout({
 
         <Header />
 
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
+        <ToastProvider>
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+        </ToastProvider>
 
         <Footer />
         <ChatWidget />
         <CookieConsent />
+        <ScrollToTop />
         <Analytics />
         <SpeedInsights />
       </body>
