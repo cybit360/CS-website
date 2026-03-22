@@ -1936,3 +1936,7 @@ Create downloadable PDF pages for Kaporta:
 | 2026-03-22 | ReadingProgress bar component for blog articles | ✅ Done |
 | 2026-03-22 | Total API routes: 6 (contact, newsletter, career-apply, partner, testimonial, og) | ✅ Done |
 | 2026-03-22 | Total pages: 58 (including offline page) | ✅ Done |
+| 2026-03-22 | Prompt 20: Performance optimizations (HSTS, cache headers, compression, image optimization) | ✅ Done |
+| 2026-03-22 | Prompt 21: Accessibility improvements (VisuallyHidden, MobileNav focus trap, CSS focus-visible) | ✅ Done |
+| 2026-03-22 | Prompt 23: Video content support (VideoPlayer, VideoGallery, 6 sample videos, events page) | ✅ Done |
+| 2026-03-22 | next.config.ts: HSTS, cache-control, remove X-Powered-By, image optimization config | ✅ Done |
