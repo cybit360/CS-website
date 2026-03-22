@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Download, MessageSquare, Shield, Zap, Target, CheckCircle } from 'lucide-react';
 import { FadeIn } from './FadeIn';
 import { CountUp } from './CountUp';
@@ -49,6 +50,15 @@ function HeroContent({ animated = false }: { animated?: boolean }) {
 
   return (
     <section className="relative min-h-[92vh] flex items-center bg-navy overflow-hidden">
+      {/* Hero background image */}
+      <Image
+        src="/images/hero/homepage-hero.jpg"
+        alt=""
+        fill
+        className="object-cover opacity-20"
+        priority
+        sizes="100vw"
+      />
       {/* Background layers */}
       <div className="absolute inset-0 hero-gradient" />
       <div className="absolute inset-0 dot-pattern opacity-[0.03]" />

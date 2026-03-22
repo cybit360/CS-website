@@ -9,8 +9,24 @@ import {
   Send,
   Building2,
   Users,
+  Loader2,
 } from "lucide-react";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useToast } from "@/components/ui/Toast";
+
+const testimonialSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters").max(100, "Name must be 100 characters or less"),
+  role: z.string().min(2, "Role must be at least 2 characters").max(100, "Role must be 100 characters or less"),
+  company: z.string().min(2, "Company must be at least 2 characters").max(200, "Company must be 200 characters or less"),
+  content: z.string().min(20, "Testimonial must be at least 20 characters").max(2000, "Testimonial must be 2000 characters or less"),
+  rating: z.number().min(1, "Please select a rating").max(5),
+  website: z.string().optional(),
+});
+
+type TestimonialFormData = z.infer<typeof testimonialSchema>;
 
 const employeeTestimonials = [
   {
@@ -93,19 +109,62 @@ const clientTestimonials = [
 ];
 
 export default function TestimonialsPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    role: "",
-    testimonial: "",
-    rating: 0,
-  });
   const [hoverRating, setHoverRating] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const { addToast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm<TestimonialFormData>({
+    resolver: zodResolver(testimonialSchema),
+    defaultValues: {
+      name: "",
+      company: "",
+      role: "",
+      content: "",
+      rating: 0,
+      website: "",
+    },
+  });
+
+  const ratingValue = watch("rating");
+
+  const onSubmit = async (data: TestimonialFormData) => {
+    try {
+      const res = await fetch("/api/testimonial", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const json = await res.json();
+
+      if (!res.ok) {
+        addToast({
+          type: "error",
+          title: "Submission Failed",
+          message: json.error || "Something went wrong. Please try again.",
+        });
+        return;
+      }
+
+      setSubmitted(true);
+      addToast({
+        type: "success",
+        title: "Testimonial Submitted",
+        message: json.message || "Thank you for sharing your experience!",
+      });
+    } catch {
+      addToast({
+        type: "error",
+        title: "Network Error",
+        message: "Could not reach the server. Please check your connection and try again.",
+      });
+    }
   };
 
   return (
@@ -277,9 +336,21 @@ export default function TestimonialsPage() {
             </div>
           ) : (
             <form
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit(onSubmit)}
               className="bg-cloud rounded-2xl p-8 border border-border space-y-6"
             >
+              {/* Honeypot field - hidden from real users */}
+              <div className="absolute opacity-0 pointer-events-none" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input
+                  type="text"
+                  id="website"
+                  autoComplete="off"
+                  tabIndex={-1}
+                  {...register("website")}
+                />
+              </div>
+
               <div>
                 <label
                   htmlFor="name"
@@ -290,14 +361,13 @@ export default function TestimonialsPage() {
                 <input
                   type="text"
                   id="name"
-                  required
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
+                  {...register("name")}
                   className="w-full px-4 py-3 rounded-lg border border-border bg-white text-navy focus:ring-2 focus:ring-accent-cyan focus:border-accent-cyan outline-none transition"
                   placeholder="Your full name"
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+                )}
               </div>
 
               <div>
@@ -305,18 +375,18 @@ export default function TestimonialsPage() {
                   htmlFor="company"
                   className="block text-sm font-medium text-navy mb-2"
                 >
-                  Company / Organization
+                  Company / Organization <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   id="company"
-                  value={formData.company}
-                  onChange={(e) =>
-                    setFormData({ ...formData, company: e.target.value })
-                  }
+                  {...register("company")}
                   className="w-full px-4 py-3 rounded-lg border border-border bg-white text-navy focus:ring-2 focus:ring-accent-cyan focus:border-accent-cyan outline-none transition"
                   placeholder="Your company or organization"
                 />
+                {errors.company && (
+                  <p className="text-red-500 text-sm mt-1">{errors.company.message}</p>
+                )}
               </div>
 
               <div>
@@ -324,38 +394,37 @@ export default function TestimonialsPage() {
                   htmlFor="role"
                   className="block text-sm font-medium text-navy mb-2"
                 >
-                  Role / Title
+                  Role / Title <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   id="role"
-                  value={formData.role}
-                  onChange={(e) =>
-                    setFormData({ ...formData, role: e.target.value })
-                  }
+                  {...register("role")}
                   className="w-full px-4 py-3 rounded-lg border border-border bg-white text-navy focus:ring-2 focus:ring-accent-cyan focus:border-accent-cyan outline-none transition"
                   placeholder="Your role or title"
                 />
+                {errors.role && (
+                  <p className="text-red-500 text-sm mt-1">{errors.role.message}</p>
+                )}
               </div>
 
               <div>
                 <label
-                  htmlFor="testimonial"
+                  htmlFor="content"
                   className="block text-sm font-medium text-navy mb-2"
                 >
                   Testimonial <span className="text-red-500">*</span>
                 </label>
                 <textarea
-                  id="testimonial"
-                  required
+                  id="content"
                   rows={5}
-                  value={formData.testimonial}
-                  onChange={(e) =>
-                    setFormData({ ...formData, testimonial: e.target.value })
-                  }
+                  {...register("content")}
                   className="w-full px-4 py-3 rounded-lg border border-border bg-white text-navy focus:ring-2 focus:ring-accent-cyan focus:border-accent-cyan outline-none transition resize-none"
                   placeholder="Share your experience with CybitSolutions..."
                 />
+                {errors.content && (
+                  <p className="text-red-500 text-sm mt-1">{errors.content.message}</p>
+                )}
               </div>
 
               <div>
@@ -367,9 +436,7 @@ export default function TestimonialsPage() {
                     <button
                       key={star}
                       type="button"
-                      onClick={() =>
-                        setFormData({ ...formData, rating: star })
-                      }
+                      onClick={() => setValue("rating", star, { shouldValidate: true })}
                       onMouseEnter={() => setHoverRating(star)}
                       onMouseLeave={() => setHoverRating(0)}
                       className="p-1 transition"
@@ -377,30 +444,40 @@ export default function TestimonialsPage() {
                     >
                       <Star
                         className={`w-8 h-8 transition ${
-                          star <= (hoverRating || formData.rating)
+                          star <= (hoverRating || ratingValue)
                             ? "text-accent-amber fill-accent-amber"
                             : "text-gray-300"
                         }`}
                       />
                     </button>
                   ))}
-                  {formData.rating > 0 && (
+                  {ratingValue > 0 && (
                     <span className="ml-2 text-sm text-steel">
-                      {formData.rating} of 5 stars
+                      {ratingValue} of 5 stars
                     </span>
                   )}
                 </div>
+                {errors.rating && (
+                  <p className="text-red-500 text-sm mt-1">{errors.rating.message}</p>
+                )}
               </div>
 
               <button
                 type="submit"
-                disabled={
-                  !formData.name || !formData.testimonial || !formData.rating
-                }
+                disabled={isSubmitting}
                 className="inline-flex items-center gap-2 bg-accent-cyan text-navy font-semibold px-8 py-3 rounded-lg hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send className="w-4 h-4" />
-                Submit Testimonial
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    Submit Testimonial
+                  </>
+                )}
               </button>
             </form>
           )}

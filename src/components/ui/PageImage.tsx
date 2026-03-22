@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface PageImageProps {
@@ -11,11 +12,64 @@ interface PageImageProps {
     | "office"
     | "tech"
     | "military"
-    | "innovation";
+    | "innovation"
+    | "emerging"
+    | "industry";
   className?: string;
   aspectRatio?: "video" | "square" | "wide";
   overlay?: boolean;
 }
+
+const images: Record<PageImageProps["variant"], { src: string; alt: string }> = {
+  cybersecurity: {
+    src: "/images/services/cybersecurity.jpg",
+    alt: "Cybersecurity operations center with digital security visualizations",
+  },
+  cloud: {
+    src: "/images/services/cloud.jpg",
+    alt: "Cloud computing infrastructure and server architecture",
+  },
+  data: {
+    src: "/images/services/data-analytics.jpg",
+    alt: "Data analytics dashboards and visualization tools",
+  },
+  ai: {
+    src: "/images/services/ai-automation.jpg",
+    alt: "Artificial intelligence and machine learning technology",
+  },
+  government: {
+    src: "/images/services/digital-transformation.jpg",
+    alt: "Digital transformation and global technology networks",
+  },
+  team: {
+    src: "/images/about/team-collaboration.jpg",
+    alt: "Professional team collaborating in a modern office environment",
+  },
+  office: {
+    src: "/images/services/enterprise-it.jpg",
+    alt: "Modern enterprise office and IT workspace",
+  },
+  tech: {
+    src: "/images/services/infrastructure.jpg",
+    alt: "IT infrastructure, networking, and data center operations",
+  },
+  military: {
+    src: "/images/services/cybersecurity.jpg",
+    alt: "Military-grade cybersecurity and defense technology",
+  },
+  innovation: {
+    src: "/images/services/software-devops.jpg",
+    alt: "Software development and DevOps engineering",
+  },
+  emerging: {
+    src: "/images/services/emerging-tech.jpg",
+    alt: "Emerging technologies including quantum computing and blockchain",
+  },
+  industry: {
+    src: "/images/services/industry-specific.jpg",
+    alt: "Industry-specific IT solutions for regulated sectors",
+  },
+};
 
 const gradients: Record<PageImageProps["variant"], string> = {
   cybersecurity: "from-navy via-slate to-accent-cyan/30",
@@ -28,24 +82,8 @@ const gradients: Record<PageImageProps["variant"], string> = {
   tech: "from-navy via-cyan-900 to-accent-cyan/30",
   military: "from-stone-900 via-olive-900 to-navy",
   innovation: "from-navy via-purple-900 to-accent-cyan/20",
-};
-
-const icons: Record<PageImageProps["variant"], string> = {
-  cybersecurity: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
-  cloud:
-    "M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z",
-  data: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9",
-  ai: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
-  government:
-    "M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3",
-  team: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75",
-  office:
-    "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
-  tech: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
-  military:
-    "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
-  innovation:
-    "M13 10V3L4 14h7v7l9-11h-7z",
+  emerging: "from-navy via-indigo-900 to-purple-800/30",
+  industry: "from-navy via-slate to-stone-700/20",
 };
 
 export function PageImage({
@@ -61,6 +99,8 @@ export function PageImage({
         ? "aspect-square"
         : "aspect-[21/9]";
 
+  const imageData = images[variant];
+
   return (
     <div
       className={cn(
@@ -69,36 +109,26 @@ export function PageImage({
         className
       )}
       role="img"
-      aria-hidden="true"
+      aria-label={imageData.alt}
     >
-      {/* Base gradient */}
-      <div
-        className={cn("absolute inset-0 bg-gradient-to-br", gradients[variant])}
+      {/* Real photo */}
+      <Image
+        src={imageData.src}
+        alt={imageData.alt}
+        fill
+        className="object-cover"
+        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
       />
 
-      {/* Grid pattern overlay */}
+      {/* Gradient overlay for text readability */}
       {overlay && (
-        <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-10" />
+        <div
+          className={cn(
+            "absolute inset-0 bg-gradient-to-br opacity-40",
+            gradients[variant]
+          )}
+        />
       )}
-
-      {/* Centered decorative icon */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <svg
-          className="w-24 h-24 text-white/[0.07]"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d={icons[variant]} />
-        </svg>
-      </div>
-
-      {/* Decorative corner accents */}
-      <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-accent-cyan/5 rounded-tl-full" />
-      <div className="absolute top-0 left-0 w-1/4 h-1/4 bg-white/[0.03] rounded-br-full" />
     </div>
   );
 }

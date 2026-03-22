@@ -143,7 +143,14 @@ export default function IndustrySpecificPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      {/* Visual Accent */}
+      <section className="py-10 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <PageImage variant="industry" aspectRatio="wide" className="shadow-lg" />
+        </div>
+      </section>
+
+      <section className="pt-6 pb-16 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-steel leading-relaxed">

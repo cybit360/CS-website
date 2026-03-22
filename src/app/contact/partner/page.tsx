@@ -15,6 +15,7 @@ import {
   Award,
 } from "lucide-react";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { PartnerForm } from "@/components/ui/PartnerForm";
 
 export const metadata: Metadata = {
   title: "Partner With Us",
@@ -177,32 +178,25 @@ export default function PartnerPage() {
         </div>
       </section>
 
-      {/* Partner Inquiry */}
+      {/* Partner Inquiry Form */}
       <section className="bg-cloud py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-white rounded-xl border border-border p-8 md:p-12 text-center">
-            <div className="inline-flex p-4 rounded-full bg-accent-cyan/10 mb-6">
-              <Handshake className="w-10 h-10 text-accent-cyan" />
-            </div>
-            <h2 className="text-2xl font-bold text-navy mb-4">
-              Interested in Partnering?
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-navy mb-4">
+              Submit a Partnership Inquiry
             </h2>
-            <p className="text-steel mb-6">
-              We are always looking for innovative companies to collaborate with
-              on federal opportunities. Reach out to our partnerships team to
-              start a conversation about how we can work together.
+            <p className="text-steel max-w-2xl mx-auto">
+              Interested in partnering with CybitSolutions? Fill out the form
+              below and our partnerships team will reach out to start a
+              conversation about how we can work together.
             </p>
-            <div className="flex items-center justify-center gap-2 text-accent-cyan font-semibold mb-8">
+            <div className="flex items-center justify-center gap-2 text-accent-cyan font-semibold mt-4">
               <Mail className="w-5 h-5" />
               info@cybitsolutions.net
             </div>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-accent-cyan text-navy font-bold px-8 py-3 rounded-lg hover:opacity-90 transition-opacity"
-            >
-              Contact Us
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+          </div>
+          <div className="max-w-3xl mx-auto">
+            <PartnerForm />
           </div>
         </div>
       </section>

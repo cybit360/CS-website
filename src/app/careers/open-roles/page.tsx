@@ -1,7 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { FadeIn } from "@/components/animations/FadeIn";
 import {
   Briefcase,
@@ -17,8 +20,10 @@ import {
   DollarSign,
   Upload,
   Laptop,
+  Loader2,
 } from "lucide-react";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { useToast } from "@/components/ui/Toast";
 
 interface Job {
   title: string;
@@ -380,6 +385,21 @@ const locationTypeColors: Record<string, string> = {
   "On-site": "bg-amber-100 text-amber-700",
 };
 
+const applicationSchema = z.object({
+  name: z.string().min(1, "Name is required").max(200),
+  email: z.string().email("A valid email address is required"),
+  phone: z.string().min(1, "Phone number is required").max(30),
+  position: z.string().min(1, "Position is required").max(200),
+  linkedin: z.string().max(500),
+  coverLetter: z
+    .string()
+    .min(50, "Cover letter must be at least 50 characters")
+    .max(10000),
+  website: z.string(),
+});
+
+type ApplicationFormValues = z.infer<typeof applicationSchema>;
+
 function ApplicationModal({
   job,
   onClose,
@@ -387,26 +407,102 @@ function ApplicationModal({
   job: Job;
   onClose: () => void;
 }) {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    linkedIn: "",
-    coverLetter: "",
-  });
-  const [resumeFileName, setResumeFileName] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [resumeError, setResumeError] = useState("");
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const { addToast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors, isSubmitting },
+  } = useForm<ApplicationFormValues>({
+    resolver: zodResolver(applicationSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      position: job.title,
+      linkedin: "",
+      coverLetter: "",
+      website: "",
+    },
+  });
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setResumeError("");
     if (e.target.files && e.target.files[0]) {
-      setResumeFileName(e.target.files[0].name);
+      const file = e.target.files[0];
+      const maxSize = 10 * 1024 * 1024; // 10MB
+      if (file.size > maxSize) {
+        setResumeError("File size must be under 10MB");
+        return;
+      }
+      setResumeFile(file);
     }
   };
+
+  async function onSubmit(data: ApplicationFormValues) {
+    // Honeypot check
+    if (data.website) {
+      setSubmitted(true);
+      return;
+    }
+
+    // Validate resume
+    if (!resumeFile) {
+      setResumeError("Resume is required");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/career-apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          position: data.position,
+          linkedin: data.linkedin,
+          coverLetter: data.coverLetter,
+          resumeFileName: resumeFile.name,
+        }),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        addToast({
+          type: "error",
+          title: "Submission Failed",
+          message: result.error || "Something went wrong. Please try again.",
+        });
+        return;
+      }
+
+      setSubmitted(true);
+      addToast({
+        type: "success",
+        title: "Application Submitted",
+        message:
+          result.message ||
+          "Your application has been submitted successfully.",
+      });
+    } catch {
+      addToast({
+        type: "error",
+        title: "Network Error",
+        message: "Unable to reach the server. Please check your connection and try again.",
+      });
+    }
+  }
+
+  const inputClassName =
+    "w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-navy focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan";
+  const errorClassName = "text-red-500 text-xs mt-1";
 
   return (
     <div
@@ -459,7 +555,7 @@ function ApplicationModal({
               <p className="text-steel text-sm mb-6">
                 Thank you for applying for the {job.title} position. Our
                 recruiting team will review your application and contact you at{" "}
-                {formData.email} within 5-7 business days.
+                {getValues("email")} within 5-7 business days.
               </p>
               <button
                 onClick={onClose}
@@ -469,7 +565,19 @@ function ApplicationModal({
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              {/* Honeypot field - hidden from real users */}
+              <div className="absolute -left-[9999px]" aria-hidden="true">
+                <label htmlFor="app-website">Website</label>
+                <input
+                  id="app-website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  {...register("website")}
+                />
+              </div>
+
               <div>
                 <label
                   htmlFor="app-name"
@@ -480,14 +588,13 @@ function ApplicationModal({
                 <input
                   id="app-name"
                   type="text"
-                  required
-                  value={formData.fullName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, fullName: e.target.value })
-                  }
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-navy focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan"
+                  {...register("name")}
+                  className={inputClassName}
                   placeholder="Jane Doe"
                 />
+                {errors.name && (
+                  <p className={errorClassName}>{errors.name.message}</p>
+                )}
               </div>
               <div>
                 <label
@@ -499,14 +606,13 @@ function ApplicationModal({
                 <input
                   id="app-email"
                   type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-navy focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan"
+                  {...register("email")}
+                  className={inputClassName}
                   placeholder="jane.doe@email.com"
                 />
+                {errors.email && (
+                  <p className={errorClassName}>{errors.email.message}</p>
+                )}
               </div>
               <div>
                 <label
@@ -518,14 +624,13 @@ function ApplicationModal({
                 <input
                   id="app-phone"
                   type="tel"
-                  required
-                  value={formData.phone}
-                  onChange={(e) =>
-                    setFormData({ ...formData, phone: e.target.value })
-                  }
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-navy focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan"
+                  {...register("phone")}
+                  className={inputClassName}
                   placeholder="(555) 123-4567"
                 />
+                {errors.phone && (
+                  <p className={errorClassName}>{errors.phone.message}</p>
+                )}
               </div>
               <div>
                 <label
@@ -537,13 +642,13 @@ function ApplicationModal({
                 <input
                   id="app-linkedin"
                   type="url"
-                  value={formData.linkedIn}
-                  onChange={(e) =>
-                    setFormData({ ...formData, linkedIn: e.target.value })
-                  }
-                  className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-navy focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan"
+                  {...register("linkedin")}
+                  className={inputClassName}
                   placeholder="https://linkedin.com/in/janedoe"
                 />
+                {errors.linkedin && (
+                  <p className={errorClassName}>{errors.linkedin.message}</p>
+                )}
               </div>
               <div>
                 <label
@@ -556,40 +661,55 @@ function ApplicationModal({
                   <input
                     id="app-resume"
                     type="file"
-                    required
+                    ref={fileInputRef}
                     accept=".pdf,.doc,.docx"
                     onChange={handleFileChange}
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                   />
                   <div className="flex items-center gap-3 border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-steel cursor-pointer hover:bg-cloud transition">
                     <Upload className="w-4 h-4 text-accent-cyan" />
-                    {resumeFileName || "Upload resume (PDF, DOC, DOCX)"}
+                    {resumeFile?.name || "Upload resume (PDF, DOC, DOCX)"}
                   </div>
                 </div>
+                {resumeError && (
+                  <p className={errorClassName}>{resumeError}</p>
+                )}
               </div>
               <div>
                 <label
                   htmlFor="app-cover"
                   className="block text-sm font-medium text-navy mb-1"
                 >
-                  Cover Letter
+                  Cover Letter <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   id="app-cover"
                   rows={4}
-                  value={formData.coverLetter}
-                  onChange={(e) =>
-                    setFormData({ ...formData, coverLetter: e.target.value })
-                  }
+                  {...register("coverLetter")}
                   className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-navy focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 focus:border-accent-cyan resize-none"
                   placeholder="Tell us why you are interested in this role and what makes you a great fit..."
                 />
+                {errors.coverLetter && (
+                  <p className={errorClassName}>{errors.coverLetter.message}</p>
+                )}
               </div>
+
+              {/* Hidden position field */}
+              <input type="hidden" {...register("position")} />
+
               <button
                 type="submit"
-                className="w-full bg-accent-cyan text-navy font-semibold py-3 rounded-lg hover:brightness-110 transition mt-2"
+                disabled={isSubmitting}
+                className="w-full bg-accent-cyan text-navy font-semibold py-3 rounded-lg hover:brightness-110 transition mt-2 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                Submit Application
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Submit Application"
+                )}
               </button>
             </form>
           )}
