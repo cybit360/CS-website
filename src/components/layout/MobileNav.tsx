@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { X, ChevronDown, Phone, Mail } from "lucide-react";
@@ -20,6 +20,8 @@ const priorityLinks = [
 
 export function MobileNav({ isOpen, onClose }: MobileNavProps) {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const panelRef = useRef<HTMLElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const toggleSection = useCallback((label: string) => {
     setExpandedSection((prev) => (prev === label ? null : label));
@@ -37,10 +39,45 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
     };
   }, [isOpen]);
 
-  // Close on Escape
+  // Focus the close button when panel opens
+  useEffect(() => {
+    if (isOpen) {
+      // Small delay to allow the transition to start
+      const timer = setTimeout(() => closeButtonRef.current?.focus(), 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
+  // Close on Escape + focus trap
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      // Focus trap: cycle focus within the panel
+      if (e.key === "Tab" && panelRef.current) {
+        const focusable = panelRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
     }
     if (isOpen) {
       document.addEventListener("keydown", handleKey);
@@ -62,6 +99,9 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
 
       {/* Slide-in panel */}
       <nav
+        ref={panelRef}
+        role="dialog"
+        aria-modal={isOpen ? true : undefined}
         aria-label="Mobile navigation"
         aria-hidden={!isOpen}
         className={cn(
@@ -82,6 +122,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
             />
           </Link>
           <button
+            ref={closeButtonRef}
             onClick={onClose}
             aria-label="Close menu"
             className="rounded-lg p-2 text-steel hover:bg-cloud hover:text-navy transition-colors"

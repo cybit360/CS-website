@@ -15,6 +15,8 @@ import {
   Monitor,
 } from "lucide-react";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { VideoPlayer } from "@/components/ui/VideoPlayer";
+import { videos } from "@/data/videos";
 
 type EventCategory = "Conference" | "Webinar" | "Speaking Engagement";
 
@@ -494,6 +496,54 @@ export default function EventsPage() {
                 </a>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Webinars */}
+      <section className="bg-cloud py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-10">
+            <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-2">
+              On Demand
+            </p>
+            <h2 className="text-3xl font-bold text-navy mb-3">
+              Recent Webinars
+            </h2>
+            <p className="text-steel max-w-2xl">
+              Missed a live session? Watch our most recent webinars on demand
+              covering cybersecurity, cloud, and federal IT modernization.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {videos
+              .filter((v) => v.category === "Webinar")
+              .slice(0, 3)
+              .map((video) => (
+                <div key={video.id} className="space-y-3">
+                  <VideoPlayer
+                    url={video.url}
+                    title={video.title}
+                    posterImage={video.posterImage}
+                  />
+                  <h3 className="text-lg font-semibold text-navy">
+                    {video.title}
+                  </h3>
+                  <p className="text-steel text-sm line-clamp-2">
+                    {video.description}
+                  </p>
+                  <div className="flex items-center gap-3 text-xs text-steel/60">
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      {video.duration}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3" />
+                      {video.date}
+                    </span>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </section>

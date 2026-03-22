@@ -82,16 +82,23 @@ a, button {
 .skip-link {
   position: absolute;
   top: -100%;
-  left: 0;
-  padding: 0.5rem 1rem;
+  left: 16px;
+  padding: 0.75rem 1.5rem;
   background: var(--color-accent-blue);
   color: var(--color-white);
-  z-index: 100;
-  font-weight: 600;
+  z-index: 9999;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: top 0.15s ease;
 }
 
 .skip-link:focus {
   top: 0;
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
 }
 
 :focus-visible {
