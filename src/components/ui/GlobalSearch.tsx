@@ -217,11 +217,15 @@ export function GlobalSearch() {
               <input
                 ref={inputRef}
                 type="text"
+                role="combobox"
                 placeholder="Search pages, services, topics..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 className="flex-1 bg-transparent text-base text-navy placeholder:text-steel/60 outline-none"
                 aria-label="Search"
+                aria-expanded={flatResults.length > 0}
+                aria-controls="search-results-listbox"
+                aria-activedescendant={flatResults[activeIndex] ? `search-result-${activeIndex}` : undefined}
                 autoComplete="off"
                 spellCheck={false}
               />
@@ -238,6 +242,7 @@ export function GlobalSearch() {
             <div
               ref={listRef}
               className="max-h-[60vh] overflow-y-auto overscroll-contain p-2"
+              id="search-results-listbox"
               role="listbox"
               aria-label="Search results"
             >
@@ -260,6 +265,7 @@ export function GlobalSearch() {
                       return (
                         <button
                           key={item.href}
+                          id={`search-result-${idx}`}
                           data-index={idx}
                           role="option"
                           aria-selected={activeIndex === idx}

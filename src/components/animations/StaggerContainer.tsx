@@ -1,6 +1,6 @@
 'use client';
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 
 interface StaggerContainerProps {
   children: React.ReactNode;
@@ -11,6 +11,15 @@ interface StaggerContainerProps {
 export function StaggerContainer({ children, staggerDelay = 0.1, className }: StaggerContainerProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    return (
+      <div ref={ref} className={className}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -29,6 +38,16 @@ export function StaggerContainer({ children, staggerDelay = 0.1, className }: St
 }
 
 export function StaggerItem({ children, className }: { children: React.ReactNode; className?: string }) {
+  const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    return (
+      <div className={className}>
+        {children}
+      </div>
+    );
+  }
+
   return (
     <motion.div
       variants={{

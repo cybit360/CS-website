@@ -10,6 +10,7 @@ import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration';
+import { ThemeProvider } from '@/components/ui/ThemeProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -194,6 +195,14 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${sourceSans.variable} ${jetbrainsMono.variable}`}>
       <head>
         <meta name="theme-color" content="#0B1C2E" />
+        <script dangerouslySetInnerHTML={{ __html: `
+          try {
+            const t = localStorage.getItem('cybit-theme');
+            if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            }
+          } catch(e) {}
+        `}} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
@@ -208,26 +217,28 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen flex-col">
-        {/* Skip link for keyboard / screen-reader users */}
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
+        <ThemeProvider>
+          {/* Skip link for keyboard / screen-reader users */}
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
 
-        <Header />
+          <Header />
 
-        <ToastProvider>
-          <main id="main-content" className="flex-1">
-            {children}
-          </main>
-        </ToastProvider>
+          <ToastProvider>
+            <main id="main-content" className="flex-1">
+              {children}
+            </main>
+          </ToastProvider>
 
-        <Footer />
-        <ChatWidget />
-        <CookieConsent />
-        <ScrollToTop />
-        <ServiceWorkerRegistration />
-        <Analytics />
-        <SpeedInsights />
+          <Footer />
+          <ChatWidget />
+          <CookieConsent />
+          <ScrollToTop />
+          <ServiceWorkerRegistration />
+          <Analytics />
+          <SpeedInsights />
+        </ThemeProvider>
       </body>
     </html>
   );

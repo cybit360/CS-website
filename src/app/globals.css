@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* === PROFESSIONAL GOVCON COLOR SCHEME === */
   /* Inspired by RTX.com, GDIT.com, Leidos.com */
@@ -304,4 +306,80 @@ a, button {
     page-break-after: auto;
     break-after: auto;
   }
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+/* Base body colors */
+.dark body {
+  background-color: #0A1628;
+  color: #E2E8F0;
+}
+
+/* Headings */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #F1F5F9;
+}
+
+/* Paragraph and body text */
+.dark p, .dark li, .dark span, .dark label {
+  color: #CBD5E1;
+}
+
+/* Background overrides for light sections */
+.dark .bg-cloud { background-color: #0F1F38; }
+.dark .bg-white { background-color: #0A1628; }
+.dark .text-navy { color: #F1F5F9; }
+.dark .text-steel { color: #94A3B8; }
+.dark .border-border { border-color: #1B2B42; }
+
+/* Section gradient in dark mode */
+.dark .section-gradient {
+  background: linear-gradient(180deg, #0F1F38 0%, #0A1628 100%);
+}
+
+/* Dot pattern in dark mode */
+.dark .dot-pattern {
+  background-image: radial-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px);
+}
+
+/* Glass card in dark mode */
+.dark .glass-card {
+  background: rgba(15, 31, 56, 0.85);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+}
+
+/* Cards in dark mode */
+.dark .bg-white.rounded-xl,
+.dark .bg-white.rounded-2xl,
+.dark .bg-white.rounded-lg {
+  background-color: #0F1F38;
+  border-color: #1B2B42;
+}
+
+/* Card hover shadows in dark mode */
+.dark .card-hover:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 4px 20px rgba(37, 99, 235, 0.15);
+}
+
+/* Input fields in dark mode */
+.dark input, .dark textarea, .dark select {
+  background-color: #0F1F38;
+  border-color: #1B2B42;
+  color: #E2E8F0;
+}
+
+/* Scrolled header in dark mode */
+.dark header.bg-white {
+  background-color: #0A1628;
+  border-color: rgba(27, 43, 66, 0.5);
+}
+
+/* Ensure hero sections, header utility bar, and footer stay unchanged */
+.dark .hero-gradient,
+.dark .navy-section,
+.dark .bg-navy {
+  /* These are already dark - no changes needed */
 }

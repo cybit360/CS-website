@@ -96,7 +96,7 @@ export default async function ArticlePage({ params }: PageProps) {
         <div className="absolute inset-0 hero-gradient" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative z-10">
           {/* Breadcrumb */}
-          <div className="[&_nav]:mb-8 [&_a]:text-white/60 [&_a:hover]:text-accent-cyan [&_span[aria-current]]:text-white [&_svg]:text-white/30">
+          <div className="[&_nav]:mb-8 [&_a]:text-white/70 [&_a:hover]:text-accent-cyan [&_span[aria-current]]:text-white [&_svg]:text-white/30">
             <Breadcrumb
               items={[
                 { label: "Insights", href: "/insights" },
@@ -129,7 +129,7 @@ export default async function ArticlePage({ params }: PageProps) {
               {post.excerpt}
             </p>
 
-            <div className="flex flex-wrap items-center gap-6 text-sm text-white/60">
+            <div className="flex flex-wrap items-center gap-6 text-sm text-white/70">
               <span className="flex items-center gap-2">
                 <User className="w-4 h-4" />
                 <span>

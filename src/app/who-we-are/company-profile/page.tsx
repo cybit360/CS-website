@@ -415,7 +415,7 @@ export default function CompanyProfilePage() {
                 <h3 className="text-lg font-bold text-white mb-2">
                   {item.title}
                 </h3>
-                <p className="text-white/60 text-sm leading-relaxed">
+                <p className="text-white/70 text-sm leading-relaxed">
                   {item.description}
                 </p>
               </div>

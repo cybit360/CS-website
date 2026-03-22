@@ -171,7 +171,7 @@ function CapabilityBadges() {
           </div>
           <div>
             <p className="text-white text-sm font-semibold">Active Programs</p>
-            <p className="text-white/60 text-xs">DoD, DoS, DHS, IC & more</p>
+            <p className="text-white/70 text-xs">DoD, DoS, DHS, IC & more</p>
           </div>
         </div>
       </div>
@@ -204,7 +204,7 @@ export function AnimatedStatsSection() {
                     <CountUp to={stat.value} suffix={stat.suffix} duration={2} />
                   )}
                 </div>
-                <div className="text-white/60 text-sm font-medium uppercase tracking-wider">
+                <div className="text-white/70 text-sm font-medium uppercase tracking-wider">
                   {stat.label}
                 </div>
               </div>

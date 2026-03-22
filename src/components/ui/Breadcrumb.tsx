@@ -21,7 +21,7 @@ export function Breadcrumb({ items, variant = 'light' }: BreadcrumbProps) {
         <li>
           <Link href="/" className={cn(
             "transition-colors inline-flex items-center gap-1",
-            isDark ? "text-white/60 hover:text-white" : "text-steel hover:text-accent-blue"
+            isDark ? "text-white/70 hover:text-white" : "text-steel hover:text-accent-blue"
           )}>
             <Home className="size-3.5" />
             <span className="sr-only">Home</span>
@@ -33,7 +33,7 @@ export function Breadcrumb({ items, variant = 'light' }: BreadcrumbProps) {
             {item.href && i < items.length - 1 ? (
               <Link href={item.href} className={cn(
                 "transition-colors",
-                isDark ? "text-white/60 hover:text-white" : "text-steel hover:text-accent-blue"
+                isDark ? "text-white/70 hover:text-white" : "text-steel hover:text-accent-blue"
               )}>
                 {item.label}
               </Link>

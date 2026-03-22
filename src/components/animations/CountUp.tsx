@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useEffect, useState } from 'react';
-import { useInView } from 'framer-motion';
+import { useInView, useReducedMotion } from 'framer-motion';
 
 interface CountUpProps {
   to: number;
@@ -13,10 +13,18 @@ interface CountUpProps {
 export function CountUp({ to, duration = 2, prefix = '', suffix = '', className }: CountUpProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const prefersReducedMotion = useReducedMotion();
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!isInView) return;
+
+    // If user prefers reduced motion, show the final number immediately
+    if (prefersReducedMotion) {
+      setCount(to);
+      return;
+    }
+
     let start = 0;
     const startTime = performance.now();
 
@@ -37,7 +45,7 @@ export function CountUp({ to, duration = 2, prefix = '', suffix = '', className 
     }
 
     requestAnimationFrame(animate);
-  }, [isInView, to, duration]);
+  }, [isInView, to, duration, prefersReducedMotion]);
 
   return (
     <span ref={ref} className={className}>
