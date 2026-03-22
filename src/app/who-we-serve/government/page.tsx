@@ -131,9 +131,9 @@ export default function GovernmentPage() {
             {agencies.map((agency) => (
               <div
                 key={agency.title}
-                className="rounded-2xl border border-border bg-white p-8 shadow-sm"
+                className="rounded-2xl border border-border bg-white p-8 shadow-sm card-hover"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-navy/10">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent-cyan/10">
                   <agency.icon className="h-6 w-6 text-accent-cyan" />
                 </div>
                 <h3 className="text-xl font-semibold text-navy">
@@ -171,7 +171,7 @@ export default function GovernmentPage() {
             {contractVehicles.map((cv) => (
               <div
                 key={cv.name}
-                className="rounded-xl border border-border bg-cloud p-6 text-center"
+                className="rounded-xl border border-border bg-cloud p-6 text-center card-hover"
               >
                 <p className="text-lg font-bold text-accent-cyan">{cv.name}</p>
                 <p className="mt-1 text-sm text-steel">{cv.description}</p>
@@ -195,7 +195,7 @@ export default function GovernmentPage() {
             {complianceBadges.map((badge) => (
               <div
                 key={badge.label}
-                className="flex flex-col items-center rounded-xl border border-border bg-white p-6 text-center shadow-sm"
+                className="flex flex-col items-center rounded-xl border border-border bg-white p-6 text-center shadow-sm card-hover"
               >
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-navy/10">
                   <badge.icon className="h-7 w-7 text-accent-cyan" />

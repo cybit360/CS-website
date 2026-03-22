@@ -1906,3 +1906,21 @@ Create downloadable PDF pages for Kaporta:
 | 2026-03-22 | Hamburger menu stays mobile-only (lg:hidden) — correct behavior | ✅ Done |
 | 2026-03-22 | Full gap analysis for both CybitSolutions and Kaporta added | ✅ Done |
 | 2026-03-22 | 10 Kaporta-specific enhancement prompts added (K-1 through K-10) | ✅ Done |
+| 2026-03-22 | Complete color scheme overhaul — cyan→electric blue (#2563EB), amber→gold (#F59E0B) | ✅ Done |
+| 2026-03-22 | Hero text fixed — removed invisible gradient-text, using solid accent-blue | ✅ Done |
+| 2026-03-22 | Hamburger menu forced hidden on desktop with lg:!hidden | ✅ Done |
+| 2026-03-22 | Cookie consent banner fully rewritten with 3 options (Accept All, Essential Only, Dismiss) | ✅ Done |
+| 2026-03-22 | Chat widget auto-greet on first visit (1.5s delay, greeting + welcome messages) | ✅ Done |
+| 2026-03-22 | Prompt 1 (partial): Reusable form components created (Input, Textarea, Select, Toast, ScrollToTop, Breadcrumb) | ✅ Done |
+| 2026-03-22 | Prompt 1 (partial): ContactForm connected to /api/contact with react-hook-form + zod | ✅ Done |
+| 2026-03-22 | Prompt 1 (partial): NewsletterForm connected to /api/newsletter with react-hook-form + zod | ✅ Done |
+| 2026-03-22 | Prompt 2 (partial): Framer Motion installed, animation components created (FadeIn, StaggerContainer, CountUp) | ✅ Done |
+| 2026-03-22 | Blog detail pages created with dynamic [slug] route and 6 full articles | ✅ Done |
+| 2026-03-22 | Layout updated with ToastProvider and ScrollToTop | ✅ Done |
+| 2026-03-22 | Backend: API routes for contact, newsletter, career-apply, partner with rate limiting | ✅ Done |
+| 2026-03-22 | Security: Custom error page, 404 page, loading skeleton, security headers | ✅ Done |
+| 2026-03-22 | SEO: Structured data (JSON-LD), sitemap.xml, robots.txt, llms.txt | ✅ Done |
+| 2026-03-22 | CI/CD: GitHub Actions workflow, Vitest config with unit tests | ✅ Done |
+| 2026-03-22 | Prompt 2 (in progress): Applying Framer Motion animations to pages | 🔄 In Progress |
+| 2026-03-22 | Breadcrumb navigation being added to all 30+ subpages | 🔄 In Progress |
+| 2026-03-22 | Visual design polish across careers, who-we-serve, insights, legal pages | 🔄 In Progress |

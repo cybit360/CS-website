@@ -14,6 +14,7 @@ import {
   Flag,
 } from "lucide-react";
 import { PageImage } from "@/components/ui/PageImage";
+import { AnimatedSection } from "@/components/animations/AnimatedAboutContent";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -124,9 +125,11 @@ export default function AboutPage() {
       <section className="py-20 bg-cloud">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Company Overview Visual */}
-          <div className="mb-16">
-            <PageImage variant="office" aspectRatio="wide" className="max-w-4xl mx-auto" />
-          </div>
+          <AnimatedSection>
+            <div className="mb-16">
+              <PageImage variant="office" aspectRatio="wide" className="max-w-4xl mx-auto" />
+            </div>
+          </AnimatedSection>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-navy mb-6">Our Story</h2>
@@ -195,7 +198,7 @@ export default function AboutPage() {
             {timeline.map((item) => (
               <div
                 key={item.year}
-                className="relative bg-cloud rounded-xl p-6 border border-border"
+                className="relative bg-cloud rounded-xl p-6 border border-border card-hover"
               >
                 <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-navy/5 text-accent-cyan mb-4">
                   <item.icon className="w-6 h-6" strokeWidth={1.5} />
@@ -231,9 +234,9 @@ export default function AboutPage() {
             {values.map((value) => (
               <div
                 key={value.title}
-                className="bg-white rounded-xl p-8 border border-border"
+                className="bg-white rounded-xl p-8 border border-border card-hover"
               >
-                <div className="flex items-center justify-center w-14 h-14 rounded-lg bg-navy/5 text-accent-cyan mb-6">
+                <div className="flex items-center justify-center w-14 h-14 rounded-lg bg-accent-cyan/10 text-accent-cyan mb-6">
                   <value.icon className="w-7 h-7" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-xl font-bold text-navy mb-3">
@@ -262,7 +265,7 @@ export default function AboutPage() {
             {certifications.map((cert) => (
               <span
                 key={cert}
-                className="inline-flex items-center gap-2 px-5 py-3 bg-cloud rounded-lg border border-border text-navy font-semibold text-sm"
+                className="inline-flex items-center gap-2 px-5 py-3 bg-cloud rounded-lg border border-border text-navy font-semibold text-sm hover:border-accent-cyan/30 hover:bg-accent-cyan/5 transition-colors"
               >
                 <CheckCircle className="w-4 h-4 text-accent-cyan" />
                 {cert}

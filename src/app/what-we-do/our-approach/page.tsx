@@ -15,6 +15,7 @@ import {
   BarChart3,
   Users,
 } from "lucide-react";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -160,6 +161,7 @@ export default function OurApproachPage() {
           <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-accent-cyan rounded-full blur-[120px]" />
         </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <Breadcrumb variant="dark" items={[{ label: "What We Do", href: "/what-we-do" }, { label: "Our Approach" }]} />
           <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
             How We Deliver
           </p>
@@ -295,9 +297,9 @@ export default function OurApproachPage() {
             {innovationAreas.map((area) => (
               <div
                 key={area.title}
-                className="bg-cloud rounded-xl p-6 border border-border"
+                className="bg-cloud rounded-xl p-6 border border-border card-hover"
               >
-                <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-navy/5 text-accent-cyan mb-4">
+                <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-accent-cyan/10 text-accent-cyan mb-4">
                   <area.icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-base font-bold text-navy mb-3">
@@ -330,7 +332,7 @@ export default function OurApproachPage() {
             {qualityCommitments.map((commitment) => (
               <div
                 key={commitment.title}
-                className="bg-white rounded-xl p-6 border border-border"
+                className="bg-white rounded-xl p-6 border border-border card-hover"
               >
                 <div className="flex items-start gap-3 mb-3">
                   <CheckCircle className="w-5 h-5 text-accent-cyan mt-0.5 shrink-0" />
@@ -381,7 +383,7 @@ export default function OurApproachPage() {
                 <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-navy/5 text-accent-cyan mx-auto mb-4">
                   <stat.icon className="w-7 h-7" />
                 </div>
-                <p className="text-4xl font-bold text-navy mb-2">
+                <p className="text-4xl font-bold text-accent-cyan mb-2">
                   {stat.metric}
                 </p>
                 <p className="text-sm text-steel">{stat.label}</p>

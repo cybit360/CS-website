@@ -13,6 +13,7 @@ import {
   FileText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { PageImage } from "@/components/ui/PageImage";
 
 export const metadata: Metadata = {
@@ -267,6 +268,7 @@ export default function PastPerformancePage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <Breadcrumb variant="dark" items={[{ label: "What We Do", href: "/what-we-do" }, { label: "Past Performance" }]} />
           <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
             Proven Results
           </p>
@@ -313,7 +315,7 @@ export default function PastPerformancePage() {
               <div
                 key={study.id}
                 id={study.id}
-                className="bg-cloud rounded-xl p-8 border border-border"
+                className="bg-cloud rounded-xl p-8 border border-border card-hover"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                   <div className="lg:col-span-2">
@@ -391,7 +393,7 @@ export default function PastPerformancePage() {
               <div
                 key={study.id}
                 id={study.id}
-                className="bg-cloud rounded-xl p-8 border border-border"
+                className="bg-cloud rounded-xl p-8 border border-border card-hover"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                   <div className="lg:col-span-2">
@@ -475,7 +477,7 @@ export default function PastPerformancePage() {
             {summaryCaseStudies.map((study) => (
               <div
                 key={study}
-                className="flex items-start gap-2 bg-white rounded-lg p-4 border border-border"
+                className="flex items-start gap-2 bg-white rounded-lg p-4 border border-border hover:border-accent-cyan/30 hover:shadow-sm transition-all"
               >
                 <CheckCircle className="w-4 h-4 text-accent-cyan mt-0.5 shrink-0" />
                 <span className="text-navy text-sm font-medium">{study}</span>

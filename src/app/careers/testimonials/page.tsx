@@ -146,7 +146,7 @@ export default function TestimonialsPage() {
             {employeeTestimonials.map((testimonial) => (
               <div
                 key={testimonial.name}
-                className="bg-white rounded-2xl p-8 border border-border hover:shadow-lg transition flex flex-col"
+                className="bg-white rounded-2xl p-8 border border-border card-hover flex flex-col"
               >
                 <Quote className="w-8 h-8 text-accent-cyan/30 mb-4" />
                 <p className="text-steel flex-1 mb-6 leading-relaxed">
@@ -188,7 +188,7 @@ export default function TestimonialsPage() {
             {clientTestimonials.map((testimonial) => (
               <div
                 key={testimonial.name}
-                className="bg-cloud rounded-2xl p-8 border border-border hover:shadow-lg transition flex flex-col"
+                className="bg-cloud rounded-2xl p-8 border border-border card-hover flex flex-col"
               >
                 <Quote className="w-8 h-8 text-accent-cyan/30 mb-4" />
                 <p className="text-steel flex-1 mb-6 leading-relaxed">

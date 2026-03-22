@@ -117,7 +117,7 @@ export default function CareersPage() {
               return (
                 <div
                   key={reason.title}
-                  className="bg-white rounded-2xl p-8 shadow-sm text-center"
+                  className="bg-white rounded-2xl p-8 shadow-sm text-center card-hover"
                 >
                   <div className="w-16 h-16 bg-accent-cyan/10 rounded-xl flex items-center justify-center mx-auto mb-6">
                     <Icon className="w-8 h-8 text-accent-cyan" />
@@ -152,7 +152,7 @@ export default function CareersPage() {
                 <Link
                   key={section.title}
                   href={section.href}
-                  className="bg-cloud rounded-2xl p-8 hover:shadow-lg transition group"
+                  className="bg-cloud rounded-2xl p-8 card-hover group"
                 >
                   <div className="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition">
                     <Icon className="w-7 h-7 text-accent-cyan" />

@@ -16,6 +16,7 @@ import {
   Code,
 } from "lucide-react";
 import { DownloadButton } from "@/components/ui/DownloadButton";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -236,6 +237,7 @@ export default function CapabilityStatementsPage() {
           <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-accent-cyan rounded-full blur-[120px]" />
         </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <Breadcrumb variant="dark" items={[{ label: "What We Do", href: "/what-we-do" }, { label: "Capability Statements" }]} />
           <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
             Procurement Resources
           </p>

@@ -381,7 +381,7 @@ export default function EventsPage() {
               return (
                 <div
                   key={event.title}
-                  className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition"
+                  className="bg-white rounded-2xl p-8 shadow-sm card-hover"
                 >
                   <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                     <div className="flex-shrink-0 w-20 h-20 bg-accent-cyan/10 rounded-xl flex items-center justify-center">
@@ -455,7 +455,7 @@ export default function EventsPage() {
             {pastEvents.map((event) => (
               <div
                 key={event.title}
-                className="bg-cloud rounded-2xl p-6 hover:shadow-md transition"
+                className="bg-cloud rounded-2xl p-6 card-hover"
               >
                 <div className="flex items-center gap-2 mb-3">
                   <CheckCircle className="w-4 h-4 text-green-500" />

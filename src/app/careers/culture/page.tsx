@@ -126,7 +126,7 @@ export default function CulturePage() {
               return (
                 <div
                   key={value.title}
-                  className="bg-white rounded-2xl p-8 shadow-sm text-center"
+                  className="bg-white rounded-2xl p-8 shadow-sm text-center card-hover"
                 >
                   <div className="w-16 h-16 bg-accent-cyan/10 rounded-xl flex items-center justify-center mx-auto mb-6">
                     <Icon className="w-8 h-8 text-accent-cyan" />
@@ -160,7 +160,7 @@ export default function CulturePage() {
               return (
                 <div
                   key={benefit.title}
-                  className="bg-cloud rounded-2xl p-6 border border-border"
+                  className="bg-cloud rounded-2xl p-6 border border-border card-hover"
                 >
                   <div className="w-12 h-12 bg-accent-cyan/10 rounded-lg flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-accent-cyan" />

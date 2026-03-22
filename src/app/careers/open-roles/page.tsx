@@ -644,7 +644,7 @@ export default function OpenRolesPage() {
               return (
                 <div
                   key={job.title}
-                  className="bg-white rounded-2xl overflow-hidden border border-border hover:shadow-lg transition-all duration-300"
+                  className="bg-white rounded-2xl overflow-hidden border border-border card-hover"
                 >
                   {/* Job Header */}
                   <button

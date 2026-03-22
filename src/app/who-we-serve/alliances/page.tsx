@@ -203,7 +203,7 @@ export default function AlliancesPage() {
             {technologyPartners.map((partner) => (
               <div
                 key={partner.name}
-                className="rounded-2xl border border-border bg-white p-6 shadow-sm"
+                className="rounded-2xl border border-border bg-white p-6 shadow-sm card-hover"
               >
                 <div className="flex items-center gap-3">
                   <PartnerLogo name={partner.name} showName={false} size="md" />
@@ -247,7 +247,7 @@ export default function AlliancesPage() {
             {certifications.map((cert) => (
               <div
                 key={cert.name}
-                className="flex flex-col items-center rounded-xl border border-border bg-cloud p-6 text-center"
+                className="flex flex-col items-center rounded-xl border border-border bg-cloud p-6 text-center card-hover"
               >
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-navy/10">
                   <cert.icon className="h-7 w-7 text-accent-cyan" />
@@ -277,9 +277,9 @@ export default function AlliancesPage() {
             {contractVehicles.map((cv) => (
               <div
                 key={cv.name}
-                className="rounded-2xl border border-border bg-white p-8 shadow-sm"
+                className="rounded-2xl border border-border bg-white p-8 shadow-sm card-hover"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-navy/10">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent-cyan/10">
                   <cv.icon className="h-6 w-6 text-accent-cyan" />
                 </div>
                 <h3 className="text-xl font-bold text-navy">{cv.name}</h3>

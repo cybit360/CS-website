@@ -145,9 +145,9 @@ export default function CommercialPage() {
             {industries.map((industry) => (
               <div
                 key={industry.title}
-                className="rounded-2xl border border-border bg-white p-8 shadow-sm"
+                className="rounded-2xl border border-border bg-white p-8 shadow-sm card-hover"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-navy/10">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent-cyan/10">
                   <industry.icon className="h-6 w-6 text-accent-cyan" />
                 </div>
                 <h3 className="text-xl font-semibold text-navy">
@@ -185,9 +185,9 @@ export default function CommercialPage() {
             {enterpriseServices.map((svc) => (
               <div
                 key={svc.title}
-                className="rounded-xl border border-border bg-cloud p-6 text-center"
+                className="rounded-xl border border-border bg-cloud p-6 text-center card-hover"
               >
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-navy/10">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent-cyan/10">
                   <svc.icon className="h-7 w-7 text-accent-cyan" />
                 </div>
                 <h3 className="mt-4 text-lg font-semibold text-navy">
@@ -217,7 +217,7 @@ export default function CommercialPage() {
             ].map((item) => (
               <div
                 key={item}
-                className="flex items-start gap-3 rounded-lg border border-border bg-white p-5"
+                className="flex items-start gap-3 rounded-lg border border-border bg-white p-5 hover:border-accent-cyan/30 hover:shadow-sm transition-all"
               >
                 <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-accent-cyan" />
                 <p className="text-steel">{item}</p>

@@ -174,7 +174,7 @@ export default function LeadershipPage() {
             {advisors.map((advisor, index) => (
               <div
                 key={advisor.name}
-                className="bg-cloud rounded-xl p-8 border border-border"
+                className="bg-cloud rounded-xl p-8 border border-border card-hover"
               >
                 <div
                   className={`flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br ${avatarGradients[(index + 3) % avatarGradients.length]} mb-6 mx-auto shadow-md`}

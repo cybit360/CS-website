@@ -1157,8 +1157,124 @@ GlobalSearch component restored to header:
 ```
 STATUS: APPLIED
 Chat widget enhanced with:
-- Pulsing cyan glow animation on floating button (.chat-pulse class)
-- Auto-opens with greeting on first visit (per browser session)
+- Pulsing blue glow animation on floating button (.chat-pulse class)
+- Auto-opens with greeting on first visit (per browser session, 1.5s delay)
+- Shows both greeting wave + welcome message simultaneously
 - Quick action buttons for common queries
 - Keyword-matching FAQ system with links to relevant pages
+```
+
+---
+
+## Section 19: Session 3 Updates (2026-03-22)
+
+### Complete Color Scheme Overhaul
+```
+STATUS: APPLIED
+Changed from cyan (#13C0F5) to electric blue (#2563EB) inspired by RTX.com, GDIT.com, Leidos.com:
+- accent-blue: #2563EB (primary CTA, links, highlights)
+- accent-blue-dark: #1D4ED8 (hover states)
+- accent-blue-light: #DBEAFE (light backgrounds)
+- accent-gold: #F59E0B (warm highlights, badges)
+- accent-gold-dark: #D97706 (hover)
+- Legacy CSS aliases maintained: accent-cyan → #2563EB, accent-amber → #F59E0B
+- Navy deepened: #0A1628 (was #0B1C2E)
+- Navy-950: #030911 (deepest for hero/footer gradients)
+```
+
+### Hero Text Visibility Fix
+```
+STATUS: APPLIED
+- Removed invisible .gradient-text class from hero headline
+- Now using solid white text with accent-blue span highlights
+- Much higher contrast and readability on dark backgrounds
+```
+
+### Cookie Consent Rewrite
+```
+STATUS: APPLIED
+- Title: "We Value Your Privacy"
+- Three options: "Accept All", "Essential Only", Dismiss (X)
+- Links to /legal/cookies policy page
+- Gold Cookie icon, blue accent buttons
+- z-index: 9998, localStorage persistence
+```
+
+### Form Components & API Integration
+```
+STATUS: APPLIED
+New reusable form components created:
+- src/components/ui/Input.tsx (label, error, required indicator)
+- src/components/ui/Textarea.tsx (label, error, character count)
+- src/components/ui/Select.tsx (label, error, placeholder)
+- src/components/ui/Toast.tsx (ToastProvider context, success/error/info)
+- src/components/ui/ScrollToTop.tsx (floating scroll-to-top button)
+- src/components/ui/Breadcrumb.tsx (breadcrumb navigation)
+
+ContactForm connected to /api/contact with react-hook-form + zod
+NewsletterForm connected to /api/newsletter with react-hook-form + zod
+```
+
+### Framer Motion Animation Components
+```
+STATUS: APPLIED
+framer-motion installed, animation components created:
+- src/components/animations/FadeIn.tsx (scroll-triggered fade with direction)
+- src/components/animations/StaggerContainer.tsx (staggered children animations)
+- src/components/animations/CountUp.tsx (animated number counter)
+Being applied to homepage, services, about, leadership, and contact pages.
+```
+
+### Blog Article Detail Pages
+```
+STATUS: APPLIED
+- src/data/blog-posts.ts with 6 full-length articles
+- src/app/insights/news/[slug]/page.tsx dynamic route
+- generateStaticParams for static pre-rendering
+- generateMetadata for SEO
+- Professional article layout with author, date, category, read time
+```
+
+### Backend & Infrastructure
+```
+STATUS: APPLIED
+- 4 API routes: /api/contact, /api/newsletter, /api/career-apply, /api/partner
+- Rate limiting with in-memory store
+- Honeypot field detection
+- Zod validation on all API routes
+- Security headers in next.config.ts (CSP, HSTS, X-Frame-Options, etc.)
+- Custom error.tsx, not-found.tsx, loading.tsx pages
+- Vitest configuration with unit tests for rate-limit and validations
+- GitHub Actions CI/CD workflow (.github/workflows/ci.yml)
+- .env.example template
+```
+
+### SEO Enhancements
+```
+STATUS: APPLIED
+- JSON-LD structured data: Organization, BreadcrumbList, WebSite schemas
+- Dynamic sitemap.xml generation
+- robots.txt with sitemap reference
+- llms.txt for AI engine optimization
+- public/.well-known/security.txt
+- Structured data helper functions in src/lib/structured-data.ts
+```
+
+### Changelog
+```
+2026-03-22 (Session 3):
+- Complete color scheme overhaul (cyan → electric blue #2563EB)
+- Hero text visibility fix (gradient-text → solid accent-blue)
+- Hamburger menu forced hidden on desktop (lg:!hidden)
+- Cookie consent fully rewritten with 3 options
+- Chat widget auto-greet improved (1.5s, dual messages)
+- Reusable form components (Input, Textarea, Select, Toast, ScrollToTop, Breadcrumb)
+- ContactForm + NewsletterForm connected to API routes
+- Framer Motion animations (FadeIn, StaggerContainer, CountUp)
+- Blog article detail pages with 6 articles
+- Layout updated with ToastProvider + ScrollToTop
+- Breadcrumbs being added to all subpages
+- Visual design polish across all pages
+- ENHANCEMENT-PROMPTS.md fully updated with completed items
+- Total pages: 57 (including dynamic blog slugs)
 ```

@@ -201,7 +201,7 @@ export default function ResourcesPage() {
               return (
                 <div
                   key={resource.slug}
-                  className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col"
+                  className="bg-white rounded-2xl overflow-hidden shadow-sm card-hover group flex flex-col"
                 >
                   <div className="h-44 bg-navy/5 flex items-center justify-center group-hover:bg-navy/10 transition-colors duration-300">
                     <Icon className="w-16 h-16 text-navy/15 group-hover:text-navy/25 transition-colors duration-300" />
