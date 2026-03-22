@@ -2,8 +2,8 @@
 
 > **Last Updated:** 2026-03-22
 > **Current Stack:** Next.js 16, Tailwind CSS v4, TypeScript, react-hook-form, zod, Resend, Vitest
-> **Total Pages:** 42 (including 10 service domain pages, 4 legal pages, 2 PDF pages)
-> **API Routes:** 4 (contact, newsletter, career-apply, partner)
+> **Total Pages:** 58+ (including 10 service domains, 6 blog articles, 4 legal, 2 PDF, offline)
+> **API Routes:** 6 (contact, newsletter, career-apply, partner, testimonial, og)
 
 ---
 
@@ -1921,6 +1921,18 @@ Create downloadable PDF pages for Kaporta:
 | 2026-03-22 | Security: Custom error page, 404 page, loading skeleton, security headers | ✅ Done |
 | 2026-03-22 | SEO: Structured data (JSON-LD), sitemap.xml, robots.txt, llms.txt | ✅ Done |
 | 2026-03-22 | CI/CD: GitHub Actions workflow, Vitest config with unit tests | ✅ Done |
-| 2026-03-22 | Prompt 2 (in progress): Applying Framer Motion animations to pages | 🔄 In Progress |
-| 2026-03-22 | Breadcrumb navigation being added to all 30+ subpages | 🔄 In Progress |
-| 2026-03-22 | Visual design polish across careers, who-we-serve, insights, legal pages | 🔄 In Progress |
+| 2026-03-22 | Prompt 2: Framer Motion animations applied to homepage, services, about, leadership, contact, who-we-serve, careers, insights, past-performance, our-approach | ✅ Done |
+| 2026-03-22 | Breadcrumb navigation added to ALL 40+ subpages | ✅ Done |
+| 2026-03-22 | Visual design polish across careers, who-we-serve, insights, legal pages | ✅ Done |
+| 2026-03-22 | Prompt 1 (complete): FileUpload component with drag-drop, Badge component with 6 variants | ✅ Done |
+| 2026-03-22 | Prompt 8: Blog detail pages with [slug] route, SEO metadata, related articles, reading progress bar | ✅ Done |
+| 2026-03-22 | Prompt 11: 69 unit tests across 7 files (utils, Badge, blog-posts, services, navigation, validations) | ✅ Done |
+| 2026-03-22 | Prompt 14: Google Maps embed on contact page | ✅ Done |
+| 2026-03-22 | Prompt 15: ImageLightbox component with keyboard nav, thumbnail grid, fullscreen modal | ✅ Done |
+| 2026-03-22 | Prompt 22: Dynamic OG image generation API at /api/og | ✅ Done |
+| 2026-03-22 | Prompt 24: Contract Vehicles & Capabilities Matrix with NAICS lookup on capability-statements page | ✅ Done |
+| 2026-03-22 | Prompt 25: Service worker for offline support + offline page | ✅ Done |
+| 2026-03-22 | Testimonial API route at /api/testimonial with rate limiting and zod validation | ✅ Done |
+| 2026-03-22 | ReadingProgress bar component for blog articles | ✅ Done |
+| 2026-03-22 | Total API routes: 6 (contact, newsletter, career-apply, partner, testimonial, og) | ✅ Done |
+| 2026-03-22 | Total pages: 58 (including offline page) | ✅ Done |
