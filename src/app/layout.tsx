@@ -9,6 +9,7 @@ import { ToastProvider } from "@/components/ui/Toast";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -224,6 +225,7 @@ export default function RootLayout({
         <ChatWidget />
         <CookieConsent />
         <ScrollToTop />
+        <ServiceWorkerRegistration />
         <Analytics />
         <SpeedInsights />
       </body>
