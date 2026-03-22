@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 import { mainNavItems, utilityLinks } from "@/data/navigation";
 import { MegaMenu } from "./MegaMenu";
 import { MobileNav } from "./MobileNav";
-import { GlobalSearch } from "@/components/ui/GlobalSearch";
 
 export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -55,37 +54,38 @@ export function Header() {
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "bg-white/95 shadow-md backdrop-blur-md"
-          : "bg-white/80 backdrop-blur-sm"
+          ? "bg-white shadow-lg backdrop-blur-md"
+          : "bg-white backdrop-blur-sm"
       )}
     >
-      {/* Utility bar */}
-      <div className="hidden border-b border-border bg-cloud/80 lg:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-1.5">
-          <nav aria-label="Utility navigation" className="flex items-center gap-5">
+      {/* Utility bar — dark navy like Kaporta */}
+      <div className="hidden bg-navy lg:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
+          <nav aria-label="Utility navigation" className="flex items-center gap-6">
             {utilityLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-xs text-steel hover:text-navy transition-colors"
+                className="text-xs font-medium text-white/70 hover:text-accent-cyan transition-colors"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-5 text-xs text-steel">
+          <div className="flex items-center gap-6 text-xs font-medium text-white/80">
             <a
               href="tel:+17712331379"
-              className="inline-flex items-center gap-1.5 hover:text-navy transition-colors"
+              className="inline-flex items-center gap-2 hover:text-accent-cyan transition-colors"
             >
-              <Phone className="size-3" />
+              <Phone className="size-3.5" />
               + (771) 233-1379
             </a>
+            <span className="h-3 w-px bg-white/20" aria-hidden="true" />
             <a
               href="mailto:info@cybitsolutions.net"
-              className="inline-flex items-center gap-1.5 hover:text-navy transition-colors"
+              className="inline-flex items-center gap-2 hover:text-accent-cyan transition-colors"
             >
-              <Mail className="size-3" />
+              <Mail className="size-3.5" />
               info@cybitsolutions.net
             </a>
           </div>
@@ -93,15 +93,15 @@ export function Header() {
       </div>
 
       {/* Main nav bar */}
-      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-        {/* Logo */}
+      <div className="relative mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:h-24">
+        {/* Logo — large and prominent */}
         <Link href="/" className="flex shrink-0 items-center gap-2">
           <Image
             src="/images/logo.png"
             alt="CybitSolutions - Home"
-            width={280}
-            height={70}
-            className="h-16 w-auto"
+            width={220}
+            height={80}
+            className="h-16 w-auto lg:h-20"
             priority
           />
         </Link>
@@ -109,7 +109,7 @@ export function Header() {
         {/* Desktop navigation */}
         <nav
           aria-label="Main navigation"
-          className="hidden items-center gap-1 lg:flex"
+          className="hidden items-center gap-0.5 lg:flex"
         >
           {mainNavItems.map((item) => (
             <div
@@ -121,7 +121,7 @@ export function Header() {
               <Link
                 href={item.href}
                 className={cn(
-                  "inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  "inline-flex items-center gap-1 rounded-md px-4 py-2.5 text-[15px] font-semibold tracking-tight transition-colors",
                   activeMenu === item.label
                     ? "text-accent-cyan"
                     : "text-navy hover:text-accent-cyan"
@@ -145,13 +145,11 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Search + CTA + Mobile toggle */}
+        {/* CTA + Mobile toggle */}
         <div className="flex items-center gap-3">
-          <GlobalSearch />
-
           <Link
             href="/contact"
-            className="hidden rounded-lg bg-accent-cyan px-5 py-2.5 text-sm font-semibold text-navy hover:bg-accent-cyan-dark transition-colors lg:inline-flex"
+            className="hidden items-center gap-2 rounded-lg bg-accent-cyan px-6 py-2.5 text-sm font-bold text-navy shadow-md shadow-accent-cyan/20 hover:bg-accent-cyan-dark hover:shadow-lg hover:shadow-accent-cyan/30 transition-all lg:inline-flex"
           >
             Request Consultation
           </Link>

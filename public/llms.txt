@@ -1,0 +1,45 @@
+# CybitSolutions
+
+> CybitSolutions is a Veteran-Owned, Minority-Owned IT firm delivering mission-grade cybersecurity, cloud, AI, and digital transformation solutions for government agencies and enterprise organizations.
+
+## Company Overview
+- Full Name: CybitSolutions
+- Type: Veteran-Owned Small Business (VOSB), Minority-Owned
+- Location: Washington D.C. Metropolitan Area
+- Experience: 20+ years in government and commercial IT contracting
+- Website: https://www.cybitsolutions.com
+- Contact: info@cybitsolutions.net | + (771) 233-1379
+
+## Services
+- Cybersecurity & Risk Management
+- Cloud Computing & Virtualization
+- Core IT Infrastructure, Networking & Operations
+- Software Development & DevOps
+- Data & Analytics
+- AI & Automation
+- Enterprise IT Services & Platforms
+- Digital Transformation & Government IT
+- Emerging & Next-Gen Technologies
+- Industry-Specific IT Solutions
+
+## Certifications & Contract Vehicles
+- GSA Schedule / MAS
+- 8(a) Business Development Program Eligible
+- CMMC Level 2+ Ready
+- ISO 27001 Aligned
+- FedRAMP Advisory Services
+- ITAR/EAR Compliant Operations
+
+## Key Differentiators
+- 100% U.S.-based cleared workforce
+- Full lifecycle IT support (design, build, secure, operate)
+- Multi-domain expertise across DoD, civilian, and intelligence
+- NAICS Codes: 541512, 541511, 541513, 541519, 518210
+
+## Past Performance
+- Microsoft 365 & Azure Enterprise Ecosystem
+- DoD C3BM / ABMS Program
+- State Department Global IT Operations
+- Intelligence Community Cyber Defense
+- Federal Civilian Agency Cloud Migration
+- VA Health IT Modernization

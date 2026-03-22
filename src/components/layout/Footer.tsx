@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Linkedin, Twitter, Youtube, Mail, Phone } from "lucide-react";
+import { Linkedin, Twitter, Youtube, Mail, Phone, ArrowRight } from "lucide-react";
 import { NewsletterForm } from "@/components/ui/NewsletterForm";
 
 const aboutLinks = [
@@ -29,10 +29,10 @@ const contactLinks = [
 ];
 
 const bottomLinks = [
-  { label: "Privacy", href: "/legal/privacy" },
-  { label: "Terms", href: "/legal/terms" },
+  { label: "Privacy Policy", href: "/legal/privacy" },
+  { label: "Terms of Service", href: "/legal/terms" },
   { label: "Accessibility", href: "/legal/accessibility" },
-  { label: "Cookies", href: "/legal/cookies" },
+  { label: "Cookie Policy", href: "/legal/cookies" },
 ];
 
 const socialLinks = [
@@ -44,21 +44,41 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer className="bg-navy text-white" role="contentinfo">
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16">
-        {/* Main footer columns */}
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
+      {/* Newsletter banner */}
+      <div className="border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-6 py-10">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-md">
+              <h3 className="text-lg font-bold text-white mb-1">
+                Stay Informed
+              </h3>
+              <p className="text-sm text-white/60">
+                Get the latest insights on government IT, cybersecurity, and
+                digital transformation delivered to your inbox.
+              </p>
+            </div>
+            <div className="flex-1 max-w-lg">
+              <NewsletterForm variant="dark" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main footer content */}
+      <div className="mx-auto max-w-7xl px-6 py-14">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-5">
           {/* Column 1: Logo + description + socials */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="mb-4 inline-block">
+            <Link href="/" className="mb-5 inline-block">
               <Image
                 src="/images/logo.png"
                 alt="CybitSolutions"
-                width={240}
-                height={60}
-                className="h-14 w-auto brightness-0 invert"
+                width={280}
+                height={70}
+                className="h-24 w-auto brightness-0 invert"
               />
             </Link>
-            <p className="mb-6 text-sm leading-relaxed text-steel">
+            <p className="mb-6 text-sm leading-relaxed text-white/60">
               Mission-grade IT solutions for government and enterprise.
               Delivering secure, scalable technology that powers critical
               operations.
@@ -73,9 +93,9 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex size-9 items-center justify-center rounded-md bg-slate text-steel hover:bg-accent-cyan hover:text-navy transition-colors"
+                    className="flex size-10 items-center justify-center rounded-lg bg-white/5 text-white/60 hover:bg-accent-cyan hover:text-navy transition-all"
                   >
-                    <Icon className="size-4" />
+                    <Icon className="size-4.5" />
                   </a>
                 );
               })}
@@ -84,15 +104,15 @@ export function Footer() {
 
           {/* Column 2: About */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-amber">
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-widest text-white">
               About
             </h3>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-3">
               {aboutLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-steel hover:text-white transition-colors"
+                    className="text-sm text-white/70 hover:text-accent-cyan transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -103,15 +123,15 @@ export function Footer() {
 
           {/* Column 3: Services */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-amber">
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-widest text-white">
               Services
             </h3>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-3">
               {serviceLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-steel hover:text-white transition-colors"
+                    className="text-sm text-white/70 hover:text-accent-cyan transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -122,15 +142,15 @@ export function Footer() {
 
           {/* Column 4: Resources */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-amber">
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-widest text-white">
               Resources
             </h3>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-3">
               {resourceLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-steel hover:text-white transition-colors"
+                    className="text-sm text-white/70 hover:text-accent-cyan transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -141,72 +161,57 @@ export function Footer() {
 
           {/* Column 5: Contact */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-amber">
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-widest text-white">
               Contact
             </h3>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-3">
               {contactLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-steel hover:text-white transition-colors"
+                    className="text-sm text-white/70 hover:text-accent-cyan transition-colors"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
-              <li>
+              <li className="mt-2 border-t border-white/10 pt-3">
                 <a
                   href="mailto:info@cybitsolutions.net"
-                  className="inline-flex items-center gap-1.5 text-sm text-steel hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-accent-cyan transition-colors"
                 >
-                  <Mail className="size-3.5" />
+                  <Mail className="size-4 text-accent-cyan/60" />
                   info@cybitsolutions.net
                 </a>
               </li>
               <li>
                 <a
                   href="tel:+17712331379"
-                  className="inline-flex items-center gap-1.5 text-sm text-steel hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-accent-cyan transition-colors"
                 >
-                  <Phone className="size-3.5" />
-                  + (771) 233-1379
+                  <Phone className="size-4 text-accent-cyan/60" />
+                  (771) 233-1379
                 </a>
               </li>
             </ul>
           </div>
         </div>
+      </div>
 
-        {/* Newsletter */}
-        <div className="mt-12 border-t border-slate pt-8 pb-2">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div className="max-w-md">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-accent-amber mb-2">
-                Newsletter
-              </h3>
-              <p className="text-sm text-steel">
-                Get the latest insights, news, and resources delivered to your
-                inbox.
-              </p>
-            </div>
-            <div className="flex-1 max-w-lg">
-              <NewsletterForm variant="dark" />
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="mt-8 border-t border-slate pt-6">
+      {/* Bottom legal bar — darker navy */}
+      <div className="bg-navy-dark border-t border-white/5">
+        <div className="mx-auto max-w-7xl px-6 py-5">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-            <p className="text-xs text-steel">
-              &copy; 2025 CybitSolutions. All rights reserved.
+            <p className="text-xs text-white/40">
+              &copy; {new Date().getFullYear()} CybitSolutions. All rights
+              reserved. Veteran-Owned Small Business (VOSB).
             </p>
-            <nav aria-label="Legal" className="flex flex-wrap items-center gap-4">
+            <nav aria-label="Legal" className="flex flex-wrap items-center gap-5">
               {bottomLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-xs text-steel hover:text-white transition-colors"
+                  className="text-xs text-white/40 hover:text-accent-cyan transition-colors"
                 >
                   {link.label}
                 </Link>

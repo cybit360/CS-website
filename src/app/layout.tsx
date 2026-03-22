@@ -1,10 +1,30 @@
 import type { Metadata } from "next";
+import { Inter, Source_Sans_3, JetBrains_Mono } from 'next/font/google';
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ChatWidget } from "@/components/ui/ChatWidget";
+import { CookieConsent } from "@/components/ui/CookieConsent";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-heading',
+});
+
+const sourceSans = Source_Sans_3({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+});
 
 const siteUrl = "https://www.cybitsolutions.com";
 
@@ -168,12 +188,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${sourceSans.variable} ${jetbrainsMono.variable}`}>
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
         <meta name="theme-color" content="#0B1C2E" />
         <script
           type="application/ld+json"
@@ -202,6 +218,7 @@ export default function RootLayout({
 
         <Footer />
         <ChatWidget />
+        <CookieConsent />
         <Analytics />
         <SpeedInsights />
       </body>

@@ -3,6 +3,7 @@
 @theme {
   --color-navy: #0B1C2E;
   --color-navy-light: #122640;
+  --color-navy-dark: #071525;
   --color-slate: #1E2A38;
   --color-steel: #5C6B7A;
   --color-cloud: #F4F7FA;
@@ -11,8 +12,13 @@
   --color-accent-cyan-dark: #0EA8D8;
   --color-accent-amber: #FFC766;
   --color-accent-amber-dark: #F0B44E;
+  --color-navy-950: #050E1A;
   --color-white: #FFFFFF;
   --color-border: #D1D9E0;
+  --color-accent-cyan-light: #E0F7FE;
+  --color-accent-amber-light: #FFF4E0;
+  --color-success: #10B981;
+  --color-error: #EF4444;
 
   --font-heading: "Inter", system-ui, sans-serif;
   --font-body: "Source Sans 3", system-ui, sans-serif;
@@ -26,15 +32,23 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--color-slate);
+  color: var(--color-navy);
   background-color: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--color-navy);
+}
+
+/* Smooth hover transitions globally */
+a, button {
+  transition-property: color, background-color, border-color, opacity;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
 }
 
 /* Skip to content link for accessibility */
@@ -81,19 +95,61 @@ h1, h2, h3, h4, h5, h6 {
   animation: count-up 0.6s ease-out forwards;
 }
 
-/* Hero gradient overlay */
+/* Hero gradient overlay — richer, more depth */
 .hero-gradient {
-  background: linear-gradient(135deg, rgba(11, 28, 46, 0.92) 0%, rgba(30, 42, 56, 0.85) 50%, rgba(19, 192, 245, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(7, 21, 37, 0.98) 0%, rgba(11, 28, 46, 0.96) 35%, rgba(30, 42, 56, 0.94) 65%, rgba(19, 192, 245, 0.08) 100%);
+}
+
+/* Section gradient for alternating page sections */
+.section-gradient {
+  background: linear-gradient(180deg, #F4F7FA 0%, #FFFFFF 100%);
 }
 
 /* Card hover effect */
 .card-hover {
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(11, 28, 46, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(11, 28, 46, 0.15), 0 4px 20px rgba(19, 192, 245, 0.08);
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #13C0F5 0%, #FFC766 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section divider with accent gradient bar */
+.section-divider {
+  position: relative;
+}
+.section-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #13C0F5, #FFC766);
+  border-radius: 2px;
+}
+
+/* Dot pattern background */
+.dot-pattern {
+  background-image: radial-gradient(rgba(19, 192, 245, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* Print styles for capability statement PDF page */
