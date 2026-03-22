@@ -95,9 +95,36 @@ a, button {
   animation: count-up 0.6s ease-out forwards;
 }
 
-/* Hero gradient overlay — richer, more depth */
+/* Hero gradient overlay — premium GovCon depth */
 .hero-gradient {
-  background: linear-gradient(135deg, rgba(7, 21, 37, 0.98) 0%, rgba(11, 28, 46, 0.96) 35%, rgba(30, 42, 56, 0.94) 65%, rgba(19, 192, 245, 0.08) 100%);
+  background: linear-gradient(160deg, rgba(5, 14, 26, 0.99) 0%, rgba(11, 28, 46, 0.97) 30%, rgba(18, 38, 64, 0.95) 60%, rgba(19, 192, 245, 0.06) 100%);
+}
+
+/* Animated gradient line accent */
+.gradient-line {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #13C0F5, #FFC766, #13C0F5, transparent);
+  background-size: 200% 100%;
+  animation: shimmer-line 3s linear infinite;
+}
+
+@keyframes shimmer-line {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Premium navy section with subtle texture */
+.navy-section {
+  background: linear-gradient(180deg, #0B1C2E 0%, #071525 100%);
+  position: relative;
+}
+.navy-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(19, 192, 245, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
 }
 
 /* Section gradient for alternating page sections */
@@ -150,6 +177,32 @@ a, button {
 .dot-pattern {
   background-image: radial-gradient(rgba(19, 192, 245, 0.07) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+/* Chat widget pulse animation */
+@keyframes chat-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(19, 192, 245, 0.5); }
+  50% { box-shadow: 0 0 0 12px rgba(19, 192, 245, 0); }
+}
+
+.chat-pulse {
+  animation: chat-pulse 2s ease-in-out infinite;
+}
+
+/* Smooth fade-in animation for page sections */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
 }
 
 /* Print styles for capability statement PDF page */

@@ -1,6 +1,6 @@
 # CybitSolutions Website - Comprehensive Enhancement Prompts
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-03-22
 > **Current Stack:** Next.js 16, Tailwind CSS v4, TypeScript, react-hook-form, zod, Resend, Vitest
 > **Total Pages:** 42 (including 10 service domain pages, 4 legal pages, 2 PDF pages)
 > **API Routes:** 4 (contact, newsletter, career-apply, partner)
@@ -65,8 +65,8 @@
 | # | Kaporta Feature | CS Status | Priority |
 |---|---|---|---|
 | 1 | react-hook-form + zod resolver integration in all forms | Packages installed but forms use basic useState | High |
-| 2 | Cleaner header without extra search button | DONE - Search removed from header | -- |
-| 3 | Larger, more prominent logo in header | DONE - Logo sizing matched | -- |
+| 2 | Global search with Ctrl+K shortcut | DONE - GlobalSearch restored in header with keyboard shortcut | -- |
+| 3 | Larger, more prominent logo in header & footer | DONE - Header h-[72px], Footer h-28, both extra large | -- |
 | 4 | Reusable Input/Textarea/Select form components in `components/ui/` | Missing - Forms have inline input elements | Medium |
 | 5 | Badge component for tags, status labels, certifications | Missing - Using inline styled spans | Low |
 | 6 | Skeleton loading component | DONE - loading.tsx files exist | -- |
@@ -1700,3 +1700,209 @@ SENTRY_AUTH_TOKEN=xxxx
 ---
 
 > **Note:** Each prompt above is designed to be copy-pasted into an AI coding assistant (Claude, Cursor, GitHub Copilot) as a standalone task. Prompts reference specific file paths and component names from the current codebase. Update paths if the project structure changes.
+
+---
+
+## Gap Analysis: What's Missing in Both Sites
+
+This section covers everything that is **missing in BOTH** CybitSolutions (https://cs-website-six.vercel.app/) and Kaporta (https://kaporta.vercel.app/). Use this as a universal enhancement checklist.
+
+### Frontend Gaps (Both Sites)
+
+| # | Missing Feature | Impact | Prompt to Fix |
+|---|---|---|---|
+| 1 | **Real images** — Both sites use CSS gradient placeholders instead of actual photos | Critical — looks unprofessional to clients | CS-3, K-2 |
+| 2 | **Framer Motion animations** — No scroll-triggered fade-ins, no page transitions, no micro-interactions | Medium — sites feel static vs modern competitors | CS-2, K-5 |
+| 3 | **Dark mode** — No system preference detection, no manual toggle | Low — nice-to-have for tech audience | CS-4 |
+| 4 | **Multi-language support (i18n)** — English only | Medium — CS needs Spanish/French for govt, Kaporta needs Krio/French | CS-16 |
+| 5 | **Image gallery / lightbox** — No way to view project/case study images enlarged | Medium — cannot showcase visual deliverables | CS-15 |
+| 6 | **Video content / media center** — No video embeds, no YouTube integration | Medium — competitors have video case studies | CS-24 |
+| 7 | **Blog detail pages (MDX)** — Insights/blog pages list articles but no individual article pages | High — no content marketing, hurts SEO | CS-10 |
+| 8 | **Interactive charts / data viz** — No Recharts/D3 data visualizations for case studies | Low — would enhance past performance presentation | -- |
+| 9 | **Accessibility audit tool** — No axe-core integration for automated a11y testing | Medium — WCAG compliance requirement for GovCon | CS-21 |
+| 10 | **Progressive Web App (PWA)** — No offline capability, no install prompt | Low — nice-to-have for mobile users | CS-25 |
+
+### Backend Gaps (Both Sites)
+
+| # | Missing Backend | Impact | Solution |
+|---|---|---|---|
+| 1 | **No database** — Form submissions are not stored anywhere | Critical — all leads/applications are lost | PostgreSQL via Supabase + Prisma ORM |
+| 2 | **No authentication** — No admin panel, no protected routes | High — no way to manage content or submissions | NextAuth.js v5 or Clerk |
+| 3 | **No file storage** — Resume uploads, document downloads have no backend | High — career apply button is non-functional | Vercel Blob or AWS S3 |
+| 4 | **No CMS** — All content hardcoded in .tsx files and /data/ folder | High — non-technical staff cannot update content | Sanity v3 or Contentful |
+| 5 | **No email service configured** — Resend/Nodemailer installed but no API keys set | Critical — forms cannot send notifications | Resend with verified domain DNS |
+| 6 | **No payment processor** — Payment pages exist but no Stripe/PayPal SDK | High — cannot accept online payments | Stripe Checkout + webhooks |
+| 7 | **No Google Maps** — Contact pages have address text but no interactive map | Low — minor UX gap | Google Maps Embed API |
+| 8 | **No Redis/caching** — Rate limiting uses in-memory Map (resets on deploy) | Medium — rate limits don't persist | Upstash Redis |
+| 9 | **No WebSocket** — Chat widgets cannot do real-time messaging | Medium — chat is keyword-match only | Socket.io or Pusher |
+| 10 | **No monitoring** — Errors in production go unnoticed | High — no visibility into issues | Sentry |
+
+### DevOps & Infrastructure Gaps (Both Sites)
+
+| # | Missing | Solution |
+|---|---|---|
+| 1 | **No CI/CD pipeline** — No automated checks on PRs | GitHub Actions with lint, type-check, test, build |
+| 2 | **No E2E testing** — Only unit tests (Vitest) on CS, none on Kaporta | Playwright for browser automation |
+| 3 | **No staging environment** — Only local dev and production | Vercel preview deployments (already available) |
+| 4 | **No API documentation** — API routes undocumented | Swagger/OpenAPI spec |
+| 5 | **No backup strategy** — No database backups, no content versioning | Automated Supabase backups |
+| 6 | **No logging infrastructure** — No structured logging | Pino or Winston with log aggregation |
+| 7 | **No performance budgets** — No Lighthouse CI thresholds | Lighthouse CI in GitHub Actions |
+| 8 | **No security scanning** — No dependency vulnerability checks | npm audit + Snyk or Socket.dev |
+| 9 | **No load testing** — No performance benchmarks | k6 or Artillery load tests |
+| 10 | **No feature flags** — No way to toggle features without deploy | LaunchDarkly or Vercel Edge Config |
+
+### SEO & Marketing Gaps (Both Sites)
+
+| # | Missing | Impact |
+|---|---|---|
+| 1 | **No Google Analytics 4** — No marketing funnel data | High — no conversion tracking |
+| 2 | **No Google Search Console** — No search performance monitoring | High — no SEO insights |
+| 3 | **No dynamic OG images** — Social sharing previews use static logo | Medium — poor social engagement |
+| 4 | **No structured data on all pages** — Only root layout has JSON-LD | Medium — search engines miss page-level schema |
+| 5 | **No hreflang tags** — No multi-language SEO signals | Low — until i18n is added |
+| 6 | **No schema for events** — Events pages missing Event JSON-LD | Medium — won't appear in Google Events |
+| 7 | **No schema for job postings** — Career pages missing JobPosting JSON-LD | High — won't appear in Google for Jobs |
+| 8 | **No FAQ schema** — FAQ sections missing FAQPage JSON-LD | Medium — won't get FAQ rich snippets |
+| 9 | **No breadcrumb navigation** — Pages lack breadcrumbs for user orientation | Medium — hurts SEO and UX |
+| 10 | **No canonical URLs per page** — Only root has canonical | Medium — duplicate content risk |
+
+### Design & UX Gaps (Both Sites)
+
+| # | Missing | Impact |
+|---|---|---|
+| 1 | **No loading indicators on navigation** — No NProgress or similar | Low — user doesn't know page is loading |
+| 2 | **No scroll-to-top button** — Long pages have no quick scroll-up | Low — minor UX convenience |
+| 3 | **No breadcrumb component** — No page location indicator | Medium — hurts navigation for deep pages |
+| 4 | **No print stylesheets** — Non-PDF pages print poorly | Low — CS has print styles for PDF pages only |
+| 5 | **No skeleton states on data-heavy pages** — Content shift on slow connections | Low — minor CLS concern |
+
+---
+
+## Kaporta-Specific Enhancement Prompts (Execute from Kaporta folder)
+
+These prompts should be run when working in the Kaporta project directory (`C:\Users\adupe\Desktop\Kaporta`).
+
+### K-1: Add Cookie Consent Banner
+```
+Add a GDPR-compliant cookie consent banner to Kaporta:
+- Create src/components/ui/CookieConsent.tsx
+- Client component with localStorage persistence
+- "Accept All" and "Manage Preferences" buttons
+- Slide-up animation from bottom
+- Add to root layout (src/app/layout.tsx)
+- Match Kaporta's deep-blue/construction-yellow color scheme
+```
+
+### K-2: Replace All Placeholder Images
+```
+Replace all gradient placeholder images across Kaporta with real construction photos:
+- Homepage hero: Construction site or quarry panoramic
+- Service cards: Photos for each of 6 services (quarrying, concrete, haulage, civil engineering, power, equipment)
+- Project cards: Completed project photos
+- Team photos: Professional headshots
+- Blog images: Industry-relevant photos
+Store in public/images/ with subfolders. Use Next.js Image with blur placeholder.
+```
+
+### K-3: Add Chat Widget
+```
+Add a floating AI chat assistant to Kaporta similar to CybitSolutions:
+- Create src/components/ui/ChatWidget.tsx
+- FAQ-based keyword matching for: services, contact, quote, projects, careers
+- Auto-open with greeting on first visit (sessionStorage)
+- Quick action buttons
+- Deep-blue header, construction-yellow accents
+- Add to root layout
+```
+
+### K-4: Add Global Search (Ctrl+K)
+```
+Add a global search modal to Kaporta:
+- Create src/components/ui/GlobalSearch.tsx
+- Searchable index of all pages, services, projects
+- Keyboard shortcut Ctrl+K / Cmd+K
+- Category grouping (Services, Projects, Blog, Company)
+- Arrow key navigation
+- Search button in header
+- Create src/data/search-index.ts with all page data
+```
+
+### K-5: Add Framer Motion Animations
+```
+Add smooth animations to Kaporta:
+- Install framer-motion
+- Fade-in on scroll for section headings and cards
+- Stagger animation for grid items
+- Counter animation for homepage stats (15+ Years, 100+ Projects)
+- Card hover lift animations
+- Page transition with AnimatePresence
+- Construction industry feel — solid, confident, not flashy
+```
+
+### K-6: Add Security Headers & Structured Data
+```
+Add to Kaporta:
+1. Security headers in next.config.ts (X-Content-Type-Options, X-Frame-Options, CSP)
+2. Organization JSON-LD in layout.tsx
+3. LocalBusiness JSON-LD with Sierra Leone address
+4. BreadcrumbList JSON-LD
+5. public/llms.txt for AI engine optimization
+6. public/.well-known/security.txt
+```
+
+### K-7: Add Backend API Routes
+```
+Create API routes for Kaporta forms:
+- POST /api/contact (contact form → kaportaq1@gmail.com)
+- POST /api/quote (quote request with file upload)
+- Rate limiting, Zod validation, honeypot detection
+- Install and configure Resend or Nodemailer
+- Create src/lib/rate-limit.ts and src/lib/validations.ts
+```
+
+### K-8: Add Newsletter Signup
+```
+Add newsletter functionality to Kaporta:
+- Create src/components/ui/NewsletterForm.tsx
+- Add to footer (dark variant) and insights pages
+- POST /api/newsletter route
+- In-memory dedup + welcome email
+```
+
+### K-9: Add Mega Menu
+```
+Upgrade Kaporta's simple dropdowns to mega menu panels:
+- Create src/components/layout/MegaMenu.tsx
+- Show descriptions for each sub-page
+- Featured content area (latest project, news)
+- Smooth slide-down animation
+- Proper z-index handling
+```
+
+### K-10: Add PDF Generation Pages
+```
+Create downloadable PDF pages for Kaporta:
+- Company profile PDF at /company-profile-pdf
+- Print-optimized layout with @media print CSS
+- Cover page, services overview, projects, certifications, contact
+- "Print / Save as PDF" button
+- Construction-themed design with deep-blue/yellow
+```
+
+---
+
+## Completed Updates Log
+
+| Date | Update | Status |
+|---|---|---|
+| 2026-03-22 | Global search restored in header | ✅ Done |
+| 2026-03-22 | Logo enlarged (Header h-[72px], Footer h-28) | ✅ Done |
+| 2026-03-22 | Premium color scheme applied (gradient-line, navy-section, glass-card, dot-pattern) | ✅ Done |
+| 2026-03-22 | Chat widget pulse animation added | ✅ Done |
+| 2026-03-22 | Homepage redesign with capability badges, gradient text, premium CTA | ✅ Done |
+| 2026-03-22 | Footer gradient background (navy to navy-950) | ✅ Done |
+| 2026-03-22 | Header utility bar gradient (navy to slate) | ✅ Done |
+| 2026-03-22 | Hamburger menu stays mobile-only (lg:hidden) — correct behavior | ✅ Done |
+| 2026-03-22 | Full gap analysis for both CybitSolutions and Kaporta added | ✅ Done |
+| 2026-03-22 | 10 Kaporta-specific enhancement prompts added (K-1 through K-10) | ✅ Done |

@@ -354,10 +354,10 @@ export function ChatWidget() {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`fixed bottom-4 right-4 sm:right-6 z-50 w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 cursor-pointer ${
+        className={`fixed bottom-4 right-4 sm:right-6 z-50 w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 cursor-pointer ${
           isOpen
-            ? "bg-[#0B1C2E] hover:bg-[#1E2A38] rotate-0"
-            : "bg-[#13C0F5] hover:bg-[#0EA8D8] rotate-0"
+            ? "bg-[#0B1C2E] hover:bg-[#1E2A38]"
+            : "bg-[#13C0F5] hover:bg-[#0EA8D8] chat-pulse"
         }`}
         aria-label={isOpen ? "Close chat assistant" : "Open chat assistant"}
         aria-expanded={isOpen}

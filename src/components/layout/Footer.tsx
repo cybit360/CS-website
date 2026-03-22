@@ -43,7 +43,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-navy text-white" role="contentinfo">
+    <footer className="bg-gradient-to-b from-navy to-navy-950 text-white" role="contentinfo">
       {/* Newsletter banner */}
       <div className="border-b border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-10">
@@ -73,9 +73,9 @@ export function Footer() {
               <Image
                 src="/images/logo.png"
                 alt="CybitSolutions"
-                width={280}
-                height={70}
-                className="h-24 w-auto brightness-0 invert"
+                width={320}
+                height={80}
+                className="h-28 w-auto brightness-0 invert"
               />
             </Link>
             <p className="mb-6 text-sm leading-relaxed text-white/60">
