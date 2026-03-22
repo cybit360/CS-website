@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { DownloadButton } from "@/components/ui/DownloadButton";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { ContractVehiclesMatrix } from "@/components/sections/ContractVehiclesMatrix";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -553,7 +554,22 @@ export default function CapabilityStatementsPage() {
         </div>
       </section>
 
-      {/* 10. CTA Banner */}
+      {/* 10. Interactive Contract Vehicles & Capabilities Matrix */}
+      <section className="py-20 bg-cloud">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-navy mb-4 text-center">
+            Contract Vehicles &amp; Capabilities Matrix
+          </h2>
+          <p className="text-steel text-center max-w-2xl mx-auto mb-12">
+            Explore our contract vehicles, capability tiers across all service
+            domains, and searchable NAICS code registry
+          </p>
+
+          <ContractVehiclesMatrix />
+        </div>
+      </section>
+
+      {/* 11. CTA Banner */}
       <section className="py-16 bg-navy">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
