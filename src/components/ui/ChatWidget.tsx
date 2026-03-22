@@ -179,15 +179,16 @@ export function ChatWidget() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Auto-open chat with greeting on first visit per browser session
+  // Auto-open chat with greeting on EVERY first visit per browser session
   useEffect(() => {
     const hasBeenGreeted = sessionStorage.getItem("cybit-chat-greeted");
     if (!hasBeenGreeted) {
+      // Show greeting after 1.5 seconds for a professional, welcoming feel
       const timer = setTimeout(() => {
-        setMessages((prev) => [GREETING_MESSAGE, ...prev]);
+        setMessages([GREETING_MESSAGE, WELCOME_MESSAGE]);
         setIsOpen(true);
         sessionStorage.setItem("cybit-chat-greeted", "true");
-      }, 2000);
+      }, 1500);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -247,8 +248,8 @@ export function ChatWidget() {
           {/* Header */}
           <div className="bg-[#0B1C2E] px-5 py-4 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-[#13C0F5]/20 flex items-center justify-center">
-                <Bot className="w-4 h-4 text-[#13C0F5]" />
+              <div className="w-8 h-8 rounded-full bg-[#2563EB]/20 flex items-center justify-center">
+                <Bot className="w-4 h-4 text-[#2563EB]" />
               </div>
               <div>
                 <p className="text-white font-semibold text-sm">
@@ -277,13 +278,13 @@ export function ChatWidget() {
               >
                 {msg.role === "assistant" && (
                   <div className="w-7 h-7 rounded-full bg-[#0B1C2E] flex items-center justify-center shrink-0 mt-0.5">
-                    <Bot className="w-3.5 h-3.5 text-[#13C0F5]" />
+                    <Bot className="w-3.5 h-3.5 text-[#2563EB]" />
                   </div>
                 )}
                 <div
                   className={`max-w-[80%] rounded-2xl px-4 py-2.5 ${
                     msg.role === "user"
-                      ? "bg-[#13C0F5] text-[#0B1C2E]"
+                      ? "bg-[#2563EB] text-[#0B1C2E]"
                       : "bg-[#F4F7FA] text-[#1E2A38]"
                   }`}
                 >
@@ -294,7 +295,7 @@ export function ChatWidget() {
                         <a
                           key={link.href + link.label}
                           href={link.href}
-                          className="inline-block text-xs font-semibold text-[#13C0F5] bg-white border border-[#13C0F5]/30 rounded-full px-3 py-1 hover:bg-[#13C0F5]/10 transition-colors"
+                          className="inline-block text-xs font-semibold text-[#2563EB] bg-white border border-[#2563EB]/30 rounded-full px-3 py-1 hover:bg-[#2563EB]/10 transition-colors"
                         >
                           {link.label}
                         </a>
@@ -303,7 +304,7 @@ export function ChatWidget() {
                   )}
                 </div>
                 {msg.role === "user" && (
-                  <div className="w-7 h-7 rounded-full bg-[#13C0F5]/20 flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-7 h-7 rounded-full bg-[#2563EB]/20 flex items-center justify-center shrink-0 mt-0.5">
                     <User className="w-3.5 h-3.5 text-[#0B1C2E]" />
                   </div>
                 )}
@@ -319,7 +320,7 @@ export function ChatWidget() {
                 <button
                   key={action.label}
                   onClick={() => handleQuickAction(action.query)}
-                  className="text-xs font-medium text-[#0B1C2E] bg-[#F4F7FA] border border-[#D1D9E0] rounded-full px-3 py-1.5 hover:bg-[#13C0F5]/10 hover:border-[#13C0F5]/30 transition-colors cursor-pointer"
+                  className="text-xs font-medium text-[#0B1C2E] bg-[#F4F7FA] border border-[#D1D9E0] rounded-full px-3 py-1.5 hover:bg-[#2563EB]/10 hover:border-[#2563EB]/30 transition-colors cursor-pointer"
                 >
                   {action.label}
                 </button>
@@ -342,7 +343,7 @@ export function ChatWidget() {
             <button
               onClick={handleSend}
               disabled={!input.trim()}
-              className="w-8 h-8 rounded-full bg-[#13C0F5] flex items-center justify-center text-[#0B1C2E] hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer shrink-0"
+              className="w-8 h-8 rounded-full bg-[#2563EB] flex items-center justify-center text-[#0B1C2E] hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer shrink-0"
               aria-label="Send message"
             >
               <Send className="w-4 h-4" />
@@ -357,7 +358,7 @@ export function ChatWidget() {
         className={`fixed bottom-4 right-4 sm:right-6 z-50 w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 cursor-pointer ${
           isOpen
             ? "bg-[#0B1C2E] hover:bg-[#1E2A38]"
-            : "bg-[#13C0F5] hover:bg-[#0EA8D8] chat-pulse"
+            : "bg-[#2563EB] hover:bg-[#1D4ED8] chat-pulse"
         }`}
         aria-label={isOpen ? "Close chat assistant" : "Open chat assistant"}
         aria-expanded={isOpen}

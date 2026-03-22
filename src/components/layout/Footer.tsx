@@ -93,7 +93,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex size-10 items-center justify-center rounded-lg bg-white/5 text-white/60 hover:bg-accent-cyan hover:text-navy transition-all"
+                    className="flex size-10 items-center justify-center rounded-lg bg-white/5 text-white/60 hover:bg-accent-blue hover:text-white transition-all"
                   >
                     <Icon className="size-4.5" />
                   </a>

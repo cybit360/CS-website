@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, ChevronDown, Phone, Mail, Search, Command } from "lucide-react";
+import { Menu, ChevronDown, Phone, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { mainNavItems, utilityLinks } from "@/data/navigation";
 import { MegaMenu } from "./MegaMenu";
@@ -17,7 +17,6 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Track scroll for sticky header opacity
   useEffect(() => {
     function handleScroll() {
       setScrolled(window.scrollY > 20);
@@ -55,19 +54,19 @@ export function Header() {
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "bg-white/98 shadow-xl backdrop-blur-lg border-b border-accent-cyan/10"
+          ? "bg-white shadow-lg backdrop-blur-lg border-b border-slate/10"
           : "bg-white"
       )}
     >
-      {/* Utility bar — sleek top strip */}
-      <div className="hidden bg-gradient-to-r from-navy via-navy to-slate lg:block">
+      {/* Utility bar */}
+      <div className="hidden bg-navy lg:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
           <nav aria-label="Utility navigation" className="flex items-center gap-6">
             {utilityLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-xs font-medium text-white/60 hover:text-accent-cyan transition-colors"
+                className="text-xs font-medium text-white/60 hover:text-accent-blue transition-colors"
               >
                 {link.label}
               </Link>
@@ -76,7 +75,7 @@ export function Header() {
           <div className="flex items-center gap-6 text-xs font-medium text-white/80">
             <a
               href="tel:+17712331379"
-              className="inline-flex items-center gap-2 hover:text-accent-cyan transition-colors"
+              className="inline-flex items-center gap-2 hover:text-accent-blue transition-colors"
             >
               <Phone className="size-3.5" />
               + (771) 233-1379
@@ -84,7 +83,7 @@ export function Header() {
             <span className="h-3 w-px bg-white/20" aria-hidden="true" />
             <a
               href="mailto:info@cybitsolutions.net"
-              className="inline-flex items-center gap-2 hover:text-accent-cyan transition-colors"
+              className="inline-flex items-center gap-2 hover:text-accent-blue transition-colors"
             >
               <Mail className="size-3.5" />
               info@cybitsolutions.net
@@ -95,7 +94,7 @@ export function Header() {
 
       {/* Main nav bar */}
       <div className="relative mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:h-24">
-        {/* Logo — extra large and prominent */}
+        {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center">
           <Image
             src="/images/logo.png"
@@ -107,7 +106,7 @@ export function Header() {
           />
         </Link>
 
-        {/* Desktop navigation */}
+        {/* Desktop navigation — hidden below 1024px */}
         <nav
           aria-label="Main navigation"
           className="hidden items-center gap-0.5 lg:flex"
@@ -124,8 +123,8 @@ export function Header() {
                 className={cn(
                   "inline-flex items-center gap-1 rounded-md px-3.5 py-2.5 text-sm font-semibold tracking-tight transition-colors",
                   activeMenu === item.label
-                    ? "text-accent-cyan"
-                    : "text-navy hover:text-accent-cyan"
+                    ? "text-accent-blue"
+                    : "text-navy hover:text-accent-blue"
                 )}
                 aria-expanded={
                   item.children ? activeMenu === item.label : undefined
@@ -146,23 +145,22 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Search + CTA + Mobile toggle */}
+        {/* Search + CTA — desktop only (except search on all) */}
         <div className="flex items-center gap-3">
-          {/* Global Search Button — always visible */}
           <GlobalSearch />
 
           <Link
             href="/contact"
-            className="hidden items-center gap-2 rounded-lg bg-accent-cyan px-5 py-2.5 text-sm font-bold text-navy shadow-md shadow-accent-cyan/20 hover:bg-accent-cyan-dark hover:shadow-lg hover:shadow-accent-cyan/30 transition-all lg:inline-flex"
+            className="hidden items-center gap-2 rounded-lg bg-accent-blue px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-accent-blue/25 hover:bg-accent-blue-dark hover:shadow-lg transition-all lg:inline-flex"
           >
             Request Consultation
           </Link>
 
-          {/* Mobile hamburger — only visible below lg breakpoint */}
+          {/* Hamburger — ONLY on mobile/tablet, NEVER on desktop */}
           <button
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
-            className="rounded-lg p-2 text-navy hover:bg-cloud lg:hidden transition-colors"
+            className="block rounded-lg p-2 text-navy hover:bg-cloud transition-colors lg:!hidden"
           >
             <Menu className="size-6" />
           </button>

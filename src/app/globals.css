@@ -1,31 +1,55 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #0B1C2E;
-  --color-navy-light: #122640;
-  --color-navy-dark: #071525;
-  --color-slate: #1E2A38;
-  --color-steel: #5C6B7A;
-  --color-cloud: #F4F7FA;
-  --color-cloud-dark: #E8EDF3;
-  --color-accent-cyan: #13C0F5;
-  --color-accent-cyan-dark: #0EA8D8;
-  --color-accent-amber: #FFC766;
-  --color-accent-amber-dark: #F0B44E;
-  --color-navy-950: #050E1A;
+  /* === PROFESSIONAL GOVCON COLOR SCHEME === */
+  /* Inspired by RTX.com, GDIT.com, Leidos.com */
+
+  /* Primary Navy palette */
+  --color-navy: #0A1628;
+  --color-navy-light: #0F1F38;
+  --color-navy-dark: #060E1A;
+  --color-navy-950: #030911;
+
+  /* Secondary tones */
+  --color-slate: #1B2B42;
+  --color-steel: #64748B;
+  --color-cloud: #F1F5F9;
+  --color-cloud-dark: #E2E8F0;
+
+  /* Accent Blue — electric, high-visibility (like GDIT/Leidos) */
+  --color-accent-blue: #2563EB;
+  --color-accent-blue-dark: #1D4ED8;
+  --color-accent-blue-light: #DBEAFE;
+
+  /* Accent Gold — warm highlight for CTAs and badges */
+  --color-accent-gold: #F59E0B;
+  --color-accent-gold-dark: #D97706;
+  --color-accent-gold-light: #FEF3C7;
+
+  /* Legacy aliases (keep for backward compat with existing pages) */
+  --color-accent-cyan: #2563EB;
+  --color-accent-cyan-dark: #1D4ED8;
+  --color-accent-amber: #F59E0B;
+  --color-accent-amber-dark: #D97706;
+  --color-accent-cyan-light: #DBEAFE;
+  --color-accent-amber-light: #FEF3C7;
+
+  /* Utility */
   --color-white: #FFFFFF;
-  --color-border: #D1D9E0;
-  --color-accent-cyan-light: #E0F7FE;
-  --color-accent-amber-light: #FFF4E0;
+  --color-border: #CBD5E1;
   --color-success: #10B981;
   --color-error: #EF4444;
 
+  /* Typography */
   --font-heading: "Inter", system-ui, sans-serif;
   --font-body: "Source Sans 3", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
-/* Base styles */
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
 html {
   scroll-behavior: smooth;
 }
@@ -46,19 +70,22 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Smooth hover transitions globally */
 a, button {
-  transition-property: color, background-color, border-color, opacity;
+  transition-property: color, background-color, border-color, opacity, transform;
   transition-duration: 200ms;
   transition-timing-function: ease;
 }
 
-/* Skip to content link for accessibility */
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
 .skip-link {
   position: absolute;
   top: -100%;
   left: 0;
   padding: 0.5rem 1rem;
-  background: var(--color-accent-cyan);
-  color: var(--color-navy);
+  background: var(--color-accent-blue);
+  color: var(--color-white);
   z-index: 100;
   font-weight: 600;
 }
@@ -67,11 +94,106 @@ a, button {
   top: 0;
 }
 
-/* Focus states for accessibility */
 :focus-visible {
-  outline: 2px solid var(--color-accent-cyan);
+  outline: 2px solid var(--color-accent-blue);
   outline-offset: 2px;
 }
+
+/* ============================================
+   HERO & SECTION BACKGROUNDS
+   ============================================ */
+
+/* Hero gradient — deep, professional, high-contrast */
+.hero-gradient {
+  background: linear-gradient(160deg, rgba(3, 9, 17, 0.99) 0%, rgba(10, 22, 40, 0.97) 30%, rgba(15, 31, 56, 0.95) 60%, rgba(27, 43, 66, 0.90) 100%);
+}
+
+/* Section gradient for alternating page sections */
+.section-gradient {
+  background: linear-gradient(180deg, #F1F5F9 0%, #FFFFFF 100%);
+}
+
+/* Navy section with subtle texture */
+.navy-section {
+  background: linear-gradient(180deg, var(--color-navy) 0%, var(--color-navy-dark) 100%);
+  position: relative;
+}
+.navy-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* Dot pattern background */
+.dot-pattern {
+  background-image: radial-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ============================================
+   CARD & INTERACTIVE EFFECTS
+   ============================================ */
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(10, 22, 40, 0.15), 0 4px 20px rgba(37, 99, 235, 0.08);
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient text — for special emphasis only */
+.gradient-text {
+  background: linear-gradient(135deg, #2563EB 0%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section divider with accent gradient bar */
+.section-divider {
+  position: relative;
+}
+.section-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #2563EB, #F59E0B);
+  border-radius: 2px;
+}
+
+/* Animated gradient line */
+.gradient-line {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #2563EB, #F59E0B, #2563EB, transparent);
+  background-size: 200% 100%;
+  animation: shimmer-line 3s linear infinite;
+}
+
+@keyframes shimmer-line {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
 
 /* Mega menu animation */
 .mega-menu-enter {
@@ -95,119 +217,31 @@ a, button {
   animation: count-up 0.6s ease-out forwards;
 }
 
-/* Hero gradient overlay — premium GovCon depth */
-.hero-gradient {
-  background: linear-gradient(160deg, rgba(5, 14, 26, 0.99) 0%, rgba(11, 28, 46, 0.97) 30%, rgba(18, 38, 64, 0.95) 60%, rgba(19, 192, 245, 0.06) 100%);
-}
-
-/* Animated gradient line accent */
-.gradient-line {
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #13C0F5, #FFC766, #13C0F5, transparent);
-  background-size: 200% 100%;
-  animation: shimmer-line 3s linear infinite;
-}
-
-@keyframes shimmer-line {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* Premium navy section with subtle texture */
-.navy-section {
-  background: linear-gradient(180deg, #0B1C2E 0%, #071525 100%);
-  position: relative;
-}
-.navy-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(19, 192, 245, 0.03) 1px, transparent 1px);
-  background-size: 32px 32px;
-  pointer-events: none;
-}
-
-/* Section gradient for alternating page sections */
-.section-gradient {
-  background: linear-gradient(180deg, #F4F7FA 0%, #FFFFFF 100%);
-}
-
-/* Card hover effect */
-.card-hover {
-  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card-hover:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(11, 28, 46, 0.15), 0 4px 20px rgba(19, 192, 245, 0.08);
-}
-
-/* Glass card effect */
-.glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #13C0F5 0%, #FFC766 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Section divider with accent gradient bar */
-.section-divider {
-  position: relative;
-}
-.section-divider::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, #13C0F5, #FFC766);
-  border-radius: 2px;
-}
-
-/* Dot pattern background */
-.dot-pattern {
-  background-image: radial-gradient(rgba(19, 192, 245, 0.07) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* Chat widget pulse animation */
+/* Chat widget pulse */
 @keyframes chat-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(19, 192, 245, 0.5); }
-  50% { box-shadow: 0 0 0 12px rgba(19, 192, 245, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); }
+  50% { box-shadow: 0 0 0 12px rgba(37, 99, 235, 0); }
 }
 
 .chat-pulse {
   animation: chat-pulse 2s ease-in-out infinite;
 }
 
-/* Smooth fade-in animation for page sections */
+/* Fade in up */
 @keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease-out forwards;
 }
 
-/* Print styles for capability statement PDF page */
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
 @media print {
-  /* Hide non-print elements */
   .no-print,
   header,
   footer,
@@ -216,7 +250,6 @@ a, button {
     display: none !important;
   }
 
-  /* Reset body for print */
   body {
     background: white !important;
     color: black !important;
@@ -224,7 +257,6 @@ a, button {
     line-height: 1.4 !important;
   }
 
-  /* Ensure content fills the page */
   .print-content {
     max-width: 100% !important;
     padding: 0 !important;
@@ -235,32 +267,27 @@ a, button {
     min-height: auto !important;
   }
 
-  /* Page setup */
   @page {
     size: letter;
     margin: 0.5in;
   }
 
-  /* Prevent page breaks inside elements */
   section {
     break-inside: avoid;
   }
 
-  /* Ensure borders print */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     color-adjust: exact !important;
   }
 
-  /* Hide chat widget when printing */
   [role="dialog"],
   [aria-label="Open chat assistant"],
   [aria-label="Close chat assistant"] {
     display: none !important;
   }
 
-  /* Company profile PDF pages */
   .profile-page {
     page-break-after: always;
     break-after: page;

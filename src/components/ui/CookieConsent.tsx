@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Cookie } from 'lucide-react';
+import { Cookie, X } from 'lucide-react';
+import Link from 'next/link';
 
 const COOKIE_CONSENT_KEY = 'cybit-cookie-consent';
 
@@ -11,8 +12,8 @@ export function CookieConsent() {
   useEffect(() => {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!consent) {
-      // Small delay so the banner slides up after page load
-      const timer = setTimeout(() => setVisible(true), 500);
+      // Show after a short delay so it slides up naturally
+      const timer = setTimeout(() => setVisible(true), 1000);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -22,9 +23,13 @@ export function CookieConsent() {
     setVisible(false);
   };
 
-  const handleManagePreferences = () => {
-    // Placeholder: for now, same as Accept All
-    localStorage.setItem(COOKIE_CONSENT_KEY, 'all');
+  const handleEssentialOnly = () => {
+    localStorage.setItem(COOKIE_CONSENT_KEY, 'essential');
+    setVisible(false);
+  };
+
+  const handleDismiss = () => {
+    localStorage.setItem(COOKIE_CONSENT_KEY, 'dismissed');
     setVisible(false);
   };
 
@@ -32,36 +37,53 @@ export function CookieConsent() {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-[9998] transform transition-transform duration-500 ease-out"
+      className="fixed bottom-0 left-0 right-0 z-[9998] transition-all duration-500 ease-out"
       style={{ transform: visible ? 'translateY(0)' : 'translateY(100%)' }}
       role="dialog"
       aria-label="Cookie consent"
     >
-      <div className="bg-navy border-t border-white/10 px-4 py-4 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 sm:flex-row sm:justify-between">
-          {/* Left side: Icon + Text */}
-          <div className="flex items-start gap-3 text-white sm:items-center">
-            <Cookie className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent-amber sm:mt-0" aria-hidden="true" />
-            <p className="text-sm leading-relaxed text-white/90">
-              We use cookies to enhance your browsing experience, serve personalized content, and analyze
-              our traffic. By clicking &ldquo;Accept All,&rdquo; you consent to our use of cookies.
-            </p>
-          </div>
+      <div className="bg-navy border-t-2 border-accent-blue/30 px-4 py-5 sm:px-6 lg:px-8 shadow-2xl">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            {/* Left side: Icon + Text */}
+            <div className="flex items-start gap-3 flex-1">
+              <Cookie className="mt-0.5 h-6 w-6 flex-shrink-0 text-accent-gold" aria-hidden="true" />
+              <div>
+                <p className="text-sm font-semibold text-white mb-1">
+                  We Value Your Privacy
+                </p>
+                <p className="text-sm leading-relaxed text-white/70">
+                  We use cookies to enhance your browsing experience, serve personalized content, and analyze
+                  our traffic. By clicking &ldquo;Accept All,&rdquo; you consent to our use of cookies.{' '}
+                  <Link href="/legal/cookies" className="text-accent-blue hover:underline">
+                    Learn more
+                  </Link>
+                </p>
+              </div>
+            </div>
 
-          {/* Right side: Buttons */}
-          <div className="flex flex-shrink-0 gap-3">
-            <button
-              onClick={handleManagePreferences}
-              className="cursor-pointer rounded-lg border border-white/30 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-white/60 hover:bg-white/10"
-            >
-              Manage Preferences
-            </button>
-            <button
-              onClick={handleAcceptAll}
-              className="cursor-pointer rounded-lg bg-accent-cyan px-4 py-2 text-sm font-semibold text-navy transition-colors hover:bg-accent-cyan/90"
-            >
-              Accept All
-            </button>
+            {/* Right side: Buttons */}
+            <div className="flex flex-shrink-0 items-center gap-3">
+              <button
+                onClick={handleEssentialOnly}
+                className="cursor-pointer rounded-lg border border-white/20 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:border-white/40 hover:bg-white/10"
+              >
+                Essential Only
+              </button>
+              <button
+                onClick={handleAcceptAll}
+                className="cursor-pointer rounded-lg bg-accent-blue px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-accent-blue-dark shadow-md shadow-accent-blue/25"
+              >
+                Accept All
+              </button>
+              <button
+                onClick={handleDismiss}
+                className="cursor-pointer rounded-md p-1.5 text-white/40 hover:text-white/70 hover:bg-white/10 transition-colors"
+                aria-label="Dismiss cookie banner"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
