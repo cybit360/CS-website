@@ -1940,3 +1940,8 @@ Create downloadable PDF pages for Kaporta:
 | 2026-03-22 | Prompt 21: Accessibility improvements (VisuallyHidden, MobileNav focus trap, CSS focus-visible) | ✅ Done |
 | 2026-03-22 | Prompt 23: Video content support (VideoPlayer, VideoGallery, 6 sample videos, events page) | ✅ Done |
 | 2026-03-22 | next.config.ts: HSTS, cache-control, remove X-Powered-By, image optimization config | ✅ Done |
+| 2026-03-22 | Prompt 4: Dark mode with ThemeProvider, ThemeToggle, CSS overrides, FOUC prevention | ✅ Done |
+| 2026-03-22 | Prompt 9: Google Analytics 4 component with event tracking helpers (ready for GA_MEASUREMENT_ID) | ✅ Done |
+| 2026-03-22 | Prompt 12: Playwright E2E test config + homepage/navigation/form test specs | ✅ Done |
+| 2026-03-22 | Accessibility: focus trapping in ChatWidget, ARIA improvements in Header/Footer, reduced motion in FadeIn | ✅ Done |
+| 2026-03-22 | .env.example updated with all environment variable templates | ✅ Done |
