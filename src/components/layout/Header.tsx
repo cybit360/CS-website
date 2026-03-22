@@ -9,6 +9,7 @@ import { mainNavItems, utilityLinks } from "@/data/navigation";
 import { MegaMenu } from "./MegaMenu";
 import { MobileNav } from "./MobileNav";
 import { GlobalSearch } from "@/components/ui/GlobalSearch";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -148,6 +149,8 @@ export function Header() {
         {/* Search + CTA — desktop only (except search on all) */}
         <div className="flex items-center gap-3">
           <GlobalSearch />
+
+          <ThemeToggle />
 
           <Link
             href="/contact"
