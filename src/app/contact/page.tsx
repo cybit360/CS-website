@@ -148,44 +148,27 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Placeholder */}
-      <section className="bg-white py-12">
+      {/* Our Location - Google Maps */}
+      <section className="bg-white py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div
-            className="relative rounded-xl overflow-hidden aspect-[21/9] bg-gradient-to-br from-navy via-slate to-stone-700/30"
-            role="img"
-            aria-label="Office location map placeholder for Reston, Virginia"
-          >
-            {/* Grid overlay */}
-            <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-10" />
-            {/* Map pin visual */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <svg
-                className="w-16 h-16 text-accent-cyan mb-3"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <p className="text-white/80 font-semibold text-lg">Reston, Virginia</p>
-              <p className="text-white/50 text-sm mt-1">1234 Innovation Drive, Suite 500</p>
-            </div>
-            {/* Decorative accents */}
-            <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-accent-cyan/5 rounded-tl-full" />
-            <div className="absolute top-0 left-0 w-1/4 h-1/4 bg-white/[0.03] rounded-br-full" />
-            {/* Decorative roads */}
-            <div className="absolute top-1/2 left-0 w-full h-px bg-white/10" />
-            <div className="absolute top-0 left-1/2 w-px h-full bg-white/10" />
-            <div className="absolute top-1/3 left-0 w-full h-px bg-white/5" />
-            <div className="absolute top-0 left-1/3 w-px h-full bg-white/5" />
-            <div className="absolute top-2/3 left-0 w-full h-px bg-white/5" />
-            <div className="absolute top-0 left-2/3 w-px h-full bg-white/5" />
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-navy mb-4">Our Location</h2>
+            <p className="text-steel max-w-2xl mx-auto">
+              Proudly serving federal agencies and commercial clients from the
+              Washington, D.C. metro area — the heart of government operations.
+            </p>
           </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d99370.14121788856!2d-77.09697339568148!3d38.89376751855697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7c6de5af6e45b%3A0xc2524522d4885d2a!2sWashington%2C%20DC!5e0!3m2!1sen!2sus!4v1"
+            width="100%"
+            height="400"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="CybitSolutions Location"
+            className="rounded-xl"
+          />
         </div>
       </section>
 

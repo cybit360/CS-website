@@ -27,6 +27,7 @@ import {
   Lock,
   Zap,
 } from "lucide-react";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Company Profile",
@@ -279,6 +280,7 @@ export default function CompanyProfilePage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <Breadcrumb variant="dark" items={[{ label: "Who We Are", href: "/who-we-are" }, { label: "Company Profile" }]} />
           <p className="text-accent-cyan font-semibold text-sm tracking-widest uppercase mb-4">
             Who We Are
           </p>
