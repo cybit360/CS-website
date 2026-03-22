@@ -12,6 +12,9 @@ import {
   ScrollText,
 } from "lucide-react";
 import { PartnerLogo } from "@/components/ui/PartnerLogos";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { FadeIn } from "@/components/animations/FadeIn";
+import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 
 export const metadata: Metadata = {
   title: "Alliances & Certifications",
@@ -174,6 +177,7 @@ export default function AlliancesPage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <Breadcrumb variant="dark" items={[{ label: "Who We Serve", href: "/who-we-serve" }, { label: "Alliances" }]} />
           <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
             Who We Serve
           </p>
@@ -191,17 +195,19 @@ export default function AlliancesPage() {
       {/* Technology Partners */}
       <section className="bg-cloud py-20">
         <div className="container mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-3xl font-bold text-navy">
-            Technology Partners
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-steel">
-            We maintain deep, certified partnerships with the platforms that
-            power modern government and enterprise IT.
-          </p>
+          <FadeIn>
+            <h2 className="text-center text-3xl font-bold text-navy">
+              Technology Partners
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-steel">
+              We maintain deep, certified partnerships with the platforms that
+              power modern government and enterprise IT.
+            </p>
+          </FadeIn>
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <StaggerContainer className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {technologyPartners.map((partner) => (
-              <div
+              <StaggerItem
                 key={partner.name}
                 className="rounded-2xl border border-border bg-white p-6 shadow-sm card-hover"
               >
@@ -227,25 +233,27 @@ export default function AlliancesPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Certifications */}
       <section className="bg-white py-20">
         <div className="container mx-auto max-w-5xl px-6">
-          <h2 className="text-center text-3xl font-bold text-navy">
-            Certifications &amp; Compliance
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-steel">
-            Our certifications demonstrate a verified commitment to security,
-            quality, and regulatory compliance.
-          </p>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <FadeIn delay={0.1}>
+            <h2 className="text-center text-3xl font-bold text-navy">
+              Certifications &amp; Compliance
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-steel">
+              Our certifications demonstrate a verified commitment to security,
+              quality, and regulatory compliance.
+            </p>
+          </FadeIn>
+          <StaggerContainer className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {certifications.map((cert) => (
-              <div
+              <StaggerItem
                 key={cert.name}
                 className="flex flex-col items-center rounded-xl border border-border bg-cloud p-6 text-center card-hover"
               >
@@ -257,25 +265,27 @@ export default function AlliancesPage() {
                   {cert.level}
                 </p>
                 <p className="mt-2 text-sm text-steel">{cert.description}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Contract Vehicles */}
       <section className="bg-cloud py-20">
         <div className="container mx-auto max-w-5xl px-6">
-          <h2 className="text-center text-3xl font-bold text-navy">
-            Contract Vehicles
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-steel">
-            Accelerate procurement through our pre-competed, government-approved
-            contract vehicles.
-          </p>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
+          <FadeIn delay={0.1}>
+            <h2 className="text-center text-3xl font-bold text-navy">
+              Contract Vehicles
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-steel">
+              Accelerate procurement through our pre-competed, government-approved
+              contract vehicles.
+            </p>
+          </FadeIn>
+          <StaggerContainer className="mt-12 grid gap-8 md:grid-cols-3">
             {contractVehicles.map((cv) => (
-              <div
+              <StaggerItem
                 key={cv.name}
                 className="rounded-2xl border border-border bg-white p-8 shadow-sm card-hover"
               >
@@ -287,9 +297,9 @@ export default function AlliancesPage() {
                   {cv.fullName}
                 </p>
                 <p className="mt-3 text-sm text-steel">{cv.description}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 

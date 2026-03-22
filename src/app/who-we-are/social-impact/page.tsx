@@ -11,6 +11,7 @@ import {
   Target,
   Award,
 } from "lucide-react";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Social Impact",
@@ -58,6 +59,7 @@ export default function SocialImpactPage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <Breadcrumb variant="dark" items={[{ label: "Who We Are", href: "/who-we-are" }, { label: "Social Impact" }]} />
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Social Impact & Community
           </h1>

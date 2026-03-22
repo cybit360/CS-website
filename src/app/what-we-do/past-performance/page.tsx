@@ -13,6 +13,7 @@ import {
   FileText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { FadeIn } from "@/components/animations/FadeIn";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { PageImage } from "@/components/ui/PageImage";
 
@@ -297,21 +298,24 @@ export default function PastPerformancePage() {
       {/* Microsoft Ecosystem Past Performance */}
       <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-2">
-              Featured Microsoft Solutions
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Microsoft Ecosystem Past Performance
-            </h2>
-            <p className="text-steel max-w-2xl mx-auto">
-              Enterprise solutions built on the Microsoft Power Platform,
-              SharePoint, Azure, and Microsoft 365 ecosystem.
-            </p>
-          </div>
+          <FadeIn>
+            <div className="text-center mb-16">
+              <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-2">
+                Featured Microsoft Solutions
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+                Microsoft Ecosystem Past Performance
+              </h2>
+              <p className="text-steel max-w-2xl mx-auto">
+                Enterprise solutions built on the Microsoft Power Platform,
+                SharePoint, Azure, and Microsoft 365 ecosystem.
+              </p>
+            </div>
+          </FadeIn>
 
           <div className="space-y-8">
-            {microsoftCaseStudies.map((study) => (
+            {microsoftCaseStudies.map((study, index) => (
+              <FadeIn key={study.id} delay={index * 0.1}>
               <div
                 key={study.id}
                 id={study.id}
@@ -367,6 +371,7 @@ export default function PastPerformancePage() {
                   </div>
                 </div>
               </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -375,21 +380,24 @@ export default function PastPerformancePage() {
       {/* Major Case Studies */}
       <section className="py-20 bg-cloud">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-2">
-              Featured Programs
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Major Case Studies
-            </h2>
-            <p className="text-steel max-w-2xl mx-auto">
-              Detailed performance summaries from our largest and most impactful
-              government programs.
-            </p>
-          </div>
+          <FadeIn>
+            <div className="text-center mb-16">
+              <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-2">
+                Featured Programs
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+                Major Case Studies
+              </h2>
+              <p className="text-steel max-w-2xl mx-auto">
+                Detailed performance summaries from our largest and most impactful
+                government programs.
+              </p>
+            </div>
+          </FadeIn>
 
           <div className="space-y-8">
-            {majorCaseStudies.map((study) => (
+            {majorCaseStudies.map((study, index) => (
+              <FadeIn key={study.id} delay={index * 0.1}>
               <div
                 key={study.id}
                 id={study.id}
@@ -455,6 +463,7 @@ export default function PastPerformancePage() {
                   </div>
                 </div>
               </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -463,16 +472,19 @@ export default function PastPerformancePage() {
       {/* Summary Case Studies */}
       <section className="py-20 bg-cloud">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Additional Past Performance
-            </h2>
-            <p className="text-steel max-w-2xl mx-auto">
-              A broader portfolio of projects across federal, defense, and
-              enterprise environments.
-            </p>
-          </div>
+          <FadeIn>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+                Additional Past Performance
+              </h2>
+              <p className="text-steel max-w-2xl mx-auto">
+                A broader portfolio of projects across federal, defense, and
+                enterprise environments.
+              </p>
+            </div>
+          </FadeIn>
 
+          <FadeIn delay={0.2}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
             {summaryCaseStudies.map((study) => (
               <div
@@ -484,6 +496,7 @@ export default function PastPerformancePage() {
               </div>
             ))}
           </div>
+          </FadeIn>
         </div>
       </section>
 

@@ -16,6 +16,8 @@ import {
   Users,
 } from "lucide-react";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { FadeIn } from "@/components/animations/FadeIn";
+import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -208,9 +210,9 @@ export default function OurApproachPage() {
 
           {/* Phase Details */}
           <div className="space-y-8">
-            {phases.map((phase) => (
+            {phases.map((phase, index) => (
+              <FadeIn key={phase.name} delay={index * 0.1}>
               <div
-                key={phase.name}
                 className="bg-white rounded-xl border border-border overflow-hidden"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
@@ -274,6 +276,7 @@ export default function OurApproachPage() {
                   </div>
                 </div>
               </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -282,20 +285,22 @@ export default function OurApproachPage() {
       {/* Innovation & R&D */}
       <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Lightbulb className="w-8 h-8 text-accent-cyan" />
-            <h2 className="text-3xl font-bold text-navy">
-              Innovation &amp; R&amp;D
-            </h2>
-          </div>
-          <p className="text-steel text-center max-w-2xl mx-auto mb-12">
-            We invest continuously in emerging technologies and capabilities
-            that will define the next generation of federal IT
-          </p>
+          <FadeIn>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Lightbulb className="w-8 h-8 text-accent-cyan" />
+              <h2 className="text-3xl font-bold text-navy">
+                Innovation &amp; R&amp;D
+              </h2>
+            </div>
+            <p className="text-steel text-center max-w-2xl mx-auto mb-12">
+              We invest continuously in emerging technologies and capabilities
+              that will define the next generation of federal IT
+            </p>
+          </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {innovationAreas.map((area) => (
-              <div
+              <StaggerItem
                 key={area.title}
                 className="bg-cloud rounded-xl p-6 border border-border card-hover"
               >
@@ -308,29 +313,31 @@ export default function OurApproachPage() {
                 <p className="text-sm text-steel leading-relaxed">
                   {area.description}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Quality & Compliance */}
       <section className="py-20 bg-cloud">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Award className="w-8 h-8 text-accent-cyan" />
-            <h2 className="text-3xl font-bold text-navy">
-              Quality &amp; Compliance Commitment
-            </h2>
-          </div>
-          <p className="text-steel text-center max-w-2xl mx-auto mb-12">
-            Rigorous standards and certified processes ensure every deliverable
-            meets the highest federal quality and security requirements
-          </p>
+          <FadeIn delay={0.1}>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Award className="w-8 h-8 text-accent-cyan" />
+              <h2 className="text-3xl font-bold text-navy">
+                Quality &amp; Compliance Commitment
+              </h2>
+            </div>
+            <p className="text-steel text-center max-w-2xl mx-auto mb-12">
+              Rigorous standards and certified processes ensure every deliverable
+              meets the highest federal quality and security requirements
+            </p>
+          </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {qualityCommitments.map((commitment) => (
-              <div
+              <StaggerItem
                 key={commitment.title}
                 className="bg-white rounded-xl p-6 border border-border card-hover"
               >
@@ -343,20 +350,22 @@ export default function OurApproachPage() {
                 <p className="text-sm text-steel leading-relaxed pl-8">
                   {commitment.description}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Why It Works */}
       <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-navy mb-12 text-center">
-            Why Our Approach Works
-          </h2>
+          <FadeIn>
+            <h2 className="text-3xl font-bold text-navy mb-12 text-center">
+              Why Our Approach Works
+            </h2>
+          </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 icon: Users,
@@ -379,7 +388,7 @@ export default function OurApproachPage() {
                 label: "Active Cleared Staff",
               },
             ].map((stat) => (
-              <div key={stat.label} className="text-center">
+              <StaggerItem key={stat.label} className="text-center">
                 <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-navy/5 text-accent-cyan mx-auto mb-4">
                   <stat.icon className="w-7 h-7" />
                 </div>
@@ -387,9 +396,9 @@ export default function OurApproachPage() {
                   {stat.metric}
                 </p>
                 <p className="text-sm text-steel">{stat.label}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 

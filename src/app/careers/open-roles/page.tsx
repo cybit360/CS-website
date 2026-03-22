@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { FadeIn } from "@/components/animations/FadeIn";
 import {
   Briefcase,
   ArrowRight,
@@ -639,11 +640,11 @@ export default function OpenRolesPage() {
             </p>
           </div>
           <div className="space-y-6">
-            {jobs.map((job) => {
+            {jobs.map((job, index) => {
               const isExpanded = expandedJob === job.title;
               return (
+                <FadeIn key={job.title} delay={index * 0.1}>
                 <div
-                  key={job.title}
                   className="bg-white rounded-2xl overflow-hidden border border-border card-hover"
                 >
                   {/* Job Header */}
@@ -822,6 +823,7 @@ export default function OpenRolesPage() {
                     </div>
                   )}
                 </div>
+                </FadeIn>
               );
             })}
           </div>
@@ -831,6 +833,7 @@ export default function OpenRolesPage() {
       {/* Don't See Your Role */}
       <section className="bg-white py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
+          <FadeIn>
           <h2 className="text-3xl font-bold text-navy mb-4">
             Don&apos;t See Your Role?
           </h2>
@@ -861,6 +864,7 @@ export default function OpenRolesPage() {
               Submit General Application <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
+          </FadeIn>
         </div>
       </section>
 

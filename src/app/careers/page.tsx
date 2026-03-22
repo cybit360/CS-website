@@ -11,6 +11,10 @@ import {
   GraduationCap,
 } from "lucide-react";
 import { PageImage } from "@/components/ui/PageImage";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { FadeIn } from "@/components/animations/FadeIn";
+import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
+import { CountUp } from "@/components/animations/CountUp";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -70,6 +74,7 @@ export default function CareersPage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <Breadcrumb variant="dark" items={[{ label: "Careers" }]} />
           <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
             Join Our Team
           </p>
@@ -102,20 +107,22 @@ export default function CareersPage() {
       {/* Why Work Here */}
       <section className="bg-cloud py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-navy mb-4">
-              Why CybitSolutions?
-            </h2>
-            <p className="text-steel max-w-2xl mx-auto">
-              We invest in our people because they are the foundation of every
-              successful mission we support.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <FadeIn>
+            <div className="text-center mb-14">
+              <h2 className="text-3xl font-bold text-navy mb-4">
+                Why CybitSolutions?
+              </h2>
+              <p className="text-steel max-w-2xl mx-auto">
+                We invest in our people because they are the foundation of every
+                successful mission we support.
+              </p>
+            </div>
+          </FadeIn>
+          <StaggerContainer className="grid md:grid-cols-3 gap-8">
             {reasons.map((reason) => {
               const Icon = reason.icon;
               return (
-                <div
+                <StaggerItem
                   key={reason.title}
                   className="bg-white rounded-2xl p-8 shadow-sm text-center card-hover"
                 >
@@ -126,69 +133,85 @@ export default function CareersPage() {
                     {reason.title}
                   </h3>
                   <p className="text-steel">{reason.description}</p>
-                </div>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Explore Cards */}
       <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-navy mb-4">
-              Explore Careers
-            </h2>
-            <p className="text-steel max-w-2xl mx-auto">
-              Learn more about life at CybitSolutions and find your next
-              opportunity.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <FadeIn delay={0.1}>
+            <div className="text-center mb-14">
+              <h2 className="text-3xl font-bold text-navy mb-4">
+                Explore Careers
+              </h2>
+              <p className="text-steel max-w-2xl mx-auto">
+                Learn more about life at CybitSolutions and find your next
+                opportunity.
+              </p>
+            </div>
+          </FadeIn>
+          <StaggerContainer className="grid md:grid-cols-3 gap-8">
             {sections.map((section) => {
               const Icon = section.icon;
               return (
-                <Link
-                  key={section.title}
-                  href={section.href}
-                  className="bg-cloud rounded-2xl p-8 card-hover group"
-                >
-                  <div className="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition">
-                    <Icon className="w-7 h-7 text-accent-cyan" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-navy mb-3">
-                    {section.title}
-                  </h3>
-                  <p className="text-steel mb-6">{section.description}</p>
-                  <span className="inline-flex items-center gap-2 text-accent-cyan font-medium">
-                    Learn More <ArrowRight className="w-4 h-4" />
-                  </span>
-                </Link>
+                <StaggerItem key={section.title}>
+                  <Link
+                    href={section.href}
+                    className="block bg-cloud rounded-2xl p-8 card-hover group h-full"
+                  >
+                    <div className="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition">
+                      <Icon className="w-7 h-7 text-accent-cyan" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-navy mb-3">
+                      {section.title}
+                    </h3>
+                    <p className="text-steel mb-6">{section.description}</p>
+                    <span className="inline-flex items-center gap-2 text-accent-cyan font-medium">
+                      Learn More <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </Link>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Stats */}
       <section className="bg-cloud py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { value: "200+", label: "Team Members" },
-              { value: "95%", label: "Retention Rate" },
-              { value: "4.8/5", label: "Employee Satisfaction" },
-              { value: "50+", label: "Open Roles" },
-            ].map((stat) => (
-              <div key={stat.label}>
+          <FadeIn delay={0.2}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <div>
                 <div className="text-3xl font-bold text-accent-cyan mb-1">
-                  {stat.value}
+                  <CountUp to={200} suffix="+" />
                 </div>
-                <div className="text-steel text-sm">{stat.label}</div>
+                <div className="text-steel text-sm">Team Members</div>
               </div>
-            ))}
-          </div>
+              <div>
+                <div className="text-3xl font-bold text-accent-cyan mb-1">
+                  <CountUp to={95} suffix="%" />
+                </div>
+                <div className="text-steel text-sm">Retention Rate</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-accent-cyan mb-1">
+                  4.8/5
+                </div>
+                <div className="text-steel text-sm">Employee Satisfaction</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-accent-cyan mb-1">
+                  <CountUp to={50} suffix="+" />
+                </div>
+                <div className="text-steel text-sm">Open Roles</div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

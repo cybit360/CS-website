@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Users, BookOpen, Heart } from "lucide-react";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Who We Are",
@@ -39,6 +40,7 @@ export default function WhoWeArePage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <Breadcrumb variant="dark" items={[{ label: "Who We Are" }]} />
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Who We Are
           </h1>

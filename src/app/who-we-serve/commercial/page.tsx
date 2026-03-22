@@ -13,6 +13,9 @@ import {
   Lock,
 } from "lucide-react";
 import { PageImage } from "@/components/ui/PageImage";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { FadeIn } from "@/components/animations/FadeIn";
+import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 
 export const metadata: Metadata = {
   title: "Commercial",
@@ -109,6 +112,7 @@ export default function CommercialPage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <Breadcrumb variant="dark" items={[{ label: "Who We Serve", href: "/who-we-serve" }, { label: "Commercial" }]} />
           <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
             Who We Serve
           </p>
@@ -133,17 +137,19 @@ export default function CommercialPage() {
       {/* Industries */}
       <section className="bg-cloud py-20">
         <div className="container mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-3xl font-bold text-navy">
-            Industries We Support
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-steel">
-            Deep domain expertise across regulated and high-growth industries,
-            with solutions tailored to each sector&apos;s unique requirements.
-          </p>
+          <FadeIn>
+            <h2 className="text-center text-3xl font-bold text-navy">
+              Industries We Support
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-steel">
+              Deep domain expertise across regulated and high-growth industries,
+              with solutions tailored to each sector&apos;s unique requirements.
+            </p>
+          </FadeIn>
 
-          <div className="mt-14 grid gap-10 lg:grid-cols-2">
+          <StaggerContainer className="mt-14 grid gap-10 lg:grid-cols-2">
             {industries.map((industry) => (
-              <div
+              <StaggerItem
                 key={industry.title}
                 className="rounded-2xl border border-border bg-white p-8 shadow-sm card-hover"
               >
@@ -165,25 +171,27 @@ export default function CommercialPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Enterprise Services */}
       <section className="bg-white py-20">
         <div className="container mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-3xl font-bold text-navy">
-            Enterprise Solutions
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-steel">
-            Cross-industry capabilities that scale with your business and meet
-            enterprise-grade security and compliance standards.
-          </p>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <FadeIn delay={0.1}>
+            <h2 className="text-center text-3xl font-bold text-navy">
+              Enterprise Solutions
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-steel">
+              Cross-industry capabilities that scale with your business and meet
+              enterprise-grade security and compliance standards.
+            </p>
+          </FadeIn>
+          <StaggerContainer className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {enterpriseServices.map((svc) => (
-              <div
+              <StaggerItem
                 key={svc.title}
                 className="rounded-xl border border-border bg-cloud p-6 text-center card-hover"
               >
@@ -194,19 +202,21 @@ export default function CommercialPage() {
                   {svc.title}
                 </h3>
                 <p className="mt-2 text-sm text-steel">{svc.description}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Why Commercial Clients */}
       <section className="bg-cloud py-20">
         <div className="container mx-auto max-w-5xl px-6">
-          <h2 className="text-center text-3xl font-bold text-navy">
-            Why Enterprises Trust CybitSolutions
-          </h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <FadeIn delay={0.1}>
+            <h2 className="text-center text-3xl font-bold text-navy">
+              Why Enterprises Trust CybitSolutions
+            </h2>
+          </FadeIn>
+          <StaggerContainer className="mt-12 grid gap-6 sm:grid-cols-2">
             {[
               "Government-grade security applied to commercial environments",
               "Cleared engineering talent with deep technical expertise",
@@ -215,15 +225,15 @@ export default function CommercialPage() {
               "24/7 security operations and incident response",
               "Multi-cloud certified across AWS, Azure, and GCP",
             ].map((item) => (
-              <div
+              <StaggerItem
                 key={item}
                 className="flex items-start gap-3 rounded-lg border border-border bg-white p-5 hover:border-accent-cyan/30 hover:shadow-sm transition-all"
               >
                 <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-accent-cyan" />
                 <p className="text-steel">{item}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 

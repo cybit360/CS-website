@@ -16,6 +16,7 @@ import {
   Building2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { PageImage } from "@/components/ui/PageImage";
 
 export const metadata: Metadata = {
@@ -134,6 +135,7 @@ export default function CybersecurityPage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <Breadcrumb variant="dark" items={[{ label: "What We Do", href: "/what-we-do" }, { label: "Services", href: "/what-we-do" }, { label: "Cybersecurity & Risk Management" }]} />
           <div className="flex justify-center mb-6">
             <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-white/10 text-accent-cyan">
               <ShieldCheck className="w-8 h-8" strokeWidth={1.5} />

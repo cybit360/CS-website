@@ -19,6 +19,7 @@ import {
   categoryColors,
 } from "@/data/blog-posts";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { ReadingProgress } from "@/components/ui/ReadingProgress";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -89,6 +90,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   return (
     <main>
+      <ReadingProgress />
       {/* Hero */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
