@@ -72,72 +72,79 @@ export default function InsightsPage() {
       {/* Cards */}
       <section className="bg-cloud py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-navy mb-4">
-              Explore Our Knowledge Base
-            </h2>
-            <p className="text-steel max-w-2xl mx-auto">
-              Dive into curated content designed to keep you ahead of the curve
-              in an ever-evolving technology landscape.
-            </p>
-          </div>
+          <FadeIn>
+            <div className="text-center mb-14">
+              <h2 className="text-3xl font-bold text-navy mb-4">
+                Explore Our Knowledge Base
+              </h2>
+              <p className="text-steel max-w-2xl mx-auto">
+                Dive into curated content designed to keep you ahead of the curve
+                in an ever-evolving technology landscape.
+              </p>
+            </div>
+          </FadeIn>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <StaggerContainer className="grid md:grid-cols-3 gap-8">
             {sections.map((section) => {
               const Icon = section.icon;
               return (
-                <Link
-                  key={section.title}
-                  href={section.href}
-                  className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group"
-                >
-                  <PageImage variant={section.imageVariant} aspectRatio="video" className="rounded-none" />
-                  <div className="p-8">
-                  <div className="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition">
-                    <Icon className="w-7 h-7 text-accent-cyan" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-navy mb-3">
-                    {section.title}
-                  </h3>
-                  <p className="text-steel mb-6">{section.description}</p>
-                  <span className="inline-flex items-center gap-2 text-accent-cyan font-medium">
-                    Browse <ArrowRight className="w-4 h-4" />
-                  </span>
-                  </div>
-                </Link>
+                <StaggerItem key={section.title}>
+                  <Link
+                    href={section.href}
+                    className="block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition group h-full"
+                  >
+                    <PageImage variant={section.imageVariant} aspectRatio="video" className="rounded-none" />
+                    <div className="p-8">
+                    <div className="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition">
+                      <Icon className="w-7 h-7 text-accent-cyan" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-navy mb-3">
+                      {section.title}
+                    </h3>
+                    <p className="text-steel mb-6">{section.description}</p>
+                    <span className="inline-flex items-center gap-2 text-accent-cyan font-medium">
+                      Browse <ArrowRight className="w-4 h-4" />
+                    </span>
+                    </div>
+                  </Link>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Trending */}
       <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <TrendingUp className="w-10 h-10 text-accent-cyan mx-auto mb-4" />
-          <h2 className="text-3xl font-bold text-navy mb-4">
-            Trending Topics
-          </h2>
-          <p className="text-steel max-w-2xl mx-auto mb-10">
-            The subjects our experts and clients are focused on right now.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {[
-              "Zero Trust Architecture",
-              "FedRAMP Compliance",
-              "AI in Government",
-              "Cloud Migration",
-              "Supply Chain Security",
-              "DevSecOps",
-            ].map((topic) => (
-              <span
-                key={topic}
-                className="px-5 py-2 bg-navy/5 text-navy rounded-full text-sm font-medium"
-              >
-                {topic}
-              </span>
-            ))}
-          </div>
+          <FadeIn delay={0.1}>
+            <TrendingUp className="w-10 h-10 text-accent-cyan mx-auto mb-4" />
+            <h2 className="text-3xl font-bold text-navy mb-4">
+              Trending Topics
+            </h2>
+            <p className="text-steel max-w-2xl mx-auto mb-10">
+              The subjects our experts and clients are focused on right now.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                "Zero Trust Architecture",
+                "FedRAMP Compliance",
+                "AI in Government",
+                "Cloud Migration",
+                "Supply Chain Security",
+                "DevSecOps",
+              ].map((topic) => (
+                <span
+                  key={topic}
+                  className="px-5 py-2 bg-navy/5 text-navy rounded-full text-sm font-medium"
+                >
+                  {topic}
+                </span>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </section>
 

@@ -18,6 +18,7 @@ import {
   Upload,
   Laptop,
 } from "lucide-react";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 
 interface Job {
   title: string;
@@ -612,6 +613,7 @@ export default function OpenRolesPage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10 text-center">
+          <Breadcrumb variant="dark" items={[{ label: "Careers", href: "/careers" }, { label: "Open Roles" }]} />
           <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-4">
             Careers
           </p>
