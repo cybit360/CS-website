@@ -52,7 +52,7 @@ export function Footer() {
               <h3 className="text-lg font-bold text-white mb-1">
                 Stay Informed
               </h3>
-              <p className="text-sm text-white/60">
+              <p className="text-sm text-white/70">
                 Get the latest insights on government IT, cybersecurity, and
                 digital transformation delivered to your inbox.
               </p>
@@ -78,7 +78,7 @@ export function Footer() {
                 className="h-28 w-auto brightness-0 invert"
               />
             </Link>
-            <p className="mb-6 text-sm leading-relaxed text-white/60">
+            <p className="mb-6 text-sm leading-relaxed text-white/70">
               Mission-grade IT solutions for government and enterprise.
               Delivering secure, scalable technology that powers critical
               operations.
@@ -93,7 +93,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex size-10 items-center justify-center rounded-lg bg-white/5 text-white/60 hover:bg-accent-blue hover:text-white transition-all"
+                    className="flex size-10 items-center justify-center rounded-lg bg-white/5 text-white/70 hover:bg-accent-blue hover:text-white transition-all"
                   >
                     <Icon className="size-4.5" />
                   </a>
@@ -202,7 +202,7 @@ export function Footer() {
       <div className="bg-navy-dark border-t border-white/5">
         <div className="mx-auto max-w-7xl px-6 py-5">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-            <p className="text-xs text-white/40">
+            <p className="text-xs text-white/60">
               &copy; {new Date().getFullYear()} CybitSolutions. All rights
               reserved. Veteran-Owned Small Business (VOSB).
             </p>
@@ -211,7 +211,7 @@ export function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-xs text-white/40 hover:text-accent-cyan transition-colors"
+                  className="text-xs text-white/60 hover:text-accent-cyan transition-colors"
                 >
                   {link.label}
                 </Link>

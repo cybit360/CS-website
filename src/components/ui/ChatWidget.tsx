@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { MessageCircle, X, Send, Bot, User } from "lucide-react";
 
 interface Message {
@@ -178,6 +178,7 @@ export function ChatWidget() {
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   // Auto-open chat with greeting on EVERY first visit per browser session
   useEffect(() => {
@@ -205,6 +206,44 @@ export function ChatWidget() {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
     }
+  }, [isOpen]);
+
+  // Close on Escape + focus trap
+  useEffect(() => {
+    function handleKey(e: globalThis.KeyboardEvent) {
+      if (!isOpen) return;
+
+      if (e.key === "Escape") {
+        setIsOpen(false);
+        return;
+      }
+
+      if (e.key === "Tab" && panelRef.current) {
+        const focusable = panelRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    }
+    if (isOpen) {
+      document.addEventListener("keydown", handleKey);
+    }
+    return () => document.removeEventListener("keydown", handleKey);
   }, [isOpen]);
 
   const handleSend = () => {
@@ -235,12 +274,14 @@ export function ChatWidget() {
     <>
       {/* Chat Panel */}
       <div
+        ref={panelRef}
         className={`fixed bottom-20 right-4 sm:right-6 z-50 transition-all duration-300 ease-in-out ${
           isOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 translate-y-4 pointer-events-none"
         }`}
         role="dialog"
+        aria-modal="true"
         aria-label="Chat assistant"
         aria-hidden={!isOpen}
       >
@@ -255,12 +296,12 @@ export function ChatWidget() {
                 <p className="text-white font-semibold text-sm">
                   CybitSolutions Assistant
                 </p>
-                <p className="text-white/50 text-xs">Ask us anything</p>
+                <p className="text-white/70 text-xs">Ask us anything</p>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-white/60 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/10 cursor-pointer"
+              className="text-white/70 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/10 cursor-pointer"
               aria-label="Close chat"
             >
               <X className="w-5 h-5" />

@@ -157,72 +157,102 @@ export function ContactForm({ className }: ContactFormProps) {
 
       {/* Name & Email row */}
       <div className="grid gap-6 sm:grid-cols-2">
-        <Field label="Full Name" error={errors.name?.message} required>
-          <input
-            type="text"
-            placeholder="Jane Smith"
-            className={inputClasses(errors.name?.message)}
-            {...register("name")}
-          />
+        <Field label="Full Name" name="name" error={errors.name?.message} required>
+          {({ id, ariaDescribedby, ariaRequired }) => (
+            <input
+              id={id}
+              type="text"
+              placeholder="Jane Smith"
+              aria-required={ariaRequired}
+              aria-describedby={ariaDescribedby}
+              aria-invalid={errors.name ? true : undefined}
+              className={inputClasses(errors.name?.message)}
+              {...register("name")}
+            />
+          )}
         </Field>
 
-        <Field label="Email" error={errors.email?.message} required>
-          <input
-            type="email"
-            placeholder="jane@company.com"
-            className={inputClasses(errors.email?.message)}
-            {...register("email")}
-          />
+        <Field label="Email" name="email" error={errors.email?.message} required>
+          {({ id, ariaDescribedby, ariaRequired }) => (
+            <input
+              id={id}
+              type="email"
+              placeholder="jane@company.com"
+              aria-required={ariaRequired}
+              aria-describedby={ariaDescribedby}
+              aria-invalid={errors.email ? true : undefined}
+              className={inputClasses(errors.email?.message)}
+              {...register("email")}
+            />
+          )}
         </Field>
       </div>
 
       {/* Phone & Company row */}
       <div className="grid gap-6 sm:grid-cols-2">
-        <Field label="Phone">
-          <input
-            type="tel"
-            placeholder="(555) 123-4567"
-            className={inputClasses()}
-            {...register("phone")}
-          />
+        <Field label="Phone" name="phone">
+          {({ id }) => (
+            <input
+              id={id}
+              type="tel"
+              placeholder="(555) 123-4567"
+              className={inputClasses()}
+              {...register("phone")}
+            />
+          )}
         </Field>
 
-        <Field label="Company">
-          <input
-            type="text"
-            placeholder="Company name"
-            className={inputClasses()}
-            {...register("company")}
-          />
+        <Field label="Company" name="company">
+          {({ id }) => (
+            <input
+              id={id}
+              type="text"
+              placeholder="Company name"
+              className={inputClasses()}
+              {...register("company")}
+            />
+          )}
         </Field>
       </div>
 
       {/* Subject */}
-      <Field label="Subject" error={errors.subject?.message} required>
-        <select
-          className={cn(inputClasses(errors.subject?.message))}
-          defaultValue=""
-          {...register("subject")}
-        >
-          <option value="" disabled>
-            Select a subject
-          </option>
-          {SUBJECT_OPTIONS.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
+      <Field label="Subject" name="subject" error={errors.subject?.message} required>
+        {({ id, ariaDescribedby, ariaRequired }) => (
+          <select
+            id={id}
+            aria-required={ariaRequired}
+            aria-describedby={ariaDescribedby}
+            aria-invalid={errors.subject ? true : undefined}
+            className={cn(inputClasses(errors.subject?.message))}
+            defaultValue=""
+            {...register("subject")}
+          >
+            <option value="" disabled>
+              Select a subject
             </option>
-          ))}
-        </select>
+            {SUBJECT_OPTIONS.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </select>
+        )}
       </Field>
 
       {/* Message */}
-      <Field label="Message" error={errors.message?.message} required>
-        <textarea
-          placeholder="Tell us about your project or question..."
-          rows={5}
-          className={cn(inputClasses(errors.message?.message), "resize-y")}
-          {...register("message")}
-        />
+      <Field label="Message" name="message" error={errors.message?.message} required>
+        {({ id, ariaDescribedby, ariaRequired }) => (
+          <textarea
+            id={id}
+            placeholder="Tell us about your project or question..."
+            rows={5}
+            aria-required={ariaRequired}
+            aria-describedby={ariaDescribedby}
+            aria-invalid={errors.message ? true : undefined}
+            className={cn(inputClasses(errors.message?.message), "resize-y")}
+            {...register("message")}
+          />
+        )}
       </Field>
 
       {/* Submit */}
@@ -261,24 +291,31 @@ function inputClasses(error?: string) {
 
 interface FieldProps {
   label: string;
+  name: string;
   error?: string;
   required?: boolean;
-  children: React.ReactNode;
+  children: (props: { id: string; ariaDescribedby?: string; ariaRequired?: boolean }) => React.ReactNode;
 }
 
-function Field({ label, error, required, children }: FieldProps) {
+function Field({ label, name, error, required, children }: FieldProps) {
+  const inputId = `field-${name}`;
+  const errorId = `field-${name}-error`;
   return (
-    <label className="block">
-      <span className="mb-1.5 block font-heading text-sm font-medium text-navy">
+    <div className="block">
+      <label htmlFor={inputId} className="mb-1.5 block font-heading text-sm font-medium text-navy">
         {label}
-        {required && <span className="ml-0.5 text-red-500">*</span>}
-      </span>
-      {children}
+        {required && <span className="ml-0.5 text-red-500" aria-hidden="true">*</span>}
+      </label>
+      {children({
+        id: inputId,
+        ariaDescribedby: error ? errorId : undefined,
+        ariaRequired: required,
+      })}
       {error && (
-        <span role="alert" className="mt-1 block text-sm text-red-500">
+        <span id={errorId} role="alert" className="mt-1 block text-sm text-red-500">
           {error}
         </span>
       )}
-    </label>
+    </div>
   );
 }
