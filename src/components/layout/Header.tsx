@@ -10,6 +10,7 @@ import { MegaMenu } from "./MegaMenu";
 import { MobileNav } from "./MobileNav";
 import { GlobalSearch } from "@/components/ui/GlobalSearch";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 
 export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -89,6 +90,8 @@ export function Header() {
               <Mail className="size-3.5" />
               info@cybitsolutions.net
             </a>
+            <span className="h-3 w-px bg-white/20" aria-hidden="true" />
+            <LanguageSwitcher />
           </div>
         </div>
       </div>
