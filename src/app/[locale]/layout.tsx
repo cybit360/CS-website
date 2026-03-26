@@ -45,12 +45,12 @@ export default async function LocaleLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "CybitSolutions",
-    legalName: "CybitSolutions LLC",
+    legalName: "CybitSolutions, a Division of AFANO Group",
     url: siteUrl,
     logo: `${siteUrl}/images/logo.png`,
     image: `${siteUrl}/images/logo.png`,
     description:
-      "Veteran-Owned, Minority-Owned IT firm delivering secure, scalable solutions for federal agencies and enterprise organizations. Specializing in cybersecurity, cloud computing, AI, and digital transformation across the GovCon landscape.",
+      "The Technology and Digital Transformation Division of AFANO Group, delivering secure, scalable solutions for federal agencies and enterprise organizations. Specializing in cybersecurity, cloud computing, AI, and digital transformation across the GovCon landscape.",
     foundingDate: "2004",
     numberOfEmployees: {
       "@type": "QuantitativeValue",

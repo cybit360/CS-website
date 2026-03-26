@@ -6,7 +6,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 export const metadata: Metadata = {
   title: "Who We Are",
   description:
-    "Learn about CybitSolutions, a Veteran-Owned, Minority-Owned IT firm with 20+ years delivering mission-critical technology solutions for government and enterprise.",
+    "Learn about CybitSolutions, the Technology and Digital Transformation Division of AFANO Group, with 20+ years delivering mission-critical technology solutions for government and enterprise.",
 };
 
 const sections = [
@@ -45,9 +45,9 @@ export default function WhoWeArePage() {
             Who We Are
           </h1>
           <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-            A veteran-owned small business delivering trusted IT solutions to
-            federal agencies and defense organizations. Built on integrity,
-            driven by mission.
+            The Technology and Digital Transformation Division of AFANO Group,
+            delivering trusted IT solutions to federal agencies and defense
+            organizations. Built on integrity, driven by mission.
           </p>
         </div>
       </section>
@@ -105,15 +105,16 @@ export default function WhoWeArePage() {
                 understanding to every engagement.
               </p>
               <p className="text-steel leading-relaxed mb-6">
-                As a veteran-owned small business, we understand the operational
-                tempo, security requirements, and accountability standards that
-                define government IT. Our team holds TS/SCI clearances and
-                maintains the highest standards of compliance and integrity.
+                As the Technology and Digital Transformation Division of AFANO
+                Group, we understand the operational tempo, security
+                requirements, and accountability standards that define
+                government IT. Our team holds TS/SCI clearances and maintains
+                the highest standards of compliance and integrity.
               </p>
               <ul className="space-y-3">
                 {[
                   "20+ years of federal IT delivery",
-                  "Veteran-owned small business (SDVOSB)",
+                  "AFANO Group — SDVOSB Certified",
                   "TS/SCI cleared workforce",
                   "CMMC Level 3 compliant",
                   "ISO 27001 & ISO 9001 certified",

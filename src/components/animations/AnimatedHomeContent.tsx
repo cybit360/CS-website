@@ -80,7 +80,7 @@ function HeroContent({ animated = false }: { animated?: boolean }) {
             {/* Badge - no animation delay (above the fold, don't delay LCP) */}
             <div className="inline-flex items-center gap-2 rounded-full border border-accent-blue/40 bg-accent-blue/15 px-5 py-2 text-xs font-bold tracking-widest text-accent-blue uppercase mb-8">
               <Shield className="w-3.5 h-3.5" />
-              VETERAN-OWNED &bull; CLEARED PROFESSIONALS &bull; 20+ YEARS
+              AFANO GROUP DIVISION &bull; CLEARED PROFESSIONALS &bull; 20+ YEARS
             </div>
 
             {/* Heading - no delay for LCP */}

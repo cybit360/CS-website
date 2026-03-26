@@ -204,7 +204,7 @@ export function Footer() {
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
             <p className="text-xs text-white/60">
               &copy; {new Date().getFullYear()} CybitSolutions. All rights
-              reserved. Veteran-Owned Small Business (VOSB).
+              reserved. A Division of AFANO Group.
             </p>
             <nav aria-label="Legal" className="flex flex-wrap items-center gap-5">
               {bottomLinks.map((link) => (

@@ -32,7 +32,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 export const metadata: Metadata = {
   title: "Company Profile",
   description:
-    "CybitSolutions company profile — Veteran-Owned, Minority-Owned IT firm with 20+ years delivering cybersecurity, cloud, AI, and enterprise IT solutions to government and commercial clients.",
+    "CybitSolutions company profile — the Technology and Digital Transformation Division of AFANO Group, with 20+ years delivering cybersecurity, cloud, AI, and enterprise IT solutions to government and commercial clients.",
 };
 
 const companyStats = [
@@ -185,8 +185,8 @@ const contractVehicles = [
 ];
 
 const certifications = [
-  "Service-Disabled Veteran-Owned Small Business (SDVOSB)",
-  "Minority-Owned Business Enterprise (MBE)",
+  "AFANO Group — SDVOSB Certified",
+  "AFANO Group — Minority-Owned Business Enterprise (MBE)",
   "CMMC Level 3 Certified",
   "ISO 27001 Certified",
   "ISO 9001 Certified",
@@ -215,34 +215,34 @@ const technologyPartners = [
 
 const leadershipTeam = [
   {
-    name: "James Carter",
-    title: "Chief Executive Officer",
-    credentials: "MBA Georgetown, U.S. Army Veteran, PMP",
+    name: 'Adupedee "Prof" Ababio',
+    title: "Chief Architect / CISO",
+    credentials: "Enterprise Security Architecture, Zero-Trust & NIST Compliance",
   },
   {
-    name: "Dr. Sarah Nguyen",
-    title: "Chief Technology Officer",
-    credentials: "Ph.D. Carnegie Mellon, CISSP, AWS SA Pro",
+    name: 'Christian "Chris" Achemdey',
+    title: "Division VP of Technology",
+    credentials: "Cloud Architecture, DevSecOps, AI/ML for Government",
   },
   {
-    name: "Michael Ross",
-    title: "Chief Operating Officer",
-    credentials: "M.S. Johns Hopkins, U.S. Navy Veteran, PMP",
+    name: "Adaobi Ikpeze",
+    title: "Division VP of Operations & HR",
+    credentials: "Program Management, Human Capital Strategy, Federal Compliance",
   },
   {
-    name: "Alicia Martinez",
-    title: "VP of Cybersecurity",
-    credentials: "CISSP, CISM, CCSP, CEH, TS/SCI",
+    name: "Stanley Opara",
+    title: "Division VP of Cybersecurity",
+    credentials: "SOC/MDR, Zero-Trust, RMF Authorization",
   },
   {
-    name: "David Kim",
-    title: "VP of Cloud & Infrastructure",
-    credentials: "AWS SA Pro, Azure Expert, GCP Architect, CKA",
+    name: "Stanley Gorman",
+    title: "Division VP of Cloud & Infrastructure",
+    credentials: "Multi-Cloud (AWS, Azure, GCP), FedRAMP, IL4/IL5",
   },
   {
-    name: "Patricia O'Connell",
-    title: "VP of Government Programs",
-    credentials: "DAWIA III, PMP, SAFe SPC, Former GSA CO",
+    name: "Alpha Taylor",
+    title: "Division VP of Government Programs",
+    credentials: "Government Acquisition, Federal Program Management",
   },
 ];
 
@@ -288,9 +288,10 @@ export default function CompanyProfilePage() {
             Company Profile
           </h1>
           <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-8">
-            CybitSolutions is a Veteran-Owned, Minority-Owned IT firm delivering
-            mission-critical cybersecurity, cloud, AI, and enterprise IT
-            solutions to government and commercial clients worldwide.
+            CybitSolutions, the Technology and Digital Transformation Division
+            of AFANO Group, delivers mission-critical cybersecurity, cloud, AI,
+            and enterprise IT solutions to government and commercial clients
+            worldwide.
           </p>
           <Link
             href="/company-profile-pdf"
@@ -328,13 +329,12 @@ export default function CompanyProfilePage() {
                 Company Overview
               </h2>
               <p className="text-steel leading-relaxed mb-4">
-                Founded in 2003, CybitSolutions has established itself as a
-                trusted technology partner for federal agencies, the Department
-                of Defense, the Intelligence Community, and commercial
-                enterprises. As a Service-Disabled Veteran-Owned Small Business
-                (SDVOSB) and Minority-Owned Business Enterprise (MBE), we bring
-                military-grade discipline, innovation, and accountability to
-                every engagement.
+                Established in 2003, CybitSolutions is the Technology and
+                Digital Transformation Division and Industry Domain Solutions of
+                AFANO Group, serving as a trusted technology partner for federal
+                agencies, the Department of Defense, the Intelligence Community,
+                and commercial enterprises. We bring mission-grade discipline,
+                innovation, and accountability to every engagement.
               </p>
               <p className="text-steel leading-relaxed mb-4">
                 Our team of 500+ cleared professionals delivers end-to-end IT
@@ -525,10 +525,10 @@ export default function CompanyProfilePage() {
                 className="bg-white rounded-xl p-6 border border-border"
               >
                 <div className="w-14 h-14 rounded-full bg-gradient-to-br from-navy to-accent-cyan flex items-center justify-center text-white font-bold text-lg mb-4">
-                  {member.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
+                  {(() => {
+                    const parts = member.name.split(" ").filter((n) => !n.startsWith('"'));
+                    return parts.length >= 2 ? parts[0][0] + parts[parts.length - 1][0] : parts[0][0];
+                  })()}
                 </div>
                 <h3 className="text-lg font-bold text-navy">{member.name}</h3>
                 <p className="text-accent-cyan font-medium text-sm mb-2">

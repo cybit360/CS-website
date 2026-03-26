@@ -20,7 +20,7 @@ import { AnimatedSection } from "@/components/animations/AnimatedAboutContent";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "CybitSolutions is a Veteran-Owned, Minority-Owned IT firm delivering secure, scalable technology solutions. Learn about our mission, values, and 20+ year history.",
+    "CybitSolutions is the Technology and Digital Transformation Division of AFANO Group, delivering secure, scalable technology solutions. Learn about our mission, values, and 20+ year history.",
 };
 
 const timeline = [
@@ -28,7 +28,7 @@ const timeline = [
     year: "2003",
     title: "Founded",
     description:
-      "CybitSolutions established as a veteran-owned IT services company focused on federal cybersecurity and infrastructure.",
+      "CybitSolutions established as the Technology and Digital Transformation Division of AFANO Group, focused on federal cybersecurity and infrastructure.",
     icon: Flag,
   },
   {
@@ -94,7 +94,7 @@ const values = [
 ];
 
 const certifications = [
-  "SDVOSB Certified",
+  "AFANO Group — SDVOSB Certified",
   "CMMC Level 3",
   "ISO 27001",
   "ISO 9001",
@@ -116,9 +116,9 @@ export default function AboutPage() {
             About CybitSolutions
           </h1>
           <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-            A veteran-owned small business with 20+ years of experience
-            delivering mission-critical IT solutions to federal agencies and
-            defense organizations worldwide.
+            The Technology and Digital Transformation Division of AFANO Group,
+            with 20+ years of experience delivering mission-critical IT
+            solutions to federal agencies and defense organizations worldwide.
           </p>
         </div>
       </section>
@@ -136,11 +136,12 @@ export default function AboutPage() {
             <div>
               <h2 className="text-3xl font-bold text-navy mb-6">Our Story</h2>
               <p className="text-steel leading-relaxed mb-4">
-                CybitSolutions was founded with a clear purpose: to bring
-                military-grade discipline and innovation to the world of federal
-                IT. As a Service-Disabled Veteran-Owned Small Business, we
-                understand the operational demands, security imperatives, and
-                accountability standards that define government technology.
+                CybitSolutions was established with a clear purpose: to bring
+                mission-grade discipline and innovation to the world of federal
+                IT. As the Technology and Digital Transformation Division of
+                AFANO Group, we understand the operational demands, security
+                imperatives, and accountability standards that define government
+                technology.
               </p>
               <p className="text-steel leading-relaxed mb-4">
                 From our first cybersecurity contract to becoming a trusted

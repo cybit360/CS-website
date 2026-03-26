@@ -49,7 +49,7 @@ const partnershipTypes = [
     icon: GraduationCap,
     title: "Mentor-Protege",
     description:
-      "Participate in SBA Mentor-Protege programs to develop small business capacity. CybitSolutions is committed to fostering growth in the federal contracting ecosystem.",
+      "Participate in SBA Mentor-Protege programs to develop partner capacity. CybitSolutions, as a division of AFANO Group, is committed to fostering growth in the federal contracting ecosystem.",
     highlights: ["SBA program participation", "Capacity building", "Joint venture opportunities"],
   },
 ];

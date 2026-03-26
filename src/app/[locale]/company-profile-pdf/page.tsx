@@ -110,13 +110,18 @@ const pastPerformance = [
 ];
 
 const leadershipTeam = [
-  { name: "James Carter", title: "Chief Executive Officer", creds: "MBA Georgetown · U.S. Army Veteran · PMP" },
-  { name: "Dr. Sarah Nguyen", title: "Chief Technology Officer", creds: "Ph.D. Carnegie Mellon · CISSP · AWS SA Pro" },
-  { name: "Michael Ross", title: "Chief Operating Officer", creds: "M.S. Johns Hopkins · U.S. Navy Veteran · PMP" },
-  { name: "Alicia Martinez", title: "VP of Cybersecurity", creds: "CISSP · CISM · CCSP · CEH · TS/SCI" },
-  { name: "David Kim", title: "VP of Cloud & Infrastructure", creds: "AWS SA Pro · Azure Expert · GCP Architect · CKA" },
-  { name: "Patricia O'Connell", title: "VP of Government Programs", creds: "DAWIA III · PMP · SAFe SPC · Former GSA CO" },
+  { name: 'Adupedee "Prof" Ababio', title: "Chief Architect / CISO", creds: "Enterprise Security Architecture · Zero-Trust & NIST Compliance" },
+  { name: 'Christian "Chris" Achemdey', title: "Division VP of Technology", creds: "Cloud Architecture · DevSecOps · AI/ML for Government" },
+  { name: "Adaobi Ikpeze", title: "Division VP of Operations & HR", creds: "Program Management · Human Capital Strategy · Federal Compliance" },
+  { name: "Stanley Opara", title: "Division VP of Cybersecurity", creds: "SOC/MDR · Zero-Trust · RMF Authorization" },
+  { name: "Stanley Gorman", title: "Division VP of Cloud & Infrastructure", creds: "Multi-Cloud (AWS, Azure, GCP) · FedRAMP · IL4/IL5" },
+  { name: "Alpha Taylor", title: "Division VP of Government Programs", creds: "Government Acquisition · Federal Program Management" },
 ];
+
+function getInitials(name: string) {
+  const parts = name.split(" ").filter((n) => !n.startsWith('"'));
+  return parts.length >= 2 ? parts[0][0] + parts[parts.length - 1][0] : parts[0][0];
+}
 
 const naicsCodes = [
   "541512 — Computer Systems Design",
@@ -141,8 +146,8 @@ const contractVehicles = [
 ];
 
 const certifications = [
-  "Service-Disabled Veteran-Owned SB (SDVOSB)",
-  "Minority-Owned Business Enterprise (MBE)",
+  "AFANO Group — SDVOSB Certified",
+  "AFANO Group — MBE Certified",
   "CMMC Level 3 Certified",
   "ISO 27001 Certified",
   "ISO 9001 Certified",
@@ -175,7 +180,7 @@ export default function CompanyProfilePDFPage() {
 
       <div className="pt-14 print:pt-0">
         {/* ===== PAGE 1: Cover ===== */}
-        <div className="profile-page bg-[#0B1C2E] text-white flex flex-col items-center justify-center min-h-[11in] relative overflow-hidden">
+        <div className="profile-page bg-[#0B1C2E] text-white flex flex-col items-center justify-center min-h-[11in] print:min-h-0 relative overflow-hidden print:break-after-page">
           {/* Decorative elements */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-[#13C0F5]" />
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#13C0F5]" />
@@ -184,21 +189,24 @@ export default function CompanyProfilePDFPage() {
             backgroundSize: "60px 60px",
           }} />
 
-          <div className="relative z-10 text-center px-12 py-16">
-            <div className="mb-8">
+          <div className="relative z-10 text-center px-12 py-12">
+            <div className="mb-6">
               <Image
                 src="/images/logo.png"
                 alt="CybitSolutions Logo"
                 width={350}
                 height={88}
-                className="mx-auto h-24 w-auto"
+                className="mx-auto h-20 w-auto"
               />
             </div>
-            <div className="w-24 h-0.5 bg-[#13C0F5] mx-auto mb-8" />
-            <h1 className="text-5xl font-bold mb-4 tracking-tight">
+            <p className="text-sm text-white/50 tracking-widest uppercase mb-6">
+              A Division of AFANO Group
+            </p>
+            <div className="w-24 h-0.5 bg-[#13C0F5] mx-auto mb-6" />
+            <h1 className="text-5xl font-bold mb-4 tracking-tight text-white">
               Company Profile
             </h1>
-            <p className="text-xl text-[#13C0F5] font-medium italic mb-12">
+            <p className="text-xl text-[#13C0F5] font-medium italic mb-10">
               Mission-Grade Innovation for Cyber, Cloud, and AI
             </p>
             <div className="grid grid-cols-4 gap-6 max-w-3xl mx-auto">
@@ -209,27 +217,27 @@ export default function CompanyProfilePDFPage() {
                 </div>
               ))}
             </div>
-            <div className="mt-16 text-white/40 text-sm">
-              Veteran-Owned · Minority-Owned · SDVOSB Certified
+            <div className="mt-12 text-white/40 text-sm">
+              A Division of AFANO Group · SDVOSB · MBE
             </div>
           </div>
         </div>
 
-        {/* ===== PAGE 2: Company Overview ===== */}
-        <div className="profile-page px-12 py-10 min-h-[11in]">
-          <div className="border-b-2 border-[#13C0F5] pb-3 mb-8">
+        {/* ===== PAGE 2: Company Overview + Service Domains ===== */}
+        <div className="profile-page px-10 py-6 print:break-after-page">
+          <div className="border-b-2 border-[#13C0F5] pb-2 mb-5">
             <h2 className="text-2xl font-bold text-[#0B1C2E]">Company Overview</h2>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-2 gap-6 mb-6">
             <div>
-              <p className="text-sm text-[#5C6B7A] leading-relaxed mb-4">
-                Founded in 2003, CybitSolutions is a Service-Disabled Veteran-Owned
-                Small Business (SDVOSB) and Minority-Owned Business Enterprise (MBE)
+              <p className="text-sm text-[#5C6B7A] leading-relaxed mb-3">
+                Established in 2003, CybitSolutions is the Technology and Digital
+                Transformation Division and Industry Domain Solutions of AFANO Group,
                 delivering mission-critical IT solutions to federal agencies, the
                 Department of Defense, Intelligence Community, and commercial enterprises.
               </p>
-              <p className="text-sm text-[#5C6B7A] leading-relaxed mb-4">
+              <p className="text-sm text-[#5C6B7A] leading-relaxed mb-3">
                 Our team of 500+ cleared professionals operates across 10 service domains,
                 supporting programs that protect national security, modernize government
                 operations, and advance digital transformation. We maintain CONUS and
@@ -242,25 +250,25 @@ export default function CompanyProfilePDFPage() {
                 best-in-class solutions at mission speed.
               </p>
             </div>
-            <div className="space-y-4">
-              <div className="bg-[#F4F7FA] rounded-lg p-5 border-l-4 border-[#13C0F5]">
-                <h3 className="font-bold text-[#0B1C2E] text-sm mb-2">Mission</h3>
+            <div className="space-y-3">
+              <div className="bg-[#F4F7FA] rounded-lg p-4 border-l-4 border-[#13C0F5]">
+                <h3 className="font-bold text-[#0B1C2E] text-sm mb-1">Mission</h3>
                 <p className="text-xs text-[#5C6B7A] leading-relaxed">
                   To deliver innovative, secure, and reliable IT solutions that empower
                   federal agencies and commercial organizations to accomplish their most
                   critical missions.
                 </p>
               </div>
-              <div className="bg-[#F4F7FA] rounded-lg p-5 border-l-4 border-[#FFC766]">
-                <h3 className="font-bold text-[#0B1C2E] text-sm mb-2">Vision</h3>
+              <div className="bg-[#F4F7FA] rounded-lg p-4 border-l-4 border-[#FFC766]">
+                <h3 className="font-bold text-[#0B1C2E] text-sm mb-1">Vision</h3>
                 <p className="text-xs text-[#5C6B7A] leading-relaxed">
                   To be the most trusted technology partner for organizations protecting
                   national security, advancing government modernization, and serving the
                   public good.
                 </p>
               </div>
-              <div className="bg-[#F4F7FA] rounded-lg p-5 border-l-4 border-[#13C0F5]">
-                <h3 className="font-bold text-[#0B1C2E] text-sm mb-2">Headquarters</h3>
+              <div className="bg-[#F4F7FA] rounded-lg p-4 border-l-4 border-[#13C0F5]">
+                <h3 className="font-bold text-[#0B1C2E] text-sm mb-1">Headquarters</h3>
                 <p className="text-xs text-[#5C6B7A] leading-relaxed">
                   Washington, D.C. Metropolitan Area<br />
                   CONUS and OCONUS operational presence
@@ -270,47 +278,47 @@ export default function CompanyProfilePDFPage() {
           </div>
 
           {/* Service Domains */}
-          <div className="border-b-2 border-[#13C0F5] pb-3 mb-6 mt-10">
+          <div className="border-b-2 border-[#13C0F5] pb-2 mb-4 mt-6">
             <h2 className="text-2xl font-bold text-[#0B1C2E]">Service Domains</h2>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3">
             {serviceDomains.map((s, i) => (
-              <div key={s.title} className="flex items-start gap-3 p-3 rounded-lg bg-[#F4F7FA]">
-                <div className="flex items-center justify-center w-7 h-7 rounded bg-[#0B1C2E] text-[#13C0F5] font-bold text-xs shrink-0">
+              <div key={s.title} className="flex items-start gap-2 p-2 rounded-lg bg-[#F4F7FA]">
+                <div className="flex items-center justify-center w-6 h-6 rounded bg-[#0B1C2E] text-[#13C0F5] font-bold text-[10px] shrink-0">
                   {i + 1}
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#0B1C2E] text-sm">{s.title}</h3>
-                  <p className="text-xs text-[#5C6B7A] leading-relaxed">{s.desc}</p>
+                  <h3 className="font-bold text-[#0B1C2E] text-xs">{s.title}</h3>
+                  <p className="text-[10px] text-[#5C6B7A] leading-relaxed">{s.desc}</p>
                 </div>
               </div>
             ))}
           </div>
-          <div className="mt-6 text-center text-xs text-[#5C6B7A]">
+          <div className="mt-4 text-center text-xs text-[#5C6B7A]">
             CybitSolutions Company Profile · Page 2
           </div>
         </div>
 
-        {/* ===== PAGE 3: Past Performance ===== */}
-        <div className="profile-page px-12 py-10 min-h-[11in]">
-          <div className="border-b-2 border-[#13C0F5] pb-3 mb-8">
+        {/* ===== PAGE 3: Past Performance + Leadership ===== */}
+        <div className="profile-page px-10 py-6 print:break-after-page">
+          <div className="border-b-2 border-[#13C0F5] pb-2 mb-4">
             <h2 className="text-2xl font-bold text-[#0B1C2E]">Past Performance</h2>
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-3">
             {pastPerformance.map((p) => (
-              <div key={p.program} className="bg-[#F4F7FA] rounded-lg p-5 border border-[#E5E7EB]">
-                <div className="flex items-start gap-4">
-                  <div className="w-1 h-full min-h-[60px] bg-[#13C0F5] rounded-full shrink-0" />
+              <div key={p.program} className="bg-[#F4F7FA] rounded-lg p-3 border border-[#E5E7EB]">
+                <div className="flex items-start gap-3">
+                  <div className="w-1 h-full min-h-[40px] bg-[#13C0F5] rounded-full shrink-0" />
                   <div className="flex-1">
-                    <p className="text-xs text-[#13C0F5] font-semibold uppercase tracking-wide mb-1">
+                    <p className="text-[10px] text-[#13C0F5] font-semibold uppercase tracking-wide mb-0.5">
                       {p.client}
                     </p>
-                    <h3 className="font-bold text-[#0B1C2E] text-sm mb-3">{p.program}</h3>
-                    <div className="grid grid-cols-3 gap-3">
+                    <h3 className="font-bold text-[#0B1C2E] text-xs mb-2">{p.program}</h3>
+                    <div className="grid grid-cols-3 gap-2">
                       {p.results.map((r) => (
-                        <div key={r} className="bg-white rounded p-2 text-center">
-                          <p className="text-xs text-[#5C6B7A] leading-tight">{r}</p>
+                        <div key={r} className="bg-white rounded p-1.5 text-center">
+                          <p className="text-[10px] text-[#5C6B7A] leading-tight">{r}</p>
                         </div>
                       ))}
                     </div>
@@ -321,35 +329,35 @@ export default function CompanyProfilePDFPage() {
           </div>
 
           {/* Leadership */}
-          <div className="border-b-2 border-[#13C0F5] pb-3 mb-6 mt-10">
+          <div className="border-b-2 border-[#13C0F5] pb-2 mb-4 mt-6">
             <h2 className="text-2xl font-bold text-[#0B1C2E]">Leadership Team</h2>
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-3">
             {leadershipTeam.map((m) => (
-              <div key={m.name} className="bg-[#F4F7FA] rounded-lg p-4 text-center">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0B1C2E] to-[#13C0F5] flex items-center justify-center text-white font-bold text-sm mx-auto mb-3">
-                  {m.name.split(" ").map((n) => n[0]).join("")}
+              <div key={m.name} className="bg-[#F4F7FA] rounded-lg p-3 text-center">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0B1C2E] to-[#13C0F5] flex items-center justify-center text-white font-bold text-xs mx-auto mb-2">
+                  {getInitials(m.name)}
                 </div>
-                <h3 className="font-bold text-[#0B1C2E] text-sm">{m.name}</h3>
-                <p className="text-xs text-[#13C0F5] font-medium mb-1">{m.title}</p>
-                <p className="text-[10px] text-[#5C6B7A]">{m.creds}</p>
+                <h3 className="font-bold text-[#0B1C2E] text-xs">{m.name}</h3>
+                <p className="text-[10px] text-[#13C0F5] font-medium mb-0.5">{m.title}</p>
+                <p className="text-[9px] text-[#5C6B7A]">{m.creds}</p>
               </div>
             ))}
           </div>
-          <div className="mt-6 text-center text-xs text-[#5C6B7A]">
+          <div className="mt-4 text-center text-xs text-[#5C6B7A]">
             CybitSolutions Company Profile · Page 3
           </div>
         </div>
 
         {/* ===== PAGE 4: Certifications, NAICS, Vehicles, Partners, Contact ===== */}
-        <div className="profile-page px-12 py-10 min-h-[11in]">
-          <div className="grid grid-cols-2 gap-8 mb-8">
+        <div className="profile-page px-10 py-6">
+          <div className="grid grid-cols-2 gap-6 mb-6">
             {/* Certifications */}
             <div>
-              <div className="border-b-2 border-[#13C0F5] pb-2 mb-4">
+              <div className="border-b-2 border-[#13C0F5] pb-2 mb-3">
                 <h2 className="text-lg font-bold text-[#0B1C2E]">Certifications & Clearances</h2>
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-1.5">
                 {certifications.map((c) => (
                   <li key={c} className="flex items-start gap-2 text-xs text-[#5C6B7A]">
                     <span className="text-[#13C0F5] mt-0.5">&#10003;</span>
@@ -361,10 +369,10 @@ export default function CompanyProfilePDFPage() {
 
             {/* Contract Vehicles */}
             <div>
-              <div className="border-b-2 border-[#13C0F5] pb-2 mb-4">
+              <div className="border-b-2 border-[#13C0F5] pb-2 mb-3">
                 <h2 className="text-lg font-bold text-[#0B1C2E]">Contract Vehicles</h2>
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-1.5">
                 {contractVehicles.map((cv) => (
                   <li key={cv} className="flex items-start gap-2 text-xs text-[#5C6B7A]">
                     <span className="text-[#13C0F5] mt-0.5">&#10003;</span>
@@ -376,10 +384,10 @@ export default function CompanyProfilePDFPage() {
 
             {/* NAICS */}
             <div>
-              <div className="border-b-2 border-[#FFC766] pb-2 mb-4">
+              <div className="border-b-2 border-[#FFC766] pb-2 mb-3">
                 <h2 className="text-lg font-bold text-[#0B1C2E]">NAICS Codes</h2>
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-1.5">
                 {naicsCodes.map((n) => (
                   <li key={n} className="text-xs text-[#5C6B7A] font-mono">{n}</li>
                 ))}
@@ -388,14 +396,14 @@ export default function CompanyProfilePDFPage() {
 
             {/* Partners */}
             <div>
-              <div className="border-b-2 border-[#FFC766] pb-2 mb-4">
+              <div className="border-b-2 border-[#FFC766] pb-2 mb-3">
                 <h2 className="text-lg font-bold text-[#0B1C2E]">Technology Partners</h2>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {partners.map((p) => (
                   <span
                     key={p}
-                    className="inline-block px-3 py-1 bg-[#F4F7FA] rounded text-xs text-[#0B1C2E] font-medium border border-[#E5E7EB]"
+                    className="inline-block px-2 py-0.5 bg-[#F4F7FA] rounded text-[10px] text-[#0B1C2E] font-medium border border-[#E5E7EB]"
                   >
                     {p}
                   </span>
@@ -405,16 +413,16 @@ export default function CompanyProfilePDFPage() {
           </div>
 
           {/* Contact Section */}
-          <div className="mt-8 bg-[#0B1C2E] rounded-xl p-8 text-white">
-            <div className="text-center mb-6">
+          <div className="mt-6 bg-[#0B1C2E] rounded-xl p-6 text-white">
+            <div className="text-center mb-4">
               <Image
                 src="/images/logo.png"
                 alt="CybitSolutions Logo"
                 width={200}
                 height={50}
-                className="mx-auto h-12 w-auto mb-4"
+                className="mx-auto h-10 w-auto mb-3"
               />
-              <h2 className="text-xl font-bold">Contact Us</h2>
+              <h2 className="text-xl font-bold text-white">Contact Us</h2>
             </div>
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
@@ -430,19 +438,19 @@ export default function CompanyProfilePDFPage() {
                 <p className="text-sm text-white/80">www.cybitsolutions.net</p>
               </div>
             </div>
-            <div className="text-center mt-4">
+            <div className="text-center mt-3">
               <p className="text-xs text-white/40">
                 Washington, D.C. Metropolitan Area · CONUS & OCONUS Operations
               </p>
             </div>
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-6 text-center">
             <p className="text-xs text-[#5C6B7A]">
               CybitSolutions Company Profile · Page 4
             </p>
-            <p className="text-[10px] text-[#5C6B7A] mt-2">
-              Veteran-Owned · Minority-Owned · SDVOSB Certified · CAGE Code: XXXXX · DUNS: XXX-XXX-XXXX
+            <p className="text-[10px] text-[#5C6B7A] mt-1">
+              A Division of AFANO Group · SDVOSB · MBE · CAGE Code: XXXXX · DUNS: XXX-XXX-XXXX
             </p>
           </div>
         </div>

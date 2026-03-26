@@ -276,7 +276,7 @@ export default function CapabilityStatementsPage() {
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-accent-cyan mt-0.5 shrink-0" />
                 <span className="text-steel">
-                  Veteran-Owned, Minority-Owned Small Business (VOSB / MBE)
+                  AFANO Group — SDVOSB / MBE Certified
                 </span>
               </li>
               <li className="flex items-start gap-3">

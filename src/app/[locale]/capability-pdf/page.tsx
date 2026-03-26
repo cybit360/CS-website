@@ -121,7 +121,7 @@ export default function CapabilityPDFPage() {
               CybitSolutions
             </h1>
             <p className="text-sm text-[#5C6B7A] mt-1 font-medium">
-              Veteran-Owned | Minority-Owned | Small Disadvantaged Business
+              A Division of AFANO Group | SDVOSB | MBE
             </p>
             <p
               className="text-lg font-semibold text-[#0B1C2E] mt-2"
@@ -131,7 +131,7 @@ export default function CapabilityPDFPage() {
             </p>
           </div>
           <div className="text-right text-sm text-[#5C6B7A] leading-relaxed">
-            <p className="font-semibold text-[#0B1C2E]">CybitSolutions LLC</p>
+            <p className="font-semibold text-[#0B1C2E]">CybitSolutions — A Division of AFANO Group</p>
             <p>info@cybitsolutions.net</p>
             <p>+ (771) 233-1379</p>
             <p>www.cybitsolutions.com</p>
@@ -147,14 +147,15 @@ export default function CapabilityPDFPage() {
             Company Overview
           </h2>
           <p className="text-sm text-[#1E2A38] leading-relaxed">
-            CybitSolutions is a Veteran-Owned, Minority-Owned IT firm with over
-            20 years of government and commercial contracting experience. We
-            deliver mission-grade IT solutions across cybersecurity, cloud
-            computing, artificial intelligence, data analytics, and digital
-            transformation for federal agencies, the Department of Defense, and
-            the Intelligence Community. Our cleared professionals combine deep
-            technical expertise with proven federal delivery methodologies to
-            protect national security and advance agency missions.
+            CybitSolutions is the Technology and Digital Transformation Division
+            and Industry Domain Solutions of AFANO Group, with over 20 years of
+            government and commercial contracting experience. We deliver
+            mission-grade IT solutions across cybersecurity, cloud computing,
+            artificial intelligence, data analytics, and digital transformation
+            for federal agencies, the Department of Defense, and the Intelligence
+            Community. Our cleared professionals combine deep technical expertise
+            with proven federal delivery methodologies to protect national
+            security and advance agency missions.
           </p>
         </section>
 
@@ -327,10 +328,10 @@ export default function CapabilityPDFPage() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-bold text-[#0B1C2E]">
-                CybitSolutions LLC
+                CybitSolutions — A Division of AFANO Group
               </p>
               <p className="text-xs text-[#5C6B7A]">
-                Veteran-Owned | Minority-Owned | Small Disadvantaged Business
+                SDVOSB | MBE | Technology & Digital Transformation
               </p>
             </div>
             <div className="text-right text-xs text-[#5C6B7A]">

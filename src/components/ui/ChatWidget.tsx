@@ -82,7 +82,7 @@ const FAQ_RESPONSES: {
   {
     keywords: ["about", "who", "company", "veteran", "minority", "history", "background"],
     response:
-      "CybitSolutions is a Veteran-Owned, Minority-Owned IT firm with over 20 years of government and commercial contracting experience. We specialize in delivering mission-grade IT solutions for federal agencies, the DoD, and the Intelligence Community.",
+      "CybitSolutions is the Technology and Digital Transformation Division of AFANO Group, with over 20 years of government and commercial contracting experience. We specialize in delivering mission-grade IT solutions for federal agencies, the DoD, and the Intelligence Community.",
     links: [
       { label: "About Us", href: "/who-we-are/about" },
       { label: "Leadership", href: "/who-we-are/leadership" },

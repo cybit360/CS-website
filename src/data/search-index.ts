@@ -16,7 +16,7 @@ export const searchIndex: SearchItem[] = [
       "Mission-grade IT solutions for government and enterprise",
     href: "/",
     category: "Main",
-    keywords: ["home", "cybitsolutions", "govcon", "veteran", "minority"],
+    keywords: ["home", "cybitsolutions", "govcon", "AFANO Group", "division"],
   },
 
   // ── What We Do ────────────────────────────────────────────────────────
@@ -156,7 +156,7 @@ export const searchIndex: SearchItem[] = [
       "Our mission, vision, values, and commitment to delivering excellence in federal IT",
     href: "/who-we-are/about",
     category: "Who We Are",
-    keywords: ["about", "mission", "vision", "values", "veteran-owned", "minority-owned"],
+    keywords: ["about", "mission", "vision", "values", "AFANO Group", "division"],
   },
   {
     title: "Leadership",

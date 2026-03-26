@@ -13,11 +13,10 @@ const avatarGradients = [
 ];
 
 function getInitials(name: string) {
-  return name
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .slice(0, 2);
+  const parts = name.split(" ").filter((n) => !n.startsWith('"'));
+  return parts.length >= 2
+    ? parts[0][0] + parts[parts.length - 1][0]
+    : parts.map((n) => n[0]).join("").slice(0, 2);
 }
 
 export const metadata: Metadata = {
@@ -28,60 +27,43 @@ export const metadata: Metadata = {
 
 const leaders = [
   {
-    name: "James Mitchell",
-    title: "Chief Executive Officer",
-    bio: "25+ years of leadership in federal IT and defense technology. Former Army officer with deep expertise in cybersecurity strategy and government modernization programs.",
+    name: 'Adupedee "Prof" Ababio',
+    title: "Chief Architect / Information Security Officer (CISO)",
+    bio: "Leads CybitSolutions' technical architecture and information security strategy. Extensive experience in enterprise security architecture, zero-trust frameworks, and compliance-driven IT modernization for federal and commercial environments.",
     linkedin: "#",
   },
   {
-    name: "Dr. Sarah Chen",
-    title: "Chief Technology Officer",
-    bio: "Ph.D. in Computer Science with 20 years of experience architecting secure cloud and AI solutions for DoD and intelligence community clients.",
+    name: 'Christian "Chris" Achemdey',
+    title: "Division VP of Technology",
+    bio: "Drives technology strategy, R&D initiatives, and technical delivery across all service domains. Deep expertise in cloud architecture, DevSecOps, and AI/ML solutions for government environments.",
     linkedin: "#",
   },
   {
-    name: "Robert Williams",
-    title: "Chief Operating Officer",
-    bio: "Former Marine Corps logistics officer. 18 years of experience in program management, operational excellence, and scaling government IT organizations.",
+    name: "Adaobi Ikpeze",
+    title: "Division VP of Operations and Human Resources",
+    bio: "Oversees operational excellence, program delivery, and human capital strategy. Ensures every engagement meets the highest standards of quality, compliance, and customer satisfaction.",
     linkedin: "#",
   },
   {
-    name: "Maria Gonzalez",
-    title: "VP of Engineering",
-    bio: "15+ years leading software development and DevSecOps teams across federal programs. Expert in agile delivery and continuous integration for classified environments.",
+    name: "Stanley Opara",
+    title: "Division VP of Cybersecurity",
+    bio: "Leads the cybersecurity practice with extensive experience in SOC modernization, zero-trust implementation, and RMF authorization programs for DoD, Intelligence Community, and civilian agencies.",
     linkedin: "#",
   },
   {
-    name: "David Park",
-    title: "VP of Cybersecurity",
-    bio: "CISSP, CISM certified with 20 years defending critical infrastructure. Former NSA analyst specializing in zero-trust architecture and threat intelligence.",
+    name: "Stanley Gorman",
+    title: "Division VP of Cloud & Infrastructure",
+    bio: "Leads cloud computing and infrastructure practice, overseeing cloud migration, hybrid architecture, and managed infrastructure services including FedRAMP High and DoD IL5 environment builds.",
     linkedin: "#",
   },
   {
-    name: "Angela Torres",
-    title: "VP of Business Development",
-    bio: "18 years of federal contracting and capture management experience. Proven track record securing multi-year contracts across DoD, DoS, and civilian agencies.",
+    name: "Alpha Taylor",
+    title: "Division VP of Government Programs",
+    bio: "Leads government program management and business development operations. Deep experience in government acquisition, GWAC/BPA management, and strategic capture across DoD and civilian agencies.",
     linkedin: "#",
   },
 ];
 
-const advisors = [
-  {
-    name: "Gen. (Ret.) William Carter",
-    title: "Strategic Advisor",
-    bio: "Former commanding general with 35 years of military service. Advises on defense strategy, joint operations, and emerging technology adoption.",
-  },
-  {
-    name: "Dr. Lisa Patel",
-    title: "Technology Advisor",
-    bio: "Former CIO of a major federal agency. Recognized thought leader in government digital transformation and cloud-first strategies.",
-  },
-  {
-    name: "Mark Thompson",
-    title: "Cybersecurity Advisor",
-    bio: "Former CISO for a Fortune 100 company. Brings private-sector cybersecurity innovation and risk management expertise to our federal programs.",
-  },
-];
 
 export default function LeadershipPage() {
   return (
@@ -95,8 +77,9 @@ export default function LeadershipPage() {
             Leadership Team
           </h1>
           <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-            Experienced leaders with deep federal IT expertise, military
-            service backgrounds, and a shared commitment to mission success.
+            Experienced leaders with deep federal IT expertise and a shared
+            commitment to mission success, driving CybitSolutions as the
+            Technology and Digital Transformation Division of AFANO Group.
           </p>
         </div>
       </section>
@@ -153,50 +136,6 @@ export default function LeadershipPage() {
                     <Linkedin className="w-4 h-4" />
                     LinkedIn Profile
                   </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Advisory Board */}
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-navy mb-4">
-              Advisory Board
-            </h2>
-            <p className="text-steel max-w-2xl mx-auto text-lg leading-relaxed">
-              Distinguished advisors who bring strategic insight and
-              cross-sector expertise to guide our growth.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {advisors.map((advisor, index) => (
-              <div
-                key={advisor.name}
-                className="bg-cloud rounded-xl p-8 border border-border card-hover"
-              >
-                <div
-                  className={`flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br ${avatarGradients[(index + 3) % avatarGradients.length]} mb-6 mx-auto shadow-md`}
-                  role="img"
-                  aria-label={`Portrait placeholder for ${advisor.name}`}
-                >
-                  <span className="text-lg font-bold text-white select-none">
-                    {getInitials(advisor.name)}
-                  </span>
-                </div>
-                <div className="text-center">
-                  <h3 className="text-lg font-bold text-navy mb-1">
-                    {advisor.name}
-                  </h3>
-                  <p className="text-accent-cyan font-semibold text-sm mb-4">
-                    {advisor.title}
-                  </p>
-                  <p className="text-steel text-sm leading-relaxed">
-                    {advisor.bio}
-                  </p>
                 </div>
               </div>
             ))}

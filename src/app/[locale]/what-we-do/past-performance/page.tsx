@@ -295,90 +295,8 @@ export default function PastPerformancePage() {
         </div>
       </section>
 
-      {/* Microsoft Ecosystem Past Performance */}
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="text-center mb-16">
-              <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-2">
-                Featured Microsoft Solutions
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-                Microsoft Ecosystem Past Performance
-              </h2>
-              <p className="text-steel max-w-2xl mx-auto">
-                Enterprise solutions built on the Microsoft Power Platform,
-                SharePoint, Azure, and Microsoft 365 ecosystem.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="space-y-8">
-            {microsoftCaseStudies.map((study, index) => (
-              <FadeIn key={study.id} delay={index * 0.1}>
-              <div
-                key={study.id}
-                id={study.id}
-                className="bg-cloud rounded-xl p-8 border border-border card-hover"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                  <div className="lg:col-span-2">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#0078D4] text-white">
-                        <Monitor className="w-6 h-6" strokeWidth={1.5} />
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-[#0078D4] uppercase tracking-wide">
-                          Microsoft Ecosystem
-                        </p>
-                        <h3 className="text-xl font-bold text-navy">
-                          {study.title}
-                        </h3>
-                      </div>
-                    </div>
-                    <p className="text-steel leading-relaxed mb-6">
-                      {study.summary}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {study.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-xs bg-[#0078D4]/10 text-[#0078D4] px-3 py-1 rounded-full font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex items-start gap-2 bg-white rounded-lg p-4">
-                      <Award className="w-5 h-5 text-[#0078D4] shrink-0 mt-0.5" />
-                      <p className="text-navy font-medium text-sm">
-                        {study.outcome}
-                      </p>
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-navy uppercase tracking-wider mb-4">
-                      Key Highlights
-                    </h4>
-                    <ul className="space-y-3">
-                      {study.highlights.map((h) => (
-                        <li key={h} className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-[#0078D4] mt-0.5 shrink-0" />
-                          <span className="text-sm text-steel">{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Major Case Studies */}
-      <section className="py-20 bg-cloud">
+      <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-16">
@@ -460,6 +378,88 @@ export default function PastPerformancePage() {
                         {study.value}
                       </p>
                     </div>
+                  </div>
+                </div>
+              </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Microsoft Ecosystem Past Performance */}
+      <section className="py-20 bg-cloud">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center mb-16">
+              <p className="text-accent-cyan font-semibold text-sm uppercase tracking-wider mb-2">
+                Featured Microsoft Solutions
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+                Microsoft Ecosystem Past Performance
+              </h2>
+              <p className="text-steel max-w-2xl mx-auto">
+                Enterprise solutions built on the Microsoft Power Platform,
+                SharePoint, Azure, and Microsoft 365 ecosystem.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="space-y-8">
+            {microsoftCaseStudies.map((study, index) => (
+              <FadeIn key={study.id} delay={index * 0.1}>
+              <div
+                key={study.id}
+                id={study.id}
+                className="bg-white rounded-xl p-8 border border-border card-hover"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <div className="lg:col-span-2">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#0078D4] text-white">
+                        <Monitor className="w-6 h-6" strokeWidth={1.5} />
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold text-[#0078D4] uppercase tracking-wide">
+                          Microsoft Ecosystem
+                        </p>
+                        <h3 className="text-xl font-bold text-navy">
+                          {study.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="text-steel leading-relaxed mb-6">
+                      {study.summary}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {study.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs bg-[#0078D4]/10 text-[#0078D4] px-3 py-1 rounded-full font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-start gap-2 bg-cloud rounded-lg p-4">
+                      <Award className="w-5 h-5 text-[#0078D4] shrink-0 mt-0.5" />
+                      <p className="text-navy font-medium text-sm">
+                        {study.outcome}
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-navy uppercase tracking-wider mb-4">
+                      Key Highlights
+                    </h4>
+                    <ul className="space-y-3">
+                      {study.highlights.map((h) => (
+                        <li key={h} className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-[#0078D4] mt-0.5 shrink-0" />
+                          <span className="text-sm text-steel">{h}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
