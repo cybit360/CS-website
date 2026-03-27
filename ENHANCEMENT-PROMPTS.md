@@ -1,9 +1,11 @@
 # CybitSolutions Website - Comprehensive Enhancement Prompts
 
-> **Last Updated:** 2026-03-22
+> **Last Updated:** 2026-03-26
+> **Identity:** CybitSolutions — Technology & Digital Transformation Division of AFANO Group (SDVOSB / MBE)
 > **Current Stack:** Next.js 16, Tailwind CSS v4, TypeScript, react-hook-form, zod, Resend, Vitest
 > **Total Pages:** 58+ (including 10 service domains, 6 blog articles, 4 legal, 2 PDF, offline)
 > **API Routes:** 6 (contact, newsletter, career-apply, partner, testimonial, og)
+> **i18n:** Multi-language support (en, es, fr) via `[locale]` routing
 
 ---
 
@@ -26,10 +28,10 @@
 | # | Gap | Impact | Effort |
 |---|-----|--------|--------|
 | 1 | **No real images** - All pages use CSS gradient placeholders instead of professional IT/cybersecurity/government stock photos | High - Looks unprofessional, hurts credibility with government clients | Medium |
-| 2 | **No Framer Motion animations** - No scroll-triggered animations, no page transitions, no micro-interactions | Medium - Site feels static compared to competitors like GDIT.com, RTX.com | Medium |
-| 3 | **Forms not connected to backend API routes** - Contact, career, partner, newsletter, testimonial forms show client-side success messages without actual API calls or email delivery | Critical - No leads captured, no applications received | High |
+| 2 | ~~**No Framer Motion animations**~~ — DONE: FadeIn, CountUp, StaggerContainer animations added site-wide with prefers-reduced-motion support | ~~Medium~~ | ~~Medium~~ |
+| 3 | ~~**Forms not connected to backend API routes**~~ — DONE: All 5 forms connected with react-hook-form + zod validation | ~~Critical~~ | ~~High~~ |
 | 4 | **No Google Analytics 4 integration** - Vercel Analytics is installed but no GA4 for marketing team | Medium - No marketing funnel data, no conversion tracking | Low |
-| 5 | **No dark mode support** - No system preference detection, no manual toggle | Low - Nice-to-have for developer/tech audience | Medium |
+| 5 | ~~**No dark mode support**~~ — DONE: Dark mode toggle added to header with system preference detection | ~~Low~~ | ~~Medium~~ |
 | 6 | **No blog detail pages with MDX content** - Insights/news page exists but individual articles have no detail pages | High - No content marketing capability, hurts SEO | High |
 | 7 | **No real payment processor integration** - Payment page exists but has no Stripe/PayPal SDK integration | High - Cannot collect invoice payments | High |
 | 8 | **No Google Maps on contact page** - Contact page has address text but no interactive map | Low - Minor UX gap | Low |
@@ -46,12 +48,12 @@
 | Competitor Feature | RTX.com | GDIT.com | Leidos.com | CybitSolutions |
 |---|:---:|:---:|:---:|:---:|
 | Professional photography | Yes | Yes | Yes | No (gradients) |
-| Animated page transitions | Yes | Partial | Yes | No |
+| Animated page transitions | Yes | Partial | Yes | Yes (FadeIn/CountUp) |
 | Blog/insights with full articles | Yes | Yes | Yes | No (list only) |
 | Career portal with ATS integration | Yes | Yes | Yes | No |
 | Contract vehicle lookup | Yes | Yes | Yes | No |
 | Investor relations section | Yes | Yes | Yes | N/A (private) |
-| Multi-language support | Partial | No | Partial | No |
+| Multi-language support | Partial | No | Partial | Yes (en/es/fr) |
 | Video content / media center | Yes | Yes | Yes | No |
 | Interactive capabilities matrix | No | Yes | Yes | No |
 | Customer portal / login | Yes | Yes | Yes | No |
@@ -77,16 +79,16 @@
 
 | # | CS Feature | Kaporta Status |
 |---|---|---|
-| 1 | Global search modal (Ctrl+K) | Missing |
+| 1 | Global search modal (Ctrl+K) | DONE - SearchModal.tsx with Cmd/Ctrl+K |
 | 2 | Cookie consent banner (GDPR) | Missing |
-| 3 | Chat widget | Missing |
-| 4 | Mega menu with dropdowns | Missing |
+| 3 | Chat widget | DONE - ChatWidget.tsx with WhatsApp escalation |
+| 4 | Mega menu with dropdowns | DONE - Header has mega-menu navigation |
 | 5 | PDF generation pages | Missing |
-| 6 | Structured data / JSON-LD | Missing |
-| 7 | Vitest test setup | Missing |
-| 8 | Security headers in next.config.ts | Missing |
-| 9 | Rate limiting on API routes | Missing |
-| 10 | Newsletter signup component | Missing |
+| 6 | Structured data / JSON-LD | DONE - structured-data.ts (Org, LocalBiz, Service, WebSite, Breadcrumb) |
+| 7 | Vitest test setup | Missing (scripts added to package.json, awaiting vitest install) |
+| 8 | Security headers in next.config.ts | DONE - HSTS, X-Frame, X-XSS, Referrer, Permissions + image cache |
+| 9 | Rate limiting on API routes | DONE - src/lib/rate-limit.ts (in-memory, 5 req/15 min) |
+| 10 | Newsletter signup component | DONE - NewsletterForm.tsx |
 
 ---
 

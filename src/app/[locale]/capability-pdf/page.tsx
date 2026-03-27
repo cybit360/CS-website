@@ -48,22 +48,40 @@ const coreCompetencies = [
 
 const pastPerformance = [
   {
-    client: "Department of Defense",
-    project: "Enterprise Cybersecurity Operations Center",
+    client: "Multiple Federal Agencies (DoD, Civilian, IC)",
+    project: "Microsoft Ecosystem: Enterprise Platform Modernization",
     description:
-      "Deployed 24/7 SOC with SIEM/SOAR integration supporting 50,000+ endpoints across multiple installations.",
+      "M365 GCC High migration for 50,000+ users, Azure Government IL5 authorization, Power Platform automation saving 200K+ hours annually.",
   },
   {
-    client: "Department of Homeland Security",
-    project: "Cloud Migration & Modernization",
+    client: "DoD Air Force & Space Force",
+    project: "C3BM / ABMS (JADC2)",
     description:
-      "Migrated 200+ legacy applications to AWS GovCloud with FedRAMP High authorization.",
+      "Zero-trust cloud battle network with ICAM/PKI, RMF/ATO authorization, and multi-domain C2 integration for JADC2 initiative.",
   },
   {
-    client: "Department of Veterans Affairs",
-    project: "Identity & Access Management Modernization",
+    client: "Department of State",
+    project: "Consular Affairs Key Management Infrastructure (CAKMI)",
     description:
-      "Implemented enterprise ICAM solution with PIV/CAC integration for 300,000+ users.",
+      "Enterprise HSM/PKI key management and Oracle 19c database encryption protecting global consular data 24x7 across hundreds of facilities.",
+  },
+  {
+    client: "Department of State",
+    project: "Next Generation Enterprise Monitoring (NGEM)",
+    description:
+      "Modernized enterprise monitoring and observability platform serving diplomatic missions worldwide with comprehensive infrastructure visibility.",
+  },
+  {
+    client: "Department of State",
+    project: "Diplomatic Security SPARTA PSIM",
+    description:
+      "Unified PSIM platform with Genetec, C-CURE, and geospatial dashboards supporting $73M modernization across global diplomatic facilities.",
+  },
+  {
+    client: "Department of Defense (DMDC)",
+    project: "RAPIDS / DEERS",
+    description:
+      "Identity credential issuance (CAC) and benefits eligibility verification serving millions of DoD personnel, dependents, and retirees worldwide.",
   },
 ];
 
@@ -189,19 +207,19 @@ export default function CapabilityPDFPage() {
           >
             Past Performance Highlights
           </h2>
-          <div className="space-y-3">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-3">
             {pastPerformance.map((perf) => (
               <div
                 key={perf.project}
                 className="border-l-[3px] border-[#13C0F5] pl-3"
               >
-                <p className="text-sm font-bold text-[#0B1C2E]">
+                <p className="text-xs font-bold text-[#0B1C2E]">
                   {perf.client}
                 </p>
-                <p className="text-sm font-semibold text-[#13C0F5]">
+                <p className="text-xs font-semibold text-[#13C0F5]">
                   {perf.project}
                 </p>
-                <p className="text-xs text-[#5C6B7A] leading-relaxed">
+                <p className="text-[11px] text-[#5C6B7A] leading-relaxed">
                   {perf.description}
                 </p>
               </div>

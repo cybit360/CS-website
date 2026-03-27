@@ -1,7 +1,15 @@
 # CybitSolutions Website - Project Guide
 
 ## Overview
-Professional GovCon (Government Contracting) website for CybitSolutions, a Veteran-Owned, Minority-Owned IT firm with 20+ years of government and commercial contracting experience.
+Professional GovCon (Government Contracting) website for CybitSolutions — the Technology and Digital Transformation Division and Industry Domain Solutions of AFANO Group. 20+ years of government and commercial contracting experience. AFANO Group is SDVOSB and MBE certified.
+
+## Leadership Team
+- **Adupedee "Prof" Ababio** — Chief Architect / CISO
+- **Christian "Chris" Achemdey** — Division VP of Technology
+- **Adaobi Ikpeze** — Division VP of Operations and Human Resources
+- **Stanley Opara** — Division VP of Cybersecurity
+- **Stanley Gorman** — Division VP of Cloud & Infrastructure
+- **Alpha Taylor** — Division VP of Government Programs
 
 ## Tech Stack
 - **Framework:** Next.js 14+ (App Router) with TypeScript
