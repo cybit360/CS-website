@@ -302,11 +302,23 @@
   .profile-page {
     page-break-after: always;
     break-after: page;
+    min-height: 0 !important;
   }
 
   .profile-page:last-child {
     page-break-after: auto;
     break-after: auto;
+  }
+
+  /* Company Profile PDF: override global font-size so small text stays small */
+  .profile-page,
+  .profile-page * {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .profile-page section {
+    break-inside: auto;
   }
 }
 
