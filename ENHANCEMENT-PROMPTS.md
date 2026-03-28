@@ -1368,6 +1368,101 @@ PWA FEATURES:
 - Push notification opt-in for news/events (future)
 ```
 
+### Prompt 26: Rebrand as AFANO Group Division
+
+```
+Rebrand CybitSolutions website from standalone SDVOSB to AFANO Group division:
+
+IDENTITY CHANGE:
+- Old: "CybitSolutions is a Service-Disabled Veteran-Owned Small Business (SDVOSB) and Minority-Owned Business Enterprise (MBE)"
+- New: "CybitSolutions is the Technology and Digital Transformation Division and Industry Domain Solutions of AFANO Group"
+
+16 FILES TO UPDATE:
+1. src/data/team.ts — Replace all 6 leadership members
+2. src/data/search-index.ts — Update keywords
+3. src/app/[locale]/layout.tsx — Update JSON-LD schema
+4. src/components/layout/Footer.tsx — Replace "VOSB" with "A Division of AFANO Group"
+5. src/components/ui/ChatWidget.tsx — Update identity description
+6. src/app/[locale]/who-we-are/page.tsx — Update metadata, hero, Why Choose Us
+7. src/app/[locale]/who-we-are/about/page.tsx — Update timeline, certifications
+8. src/app/[locale]/who-we-are/leadership/page.tsx — Replace all 6 leaders, remove Advisory Board
+9. src/app/[locale]/who-we-are/company-profile/page.tsx — Update leadership, certs, metadata
+10. src/app/[locale]/company-profile-pdf/layout.tsx — Update metadata
+11. src/app/[locale]/company-profile-pdf/page.tsx — Replace leadership, certifications, branding
+12. src/app/[locale]/capability-pdf/page.tsx — Replace veteran-owned header/footer
+13. src/app/[locale]/what-we-do/capability-statements/page.tsx — Update VOSB/MBE line
+14. src/app/[locale]/contact/partner/page.tsx — Update small business language
+15. src/app/[locale]/what-we-do/past-performance/page.tsx — Move Major Case Studies ABOVE Microsoft Ecosystem
+16. src/data/blog-posts.ts — Update author name to avoid old leadership confusion
+
+NEW LEADERSHIP TEAM:
+- Adupedee "Prof" Ababio — Chief Architect / CISO
+- Christian "Chris" Achemdey — Division VP of Technology
+- Adaobi Ikpeze — Division VP of Operations and Human Resources
+- Stanley Opara — Division VP of Cybersecurity
+- Stanley Gorman — Division VP of Cloud & Infrastructure
+- Alpha Taylor — Division VP of Government Programs
+
+INITIALS FIX: Strip quoted nicknames before generating initials
+(e.g., 'Adupedee "Prof" Ababio' → split on space, skip words starting with '"', → "AA")
+```
+
+### Prompt 27: Fix Company Profile PDF to Print Exactly 4 Pages
+
+```
+Rewrite src/app/[locale]/company-profile-pdf/page.tsx for exact 4-page print output:
+
+ROOT CAUSE OF OVERFLOW: globals.css sets `body { font-size: 11pt !important }` in @media print,
+overriding all small text sizes even with Tailwind classes like text-xs.
+
+FIX APPROACH:
+1. Switch ALL font sizes to inline style={{ fontSize: "Xpt" }} — these survive !important override
+2. Add to globals.css:
+   .profile-page, .profile-page * { font-size: inherit; line-height: inherit; }
+3. Create font size constants: const S = { xs: "7pt", sm: "8pt", base: "9pt", md: "10pt", ... }
+
+4-PAGE STRUCTURE (each div: className="profile-page", style={{ minHeight: "10.5in" }}):
+- Page 1 (Cover): Navy bg, gradient bar, dot pattern, logo, 4 stats, AFANO badges, footer
+- Page 2 (Overview): Cyan accent bar, 2-col overview text, mission/vision, 10 service domains 2-col
+- Page 3 (Performance + Team): 6 past performance cards 2-col, 6 leadership cards 3-col
+- Page 4 (Credentials + Contact): 2-col grid (certs/vehicles/NAICS/partners), navy contact bar
+
+Add @page rule: size: letter; margin: 0.5in
+Add print CSS: .profile-page { page-break-after: always; break-after: page; }
+```
+
+### Prompt 28: Generate Company Profile PowerPoint
+
+```
+Create scripts/generate-company-profile-pptx.js using pptxgenjs for government contract bidding.
+Run: node scripts/generate-company-profile-pptx.js
+Output: public/downloads/CybitSolutions-Company-Profile.pptx
+
+12 SLIDES:
+1. Cover — navy bg, large company name, tagline, AFANO Group | SDVOSB | MBE
+2. Executive Summary — key stats (20+ years, 50K+ users, 40+ agencies, TS/SCI)
+3. About & History — founding 2003, AFANO Group division, mission paragraph
+4. Leadership Part 1 — Adupedee Ababio (CISO), Christian Achemdey (VP Tech), Adaobi Ikpeze (VP Ops)
+5. Leadership Part 2 — Stanley Opara (VP Cyber), Stanley Gorman (VP Cloud), Alpha Taylor (VP Gov)
+6. Core Competencies — 8 competency areas in 2-col table
+7. Service Domains Part 1 — first 5 of 10 domains
+8. Service Domains Part 2 — next 5 of 10 domains
+9. Past Performance Part 1 — first 3 highlights (Microsoft Ecosystem, C3BM/ABMS, State Dept CAKMI)
+10. Past Performance Part 2 — next 3 highlights (NGEM, SPARTA PSIM, RAPIDS/DEERS)
+11. Certifications & Contract Vehicles — ISO 27001/20000, CMMI L3, SOC2, GSA MAS, CIO-SP3, etc.
+12. Contact / CTA — address, phone, email, website, amber CTA button
+
+BRAND COLORS: NAVY #0B1C2E, CYAN #13C0F5, AMBER #FFC766, SLATE #1E2A38
+
+CRITICAL — pptxgenjs rejects 8-digit alpha hex (falls back to black #000000):
+Pre-mix all alpha colors against navy background before passing to the library:
+  FFFFFFCC → D4D8DC (90% white on navy)
+  FFFFFF99 → A0A8B0 (60% white on navy)
+  FFFFFF80 → 8890A0 (50% white on navy)
+  FFFFFF40 → 4F6070 (25% white on navy)
+  FFFFFF20 → 334054 (12% white on navy)
+```
+
 ---
 
 ## Kaporta Enhancement Prompts
@@ -1947,3 +2042,9 @@ Create downloadable PDF pages for Kaporta:
 | 2026-03-22 | Prompt 12: Playwright E2E test config + homepage/navigation/form test specs | ✅ Done |
 | 2026-03-22 | Accessibility: focus trapping in ChatWidget, ARIA improvements in Header/Footer, reduced motion in FadeIn | ✅ Done |
 | 2026-03-22 | .env.example updated with all environment variable templates | ✅ Done |
+| 2026-03-26 | Prompt 26: Full AFANO Group rebrand — 16 files updated, leadership replaced, SDVOSB standalone refs removed | ✅ Done |
+| 2026-03-26 | Prompt 26: Advisory Board section removed from leadership page | ✅ Done |
+| 2026-03-26 | Prompt 26: Past Performance page reordered — Major Case Studies now above Microsoft Ecosystem | ✅ Done |
+| 2026-03-26 | Prompt 27: Company profile PDF rewritten to print exactly 4 pages — inline style font-sizes override global print CSS | ✅ Done |
+| 2026-03-27 | Capability PDF expanded to 6 past performance highlights (was 3) in 2-col grid layout | ✅ Done |
+| 2026-03-27 | Prompt 28: PowerPoint generator created (scripts/generate-company-profile-pptx.js, 12 slides, navy/cyan design) | ✅ Done |
